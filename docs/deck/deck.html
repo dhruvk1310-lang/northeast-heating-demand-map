@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Northeast Heating &amp; Cooling Demand Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=block" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #13213c;
+    --cream: #f5f3ef;
+    --card: #fbfaf8;
+    --line: #e4e0d8;
+    --ink: #13213c;
+    --muted: #4f5a6b;
+    --soft: #6b7482;
+    --orange: #b5511f;
+    --amber: #f0a14a;
+    --blue: #2f6db3;
+  }
+  @page { size: 1440px 810px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--cream); }
+  body { font-family: "IBM Plex Sans", sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .slide { width: 1440px; height: 810px; position: relative; overflow: hidden; padding: 96px 96px 0; background: var(--cream); page-break-after: always; break-after: page; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  .dark { background: var(--navy); color: #f4f1ea; }
+
+  .kicker { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+  .dark .kicker { color: var(--amber); }
+  h1 { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 76px; line-height: 1.12; letter-spacing: -0.01em; }
+  h2 { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 46px; line-height: 1.2; letter-spacing: -0.01em; max-width: 1220px; }
+  .lede { font-size: 27px; line-height: 1.45; color: #c3cad6; max-width: 1000px; margin-top: 34px; }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+
+  .footer { position: absolute; left: 96px; right: 96px; bottom: 54px; display: flex; justify-content: space-between; font-size: 17px; color: var(--soft); }
+  .title-foot { position: absolute; left: 96px; right: 96px; bottom: 96px; display: flex; justify-content: space-between; align-items: baseline; font-size: 20px; color: #e8e4dc; }
+  .title-foot .mono { font-size: 17px; color: #a9b2c1; }
+  .pill { display: inline-block; margin-top: 40px; padding: 8px 18px; border: 1.5px solid var(--amber); border-radius: 999px; color: var(--amber); font-size: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .row { display: flex; gap: 24px; margin-top: 46px; }
+  .card { flex: 1; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 32px 30px; }
+  .card h3 { font-size: 26px; font-weight: 600; margin-bottom: 10px; }
+  .card .tag { font-family: "IBM Plex Mono", monospace; font-size: 16px; color: var(--orange); margin-bottom: 14px; }
+  .card p { font-size: 20px; line-height: 1.5; color: var(--muted); }
+  .stat { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 72px; line-height: 1; color: var(--orange); margin-bottom: 20px; }
+
+  .band { margin-top: 30px; background: var(--navy); color: #eef0f4; border-radius: 10px; padding: 26px 30px; font-size: 20px; line-height: 1.5; }
+  .band strong { color: var(--amber); font-weight: 600; }
+
+  .flow { display: flex; align-items: stretch; gap: 14px; margin-top: 46px; }
+  .flow .card { padding: 26px 20px; }
+  .flow .card .tag { font-size: 14px; }
+  .flow .card h3 { font-size: 23px; }
+  .flow .card p { font-size: 17px; }
+  .arrow { flex: 0 0 30px; height: 4px; align-self: center; background: var(--navy); position: relative; }
+  .arrow::after { content: ""; position: absolute; right: -2px; top: -8px; border-left: 14px solid var(--navy); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+
+  .formula { margin-top: 40px; background: var(--navy); color: #eef0f4; border-radius: 10px; padding: 34px 40px; font-family: "IBM Plex Mono", monospace; font-size: 25px; line-height: 1.65; }
+  .formula .k { color: var(--amber); }
+  .formula .c { color: #8fa0b8; }
+  .defs { display: flex; gap: 24px; margin-top: 26px; }
+  .defs div { flex: 1; font-size: 18px; line-height: 1.5; color: var(--muted); border-top: 3px solid var(--orange); padding-top: 14px; }
+  .defs b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 4px; font-size: 19px; }
+
+  .phases { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; margin-top: 46px; }
+  .phase { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px 16px 20px; min-height: 196px; }
+  .phase .n { font-family: "IBM Plex Mono", monospace; font-size: 15px; color: var(--soft); margin-bottom: 10px; }
+  .phase h3 { font-size: 20px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+  .phase p { font-size: 15.5px; line-height: 1.45; color: var(--muted); }
+  .phase.done { background: var(--navy); border-color: var(--navy); color: #f4f1ea; }
+  .phase.done .n { color: var(--amber); }
+  .phase.done p { color: #c3cad6; }
+  .phase.next { border: 2px solid var(--orange); }
+  .phase.next .n { color: var(--orange); }
+
+  .list { margin-top: 12px; list-style: none; }
+  .list li { font-size: 19px; line-height: 1.5; color: var(--muted); padding-left: 20px; position: relative; margin-bottom: 6px; }
+  .list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- 1. Title -->
+<section class="slide dark">
+  <div class="kicker">Portfolio project · Data pipeline · Market analytics</div>
+  <h1>Northeast Heating &amp; Cooling Demand Map</h1>
+  <p class="lede">Where and when the Northeast needs heating oil, propane and AC service, estimated county by county and month by month from public data</p>
+  <span class="pill">In progress · Planning complete</span>
+  <div class="title-foot">
+    <span>Dhruv Khanna · MS Business Analytics, Quinnipiac University</span>
+    <span class="mono">Python · SQL · Tableau</span>
+  </div>
+</section>
+
+<!-- 2. Why -->
+<section class="slide">
+  <div class="kicker">Why this project</div>
+  <h2>Fuel dealers run a seasonal business with two peaks</h2>
+  <div class="row">
+    <div class="card">
+      <h3>Winter</h3>
+      <div class="tag">heating oil · propane</div>
+      <p>Fuel delivery volume spikes with cold weather. The Northeast is the heating oil capital of the U.S., and propane is common in rural areas.</p>
+    </div>
+    <div class="card">
+      <h3>Summer</h3>
+      <div class="tag">AC install · repair</div>
+      <p>Fuel slows down, but full-service dealers keep crews busy installing and repairing air conditioning.</p>
+    </div>
+    <div class="card">
+      <h3>The gap</h3>
+      <div class="tag">no public dataset</div>
+      <p>Nobody publishes monthly fuel demand by county. Software vendors serving these dealers have to guess where the demand is.</p>
+    </div>
+  </div>
+  <div class="band"><strong>Goal:</strong> build that view from public data, so dispatch, routing and billing platforms can see where demand is, how it moves through the year, and which dealers fit best.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>02</span></div>
+</section>
+
+<!-- 3. Scope -->
+<section class="slide">
+  <div class="kicker">Scope</div>
+  <h2>Every county in the nine Northeast states, every month</h2>
+  <div class="row">
+    <div class="card"><div class="stat">9</div><p>states: CT, MA, RI, VT, NH, ME, NY, NJ and PA</p></div>
+    <div class="card"><div class="stat">~300</div><p>counties, each with modeled monthly demand</p></div>
+    <div class="card"><div class="stat">3</div><p>demand types: heating oil, propane and an AC cooling index</p></div>
+    <div class="card"><div class="stat">5</div><p>recent heating seasons at monthly grain</p></div>
+  </div>
+  <div class="band"><strong>Plus a Connecticut pilot:</strong> a dealer layer that maps fuel dealers against county demand and ranks them by fit for a full-service software platform.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>03</span></div>
+</section>
+
+<!-- 4. Pipeline -->
+<section class="slide">
+  <div class="kicker">Pipeline</div>
+  <h2>Nine sources, one schema, one dashboard</h2>
+  <div class="flow">
+    <div class="card">
+      <h3>Sources</h3>
+      <div class="tag">Census · EIA · NOAA</div>
+      <p>Heating fuel by home, usage, weather, prices and dealers.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="card">
+      <h3>Extract</h3>
+      <div class="tag">requests · BeautifulSoup</div>
+      <p>API pulls, file downloads and a dealer scrape, one script per source.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="card">
+      <h3>Model</h3>
+      <div class="tag">pandas · geopandas</div>
+      <p>Standardize FIPS codes, convert units, estimate demand and calibrate.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="card">
+      <h3>Store + analyze</h3>
+      <div class="tag">SQL</div>
+      <p>Star schema, nine analysis queries and Tableau-ready views.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="card">
+      <h3>Visualize</h3>
+      <div class="tag">Tableau Public</div>
+      <p>County maps with a month slider, rankings and KPIs.</p>
+    </div>
+  </div>
+  <div class="band"><strong>Sources:</strong> Census ACS and TIGER/Line · EIA RECS, SEDS, SHOPP and 861M · NOAA degree days</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>04</span></div>
+</section>
+
+<!-- 5. Model -->
+<section class="slide">
+  <div class="kicker">Demand model</div>
+  <h2>Homes × usage, shaped by the weather</h2>
+  <div class="formula">
+    <span class="k">est_gallons</span>(county, fuel, month) =<br />
+    &nbsp;&nbsp;homes(county, fuel)<br />
+    &nbsp;&nbsp;× [ space_heat_gal(state, fuel) × <span class="k">hdd_share</span>(state, month)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;+ base_gal(state, fuel) / 12 ]
+  </div>
+  <div class="defs">
+    <div><b>Homes</b>Occupied homes heating with oil or propane, from Census ACS.</div>
+    <div><b>Usage</b>Gallons per home from EIA RECS, split into weather-driven heating and a steady base.</div>
+    <div><b>Weather</b>Each month's share of the year's heating degree days from NOAA.</div>
+    <div><b>Checks</b>Priced with EIA SHOPP, then calibrated against EIA SEDS state totals.</div>
+  </div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>05</span></div>
+</section>
+
+<!-- 6. Deliverables -->
+<section class="slide">
+  <div class="kicker">Deliverables</div>
+  <h2>From a database to answers a sales team can use</h2>
+  <div class="row">
+    <div class="card">
+      <h3>Star schema</h3>
+      <div class="tag">5 dimensions · 5 facts</div>
+      <ul class="list">
+        <li>State, county, date, fuel and dealer dimensions</li>
+        <li>Monthly demand fact at county × fuel × month</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>9 SQL analyses</h3>
+      <div class="tag">CTEs · window functions</div>
+      <ul class="list">
+        <li>Top counties by heating spend</li>
+        <li>Peak month and winter vs. summer balance</li>
+        <li>Dealer density and fit score (CT)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>4 Tableau dashboards</h3>
+      <div class="tag">Tableau Public</div>
+      <ul class="list">
+        <li>Seasonal demand map with a month slider</li>
+        <li>Market overview and year-round opportunity</li>
+        <li>Connecticut dealer prospects</li>
+      </ul>
+    </div>
+  </div>
+  <div class="band"><strong>Year-round score:</strong> 60% heating spend percentile + 40% cooling index percentile, to find the best markets for full-service dealers. Weights get a sensitivity check.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>06</span></div>
+</section>
+
+<!-- 7. Status -->
+<section class="slide">
+  <div class="kicker">Status and roadmap</div>
+  <h2>Planning is done; data collection is next</h2>
+  <div class="phases">
+    <div class="phase done"><div class="n">01 · DONE</div><h3>Planning</h3><p>Questions, sources, method and schema documented</p></div>
+    <div class="phase next"><div class="n">02 · NEXT</div><h3>Data collection</h3><p>Census, NOAA and EIA pulls in Python</p></div>
+    <div class="phase"><div class="n">03</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
+    <div class="phase"><div class="n">04</div><h3>SQL</h3><p>Schema, load and nine analyses</p></div>
+    <div class="phase"><div class="n">05</div><h3>Tableau</h3><p>Three dashboards on Tableau Public</p></div>
+    <div class="phase"><div class="n">06</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
+    <div class="phase"><div class="n">07</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
+  </div>
+  <div class="band"><strong>Honest limits:</strong> county demand is modeled from state averages and weather, not measured. It shows patterns and relative size well, not exact gallons.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>07</span></div>
+</section>
+
+</body>
+</html>
