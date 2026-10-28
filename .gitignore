@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+
+# macOS
+.DS_Store
+
+# Local databases
+*.db
+
+# Data (keep folder placeholders)
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
