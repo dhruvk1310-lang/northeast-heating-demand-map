@@ -86,7 +86,7 @@
   <div class="kicker">Portfolio project · Data pipeline · Market analytics</div>
   <h1>Northeast Heating &amp; Cooling Demand Map</h1>
   <p class="lede">Where and when the Northeast needs heating oil, propane and AC service, estimated county by county and month by month from public data</p>
-  <span class="pill">In progress · Data collected</span>
+  <span class="pill">In progress · Model built</span>
   <div class="title-foot">
     <span>Dhruv Khanna · MS Business Analytics, Quinnipiac University</span>
     <span class="mono">Python · SQL · Tableau</span>
@@ -178,13 +178,13 @@
   <div class="formula">
     <span class="k">est_gallons</span>(county, fuel, month) =<br />
     &nbsp;&nbsp;homes(county, fuel)<br />
-    &nbsp;&nbsp;× [ space_heat_gal(state, fuel) × <span class="k">hdd_share</span>(state, month)<br />
+    &nbsp;&nbsp;× [ <span class="k">gal_per_hdd</span>(state, fuel) × HDD(county, month)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;+ base_gal(state, fuel) / 12 ]
   </div>
   <div class="defs">
     <div><b>Homes</b>Occupied homes heating with oil or propane, from Census ACS.</div>
-    <div><b>Usage</b>Gallons per home from EIA RECS, split into weather-driven heating and a steady base.</div>
-    <div><b>Weather</b>Each month's share of the year's heating degree days from NOAA.</div>
+    <div><b>Usage</b>RECS heating gallons per home, divided by 2020 degree days, plus a steady base.</div>
+    <div><b>Weather</b>Each county's own NOAA degree days, so cold winters burn more.</div>
     <div><b>Checks</b>Priced with EIA SHOPP, then calibrated against EIA SEDS state totals.</div>
   </div>
   <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>05</span></div>
@@ -226,21 +226,35 @@
   <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>06</span></div>
 </section>
 
-<!-- 7. Status -->
+<!-- 7. Early results -->
+<section class="slide">
+  <div class="kicker">Early results · 2025-26 season</div>
+  <h2>A $16.8 billion market that peaks every January</h2>
+  <div class="row">
+    <div class="card"><div class="stat">$16.8B</div><p>estimated residential heating oil and propane spend</p></div>
+    <div class="card"><div class="stat">3.2B</div><p>gallons of heating oil, plus 1.0B gallons of propane</p></div>
+    <div class="card"><div class="stat">Jan</div><p>peak month in all 218 counties; Dec to Feb is half the year</p></div>
+    <div class="card"><div class="stat">$686M</div><p>largest county market: Suffolk County, NY</p></div>
+  </div>
+  <div class="band"><strong>Size vs. intensity:</strong> ranked on totals, the best year-round markets are the big NYC and Boston counties. Per home, it is oil-heavy areas with warm summers: Sussex NJ, Northeastern CT, Putnam NY.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>07</span></div>
+</section>
+
+<!-- 8. Status -->
 <section class="slide">
   <div class="kicker">Status and roadmap</div>
-  <h2>Data is collected; the demand model is next</h2>
+  <h2>The model is built; the SQL database is next</h2>
   <div class="phases">
     <div class="phase done"><div class="n">01 · DONE</div><h3>Planning</h3><p>Questions, sources, method and schema documented</p></div>
     <div class="phase done"><div class="n">02 · DONE</div><h3>Data collection</h3><p>Census, NOAA and EIA pulls in Python</p></div>
-    <div class="phase next"><div class="n">03 · NEXT</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
-    <div class="phase"><div class="n">04</div><h3>SQL</h3><p>Schema, load and nine analyses</p></div>
+    <div class="phase done"><div class="n">03 · DONE</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
+    <div class="phase next"><div class="n">04 · NEXT</div><h3>SQL</h3><p>Schema, load and nine analyses</p></div>
     <div class="phase"><div class="n">05</div><h3>Tableau</h3><p>Three dashboards on Tableau Public</p></div>
     <div class="phase"><div class="n">06</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
     <div class="phase"><div class="n">07</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
   </div>
   <div class="band"><strong>Honest limits:</strong> county demand is modeled from state averages and weather, not measured. It shows patterns and relative size well, not exact gallons.</div>
-  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>07</span></div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>08</span></div>
 </section>
 
 </body>
