@@ -35,6 +35,13 @@
 - **Before calibration the model is low** for 16 of 18 state-fuel pairs: heating oil by 8% to 40%, propane by up to 42%. Only New Jersey and New York propane come out high (36% and 14%). This is expected. SEDS counts all residential use, including homes that burn oil or propane as a backup or only for water heating and cooking, while the ACS counts a home only under its main heating fuel. Small RECS samples (New Jersey oil: 33 homes) add noise.
 - **What calibration means here.** `est_gallons` is scaled so each state matches SEDS: it estimates the full residential market a dealer sells into, shared out to counties by their modeled heating demand. `est_gallons_uncalibrated` keeps the main-heat-only estimate. Factors range from 0.73 to 1.72 (`data/processed/calibration.csv`).
 
+## Database and SQL
+
+- **Degree-day normals** are the 1991-2020 average for each county and calendar month, computed when the database is built.
+- **Price analysis uses surveyed October to April months only.** Interpolated months are kept in `fact_fuel_prices` (marked `price_source = 'interpolated'`) because the model used them, but they are left out of the price trend query. Summer surveys are too uneven across years to compare.
+- **Standard deviation** is computed as sqrt(avg(x²) - avg(x)²), because SQLite has no `STDDEV` function.
+- **Density groups** in query 6 split the 218 counties into four equal groups by homes per square mile of land.
+
 ## Scoring Weights
 
 - Year-round score = 0.6 x heating spend percentile + 0.4 x cooling index percentile, computed per heating season across all 218 counties.

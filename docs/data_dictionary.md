@@ -4,6 +4,8 @@ Interim tables are written to `data/interim/` by `python -m src.extract.run_all`
 
 Model outputs are written to `data/processed/` by `python -m src.model.run_all` and are committed, so Tableau and SQL can use them directly. They are listed after the interim tables.
 
+The SQLite database (`data/northeast_demand.db`, built by `python -m src.load.build_database`) holds the same data as a star schema. Its tables and columns are documented in [`sql/schema/01_create_tables.sql`](../sql/schema/01_create_tables.sql) and summarized in the README. That script also writes `data/processed/analysis/` (one CSV per query in `sql/analysis/`) and `data/processed/tableau/` (one CSV per view in `sql/views/`).
+
 FIPS codes are stored as text with leading zeros (`09110`, not `9110`).
 
 | Table | Column | Type | Description | Source |

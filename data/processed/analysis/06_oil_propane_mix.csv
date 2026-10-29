@@ -1,0 +1,5 @@
+density_quartile,density_group,counties,min_homes_per_sqmi,max_homes_per_sqmi,oil_homes,propane_homes,pct_oil,pct_propane,pct_utility_gas,propane_per_oil_home
+1,Most rural,55,1.0,28.0,363435,146508,37.7,15.2,18.7,0.4
+2,Rural,55,28.0,70.0,450076,214123,27.5,13.1,32.1,0.48
+3,Suburban,54,71.0,222.0,1096469,353008,24.5,7.9,43.5,0.32
+4,Most urban,54,225.0,34286.0,2215451,493305,14.3,3.2,61.8,0.22

@@ -4,7 +4,7 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Data collection and demand model complete. Building the SQL database next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
+> **Status:** Data, demand model, and SQL database complete. Building the Tableau dashboards next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 
 ---
 
@@ -215,38 +215,52 @@ A **star schema**: dimension tables describe *who, where, when*; fact tables hol
 ```mermaid
 erDiagram
     dim_state ||--o{ dim_county : contains
-    dim_county ||--o{ fact_households_by_fuel : has
-    dim_county ||--o{ fact_monthly_demand : has
-    dim_county ||--o{ dim_dealer : located_in
-    dim_state ||--o{ fact_degree_days : has
-    dim_state ||--o{ fact_fuel_prices : has
     dim_state ||--o{ fact_consumption_per_home : has
+    dim_state ||--o{ fact_fuel_prices : has
+    dim_state ||--o{ fact_reported_consumption : has
+    dim_county ||--o{ fact_households_by_fuel : has
+    dim_county ||--o{ fact_degree_days : has
+    dim_county ||--o{ fact_monthly_demand : has
+    dim_county ||--o{ fact_monthly_cooling : has
+    dim_county ||--o{ fact_county_season : has
+    dim_county ||--o{ dim_dealer : located_in
     dim_date ||--o{ fact_degree_days : on
     dim_date ||--o{ fact_fuel_prices : on
     dim_date ||--o{ fact_monthly_demand : on
+    dim_date ||--o{ fact_monthly_cooling : on
     dim_fuel ||--o{ fact_households_by_fuel : of
+    dim_fuel ||--o{ fact_consumption_per_home : of
+    dim_fuel ||--o{ fact_fuel_prices : of
     dim_fuel ||--o{ fact_monthly_demand : of
+    dim_fuel ||--o{ fact_reported_consumption : of
 ```
+
+The schema is in [`sql/schema/01_create_tables.sql`](sql/schema/01_create_tables.sql). It runs on SQLite; the database file is rebuilt by `src/load/build_database.py` and not committed.
 
 ### Dimension tables
 
-| Table | Key Columns |
-|---|---|
-| `dim_state` | `state_fips`, `state_abbr`, `state_name`, `census_division` |
-| `dim_county` | `county_fips`, `state_fips`, `county_name`, `latitude`, `longitude` |
-| `dim_date` | `date_key`, `year`, `month`, `month_name`, `heating_season` (e.g. 2024-25), `is_heating_month` |
-| `dim_fuel` | `fuel_id`, `fuel_name`, `btu_per_gallon`, `unit` |
-| `dim_dealer` | `dealer_id`, `name`, `county_fips`, `town`, `fuels_offered`, `offers_hvac_service`, `has_online_payment`, `has_customer_portal`, `est_size_band`, `website` |
+| Table | Rows | Key Columns |
+|---|---|---|
+| `dim_state` | 9 | `state_fips`, `state_abbr`, `state_name`, `census_division` |
+| `dim_county` | 218 | `county_fips`, `state_fips`, `county_name`, `land_area_sqmi`, `latitude`, `longitude` |
+| `dim_date` | 444 | `date_key` (YYYYMM), `year`, `month`, `month_name`, `heating_season` (e.g. 2024-25), `is_heating_month` |
+| `dim_fuel` | 9 | `fuel_id`, `fuel_name`, `btu_per_gallon`, `unit`, `is_modeled` |
+| `dim_dealer` | Phase 6 | `dealer_id`, `name`, `county_fips`, `town`, `fuels_offered`, `offers_hvac_service`, `has_online_payment`, `has_customer_portal`, `est_size_band`, `website` |
 
 ### Fact tables
 
-| Table | Grain | Key Measures |
-|---|---|---|
-| `fact_households_by_fuel` | county × fuel × ACS year | `households`, `share_of_county_homes` |
-| `fact_consumption_per_home` | state × fuel × end use | `mmbtu_per_home`, `gallons_per_home` |
-| `fact_degree_days` | state × month | `hdd`, `cdd`, `hdd_normal`, `cdd_normal` |
-| `fact_fuel_prices` | state × fuel × month | `avg_price_per_gallon` |
-| `fact_monthly_demand` | county × fuel × month | `est_gallons`, `est_spend`, `cooling_index` (model output) |
+| Table | Grain | Rows | Key Measures |
+|---|---|---|---|
+| `fact_households_by_fuel` | county × fuel × ACS period | 1,962 | `households`, `margin_of_error`, `share_of_county_homes` |
+| `fact_consumption_per_home` | state × fuel × end use | 36 | `gallons_per_home`, `mmbtu_per_home`, `recs_sample_n` |
+| `fact_degree_days` | county × month (1991 on) | 93,522 | `hdd`, `cdd`, `hdd_normal`, `cdd_normal` |
+| `fact_fuel_prices` | state × fuel × month | 4,446 | `avg_price_per_gallon`, `price_source` |
+| `fact_monthly_demand` | county × fuel × month | 26,160 | `est_gallons`, `est_gallons_uncalibrated`, `est_spend` |
+| `fact_monthly_cooling` | county × month | 13,080 | `ac_homes`, `cdd`, `cooling_index` |
+| `fact_county_season` | county × heating season | 1,090 | season totals, `year_round_score`, `quadrant` (both bases) |
+| `fact_reported_consumption` | state × fuel × year | 270 | `gallons` (EIA SEDS, for calibration) |
+
+Degree days ended up at county grain (NOAA publishes them that way), and cooling got its own fact table because it has no fuel.
 
 ---
 
@@ -259,14 +273,14 @@ Each analysis is a saved query in `sql/analysis/`. The most useful results also 
 | 1 | Top 25 counties by estimated annual heating oil and propane spend | Aggregation, `RANK()` |
 | 2 | Peak month and peak-to-average ratio by state | CTEs, `MAX() OVER (PARTITION BY ...)` |
 | 3 | Winter vs. summer demand balance: counties strong in both seasons | Conditional aggregation (`CASE WHEN`), percentiles |
-| 4 | Heating season comparison: how much colder or warmer each winter was vs. normal, and the effect on demand | Self-joins, `LAG()` |
-| 5 | Price trends and volatility by state and fuel | Moving averages, `STDDEV` |
+| 4 | Heating season comparison: how much colder or warmer each winter was vs. normal, and the effect on demand | CTEs, weighted averages, `LAG()` |
+| 5 | Price trends and volatility by state and fuel | Moving averages, standard deviation (computed, since SQLite has no `STDDEV`) |
 | 6 | Oil-to-propane mix by county (urban oil vs. rural propane pattern) | Ratios, `NTILE()` |
-| 7 | Dealer density: oil and propane homes per dealer by county (CT) | Joins with dealer table, `LEFT JOIN` gaps |
-| 8 | Dealer fit score and ranked prospect list (CT) | Weighted scoring, `ROW_NUMBER()` |
+| 7 | Dealer density: oil and propane homes per dealer by county (CT). *Phase 6, needs dealer data* | Joins with dealer table, `LEFT JOIN` gaps |
+| 8 | Dealer fit score and ranked prospect list (CT). *Phase 6, needs dealer data* | Weighted scoring, `ROW_NUMBER()` |
 | 9 | Model calibration: modeled vs. reported state consumption | Joins, percent error |
 
-**Tableau views:** `vw_county_month_demand`, `vw_county_annual_summary`, `vw_state_seasonality`, `vw_dealer_opportunity`.
+**Tableau views:** `vw_county_month_demand`, `vw_county_annual_summary`, `vw_state_seasonality` (built), and `vw_dealer_opportunity` (Phase 6). Tableau Public cannot connect to SQLite, so each view is also exported to `data/processed/tableau/`. Query results are saved in `data/processed/analysis/`.
 
 ---
 
@@ -335,9 +349,10 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m src.extract.run_all
 .venv/bin/python -m src.model.run_all
+.venv/bin/python -m src.load.build_database
 ```
 
-The first command downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`; neither folder is committed. The second runs the demand model and writes the results to `data/processed/`, which is committed. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
+The first command downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`; neither folder is committed. The second runs the demand model and writes the results to `data/processed/`, which is committed. The third builds the SQLite database (`data/northeast_demand.db`), runs every query in `sql/analysis/`, and exports the Tableau views. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
 
 ---
 
@@ -378,10 +393,10 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 - [x] Sensitivity check on assumptions
 
 **Phase 4: Database and analysis (SQL)**
-- [ ] Create star schema
-- [ ] Load processed tables
-- [ ] Write analysis queries 1 to 9
-- [ ] Build Tableau views
+- [x] Create star schema
+- [x] Load processed tables
+- [x] Write analysis queries 1 to 6 and 9 (7 and 8 need the dealer data from Phase 6)
+- [x] Build Tableau views (and CSV exports for Tableau Public)
 
 **Phase 5: Dashboard (Tableau)**
 - [ ] Seasonal demand map with month slider
