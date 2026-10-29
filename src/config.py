@@ -52,6 +52,13 @@ RAW_FILES = {
 # plus every recent heating season.
 DEGREE_DAY_START_YEAR = 1991
 
+# Model window: heating seasons run July to June, labeled like "2025-26".
+FIRST_SEASON = 2021  # 2021-22
+LAST_SEASON = 2025  # 2025-26
+RECS_YEAR = 2020  # the year RECS fuel use describes
+MIN_RECS_SAMPLE = 30  # below this, use the Census division average
+SCORE_WEIGHTS = {"heating": 0.6, "cooling": 0.4}
+
 ACS_YEAR = 2024  # ACS 5-year release (2020-2024)
 TIGER_YEAR = 2024
 # 2020 boundaries still have Connecticut's 8 old counties, which NOAA uses.

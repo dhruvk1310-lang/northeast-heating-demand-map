@@ -4,7 +4,7 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Data collection complete. Building the demand model next. See the [Roadmap](#roadmap) for progress.
+> **Status:** Data collection and demand model complete. Building the SQL database next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 
 ---
 
@@ -161,11 +161,11 @@ Converted from million Btu to gallons:
 | Heating oil (No. 2) | 138,500 |
 | Propane | 91,500 |
 
-### Step 3: Monthly pattern (degree days)
-A heating degree day (HDD) measures how much colder than 65°F a day was. More HDD means more heating fuel burned. Each month's share of the year's heating load is:
+### Step 3: Gallons per degree day
+A heating degree day (HDD) measures how much colder than 65°F a day was. More HDD means more heating fuel burned. RECS reports space heating use for 2020, so dividing it by 2020's degree days for the same homes gives a usage rate:
 
 ```
-hdd_share(month) = HDD(month) / HDD(heating year total)
+gal_per_hdd(state, fuel) = space_heat_gal_per_home(state, fuel) / HDD_2020(state, fuel homes)
 ```
 
 ### Step 4: Monthly demand estimate (the core formula)
@@ -173,9 +173,11 @@ hdd_share(month) = HDD(month) / HDD(heating year total)
 ```
 est_gallons(county, fuel, month) =
     homes(county, fuel)
-  × [ space_heat_gal_per_home(state, fuel) × hdd_share(state, month)
+  × [ gal_per_hdd(state, fuel) × HDD(county, month)
     + base_gal_per_home(state, fuel) / 12 ]
 ```
+
+Using each county's actual degree days means colder counties and colder winters burn more fuel, so the model shows how demand shifts from one winter to the next.
 
 ### Step 5: Dollar value
 
@@ -193,7 +195,7 @@ cooling_index(county, month) = homes_with_ac(county) × CDD(state, month)
 Home AC ownership comes from RECS state shares applied to county household counts.
 
 ### Step 7: Calibration
-Modeled state totals are compared against EIA SEDS reported residential consumption. If a state is off, a scaling factor is applied and documented.
+Modeled state totals are compared against EIA SEDS reported residential consumption for 2022 to 2024, and each state and fuel gets a scaling factor (0.73 to 1.72). The model starts low because SEDS also counts homes that use oil or propane only as a backup or for hot water, so the calibrated figure estimates the whole residential market. Both versions are kept.
 
 ### Step 8: Year-round opportunity score
 To find the best markets for full-service dealers:
@@ -202,7 +204,7 @@ To find the best markets for full-service dealers:
 year_round_score = percentile(heating_spend) × 0.6 + percentile(cooling_index) × 0.4
 ```
 
-Weights are a starting assumption and will be tested in a sensitivity check.
+The sensitivity check showed the weights barely change the ranking (Spearman 0.98 or more for any mix from 50/50 to 80/20), but scoring on totals mostly measures county size. A per-home version of the score is saved alongside it to show market intensity.
 
 ---
 
@@ -332,9 +334,10 @@ northeast-heating-demand-map/
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m src.extract.run_all
+.venv/bin/python -m src.model.run_all
 ```
 
-This downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`. Neither folder is committed. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
+The first command downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`; neither folder is committed. The second runs the demand model and writes the results to `data/processed/`, which is committed. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
 
 ---
 
@@ -369,10 +372,10 @@ This downloads every source into `data/raw/` (about 285 MB, cached after the fir
 - [x] Connecticut planning region crosswalk
 
 **Phase 3: Modeling (Python)**
-- [ ] Clean and standardize all sources
-- [ ] Build monthly demand model
-- [ ] Calibrate against SEDS
-- [ ] Sensitivity check on assumptions
+- [x] Clean and standardize all sources
+- [x] Build monthly demand model
+- [x] Calibrate against SEDS
+- [x] Sensitivity check on assumptions
 
 **Phase 4: Database and analysis (SQL)**
 - [ ] Create star schema

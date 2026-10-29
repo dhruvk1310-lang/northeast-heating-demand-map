@@ -1,6 +1,8 @@
 # Data Dictionary
 
-Tables written to `data/interim/` by `python -m src.extract.run_all`. Raw downloads are cached in `data/raw/`. Neither folder is committed; run the command to rebuild them.
+Interim tables are written to `data/interim/` by `python -m src.extract.run_all`, with raw downloads cached in `data/raw/`. Neither folder is committed; run the command to rebuild them.
+
+Model outputs are written to `data/processed/` by `python -m src.model.run_all` and are committed, so Tableau and SQL can use them directly. They are listed after the interim tables.
 
 FIPS codes are stored as text with leading zeros (`09110`, not `9110`).
 
@@ -48,3 +50,33 @@ FIPS codes are stored as text with leading zeros (`09110`, not `9110`).
 | eia_seds_residential | billion_btu | float | Residential consumption, billion Btu | EIA SEDS (DFRCB, KSRCB, PQRCB) |
 | eia_861m_residential | state_abbr, year, month, data_status | | State and month, 2010 onward; recent months are `Preliminary` | EIA Form 861M |
 | eia_861m_residential | revenue_thousand_usd, sales_mwh, customers, price_cents_kwh | float | Residential electricity revenue, sales, customer count and average price | EIA Form 861M |
+| fuel_prices_monthly (interim) | state_abbr, fuel, year, month | | State, `fuel_oil` or `propane`, month | Computed from EIA SHOPP |
+| fuel_prices_monthly (interim) | price_per_gallon | float | Monthly average residential price | Computed from EIA SHOPP |
+| fuel_prices_monthly (interim) | price_source | text | `surveyed` or `interpolated` | Computed |
+| model_usage_per_home (interim) | recs_source | text | State used for RECS averages, or the division it fell back to | Computed |
+| model_usage_per_home (interim) | ref_hdd | float | 2020 heating degree days for this state's homes on this fuel | Computed from NOAA |
+| model_usage_per_home (interim) | gal_per_hdd | float | Space heating gallons per home per heating degree day | Computed |
+| fact_monthly_demand | county_fips, state_abbr, fuel, year, month, heating_season | | County, `fuel_oil` or `propane`, month, season (July to June, e.g. 2025-26) | Model |
+| fact_monthly_demand | homes | int | Homes whose main heating fuel is this fuel | Census ACS |
+| fact_monthly_demand | hdd | float | County heating degree days that month | NOAA |
+| fact_monthly_demand | est_gallons_uncalibrated | float | Gallons burned by homes that heat with this fuel | Model |
+| fact_monthly_demand | est_gallons | float | Calibrated to EIA SEDS: the county's share of all residential use | Model |
+| fact_monthly_demand | price_per_gallon, price_source | | Monthly state price and whether it was surveyed or interpolated | EIA SHOPP |
+| fact_monthly_demand | est_spend | float | est_gallons x price_per_gallon, dollars | Model |
+| fact_monthly_cooling | county_fips, state_abbr, year, month, heating_season | | County and month | Model |
+| fact_monthly_cooling | ac_homes | float | Occupied homes x state AC share | ACS, RECS |
+| fact_monthly_cooling | cdd | float | County cooling degree days that month | NOAA |
+| fact_monthly_cooling | cooling_index | float | ac_homes x cdd; relative, not dollars | Model |
+| county_season_summary | county_fips, state_abbr, county_name, heating_season | | County and season | Model |
+| county_season_summary | oil_homes, propane_homes, total_occupied, oil_propane_share | | Homes on each fuel and their combined share | Census ACS |
+| county_season_summary | oil_gallons, propane_gallons, oil_spend, propane_spend, heating_spend | float | Season totals (calibrated gallons, dollars) | Model |
+| county_season_summary | ac_homes, cooling_index | float | Homes with AC and season cooling index | Model |
+| county_season_summary | peak_month | int | Month with the most fuel demand | Model |
+| county_season_summary | heating_pct, cooling_pct | float | Percentile among the 218 counties that season | Model |
+| county_season_summary | year_round_score, year_round_rank, quadrant | | 0.6 x heating_pct + 0.4 x cooling_pct, its rank, and quadrant | Model |
+| county_season_summary | *_per_home columns | | Same, but scored on spend and cooling per home | Model |
+| calibration | state_abbr, fuel, years | | State, fuel, calendar years compared | Model |
+| calibration | modeled_gallons, seds_gallons | float | Uncalibrated model total vs. EIA SEDS total | Model, EIA SEDS |
+| calibration | factor, pct_error_before | float | SEDS / model, and the model's error before scaling | Model |
+| sensitivity_scores | basis, w_heating, w_cooling | | Scenario: `total` or `per_home`, and weights | Model |
+| sensitivity_scores | spearman_vs_baseline, top25_overlap, top_county | | Rank agreement with the 60/40 total baseline | Model |

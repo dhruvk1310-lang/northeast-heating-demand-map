@@ -18,16 +18,26 @@
 
 ## Demand Model
 
+- **Formula.** For each county, fuel, and month:
+  `gallons = homes x (gal_per_hdd x HDD(county, month) + base_gal / 12)`.
+- **Gallons per degree day.** RECS reports each home's space heating use for 2020. Dividing it by 2020's heating degree days for the same homes (weighted by where those homes are) gives gallons per degree day. Multiplying by each county's actual degree days means colder counties and colder winters burn more fuel. This replaces the README's first draft, which spread a fixed yearly total across months and so gave every winter the same total.
 - **Fuel use per home comes from RECS 2020 microdata**, averaged with survey weights over homes whose main heating fuel is oil or propane.
-- **Small samples fall back to the division.** RECS surveyed few propane homes in some states (3 in Rhode Island, 6 in New Jersey, 16 in Connecticut, 17 in Massachusetts). Planned rule: when `sample_n` is under 30, use the New England or Middle Atlantic average instead of the state's.
+- **Small samples fall back to the division.** When fewer than 30 homes were surveyed for a state and fuel, the New England or Middle Atlantic average is used instead. This applies to propane in CT, MA, RI (New England) and NJ (Middle Atlantic). `data/interim/model_usage_per_home.csv` shows the source for each pair.
 - **Base load** is total use minus space heating (water heating, cooking, dryers, other), spread evenly over 12 months.
-- **Summer fuel prices are sparse.** The state price survey covers October to March every year, but June to August only for 2024, and the regional monthly file skips May to August. Summer fuel use is base load only, so missing May to August prices will be filled by linear interpolation between each state's April and September prices.
+- **Homes are held constant** at the ACS 2020-2024 average across all five seasons.
+- **Heating seasons run July to June** (for example 2025-26 is July 2025 to June 2026). The model covers 2021-22 to 2025-26.
+- **Prices.** Weekly state prices are averaged to months. Months without a survey value (37% of the window, mostly May to August) are filled by linear interpolation along each state's price series. `price_source` marks which is which.
+- **Cooling index** = homes with AC x cooling degree days. Homes with AC = occupied homes x the state's RECS AC share. It is relative, not dollars.
 
 ## Calibration
 
-- Modeled state totals will be compared with EIA SEDS residential consumption. Fuel oil is compared with SEDS distillate plus kerosene, because the ACS "fuel oil" category includes kerosene.
-- An early check is encouraging. Connecticut: about 520,000 oil-heated homes × 634 gallons per home ≈ 330 million gallons, against 339 million reported by SEDS for 2020.
+- Modeled gallons are compared with EIA SEDS residential consumption over 2022 to 2024, the calendar years both cover. Fuel oil is compared with SEDS distillate plus kerosene, because the ACS "fuel oil" category includes kerosene.
+- **Before calibration the model is low** for 16 of 18 state-fuel pairs: heating oil by 8% to 40%, propane by up to 42%. Only New Jersey and New York propane come out high (36% and 14%). This is expected. SEDS counts all residential use, including homes that burn oil or propane as a backup or only for water heating and cooking, while the ACS counts a home only under its main heating fuel. Small RECS samples (New Jersey oil: 33 homes) add noise.
+- **What calibration means here.** `est_gallons` is scaled so each state matches SEDS: it estimates the full residential market a dealer sells into, shared out to counties by their modeled heating demand. `est_gallons_uncalibrated` keeps the main-heat-only estimate. Factors range from 0.73 to 1.72 (`data/processed/calibration.csv`).
 
 ## Scoring Weights
 
-- Year-round score = 0.6 × heating spend percentile + 0.4 × cooling index percentile. These are starting weights and will get a sensitivity check.
+- Year-round score = 0.6 x heating spend percentile + 0.4 x cooling index percentile, computed per heating season across all 218 counties.
+- **The weights barely matter.** Any mix from 50/50 to 80/20 keeps a Spearman rank correlation of 0.98 or more with the 60/40 baseline, and 23 or more of the same top 25 counties (`data/processed/sensitivity_scores.csv`).
+- **The basis matters a lot.** On totals, both heating spend and the cooling index grow with the number of homes, so the score mostly measures county size. Scored per home, the ranking changes almost completely (Spearman 0.19 with the baseline). Both are saved: `year_round_score` (market size, the README's plan) and `year_round_score_per_home` (market intensity).
+- Quadrants split each percentile at 0.5: Year-round, Winter only, Summer only, Low demand.
