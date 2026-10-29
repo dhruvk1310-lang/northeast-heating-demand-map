@@ -4,7 +4,7 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Planning and documentation. See the [Roadmap](#roadmap) for progress.
+> **Status:** Data collection complete. Building the demand model next. See the [Roadmap](#roadmap) for progress.
 
 ---
 
@@ -21,9 +21,10 @@ An end-to-end analytics project that estimates month-by-month heating oil, propa
 9. [SQL Analysis Plan](#sql-analysis-plan)
 10. [Tableau Dashboard Plan](#tableau-dashboard-plan)
 11. [Repository Structure](#repository-structure)
-12. [Limitations](#limitations)
-13. [Roadmap](#roadmap)
-14. [Author](#author)
+12. [Running the Pipeline](#running-the-pipeline)
+13. [Limitations](#limitations)
+14. [Roadmap](#roadmap)
+15. [Author](#author)
 
 ---
 
@@ -65,7 +66,7 @@ Software companies that serve these dealers (dispatch, routing, billing, and ser
 
 | Dimension | Coverage |
 |---|---|
-| **Geography** | 9 Northeast states: CT, MA, RI, VT, NH, ME, NY, NJ, PA (about 300 counties) |
+| **Geography** | 9 Northeast states: CT, MA, RI, VT, NH, ME, NY, NJ, PA (218 counties; Connecticut is reported as 9 planning regions) |
 | **Fuels** | Heating oil (No. 2 fuel oil and kerosene), propane, plus AC as a cooling demand index |
 | **Time** | Monthly, most recent 5 heating seasons |
 | **Granularity** | County (households and modeled demand), state (consumption, prices, degree days) |
@@ -77,7 +78,7 @@ Software companies that serve these dealers (dispatch, routing, billing, and ser
 
 | Layer | Tool | Purpose |
 |---|---|---|
-| **Data collection** | Python (`requests`, `pandas`, `BeautifulSoup`) | Pull data from Census and EIA APIs, download NOAA files, scrape dealer listings |
+| **Data collection** | Python (`requests`, `pandas`, `BeautifulSoup`) | Download Census, EIA, and NOAA public files (no API keys needed), scrape dealer listings |
 | **Cleaning and modeling** | Python (`pandas`, `numpy`, `geopandas`) | Standardize geography codes, convert units, build the demand model |
 | **Storage** | SQL (SQLite for development, PostgreSQL optional) | Star schema with dimension and fact tables |
 | **Analysis** | SQL (CTEs, window functions, views) | Answer the business questions and produce Tableau-ready views |
@@ -129,14 +130,14 @@ All sources are public and free.
 
 | # | Dataset | Publisher | Level | Frequency | Used For |
 |---|---|---|---|---|---|
-| 1 | American Community Survey, table **B25040** (House Heating Fuel) | U.S. Census Bureau | County | Annual (5-year estimates) | Number of homes heating with oil, propane, gas, electricity |
-| 2 | Residential Energy Consumption Survey (**RECS**), state tables | U.S. EIA | State | Survey years (2020; 2024 releasing) | Average fuel use per household, split by space heating and water heating; AC ownership |
+| 1 | American Community Survey, table **B25040** (House Heating Fuel), from the ACS summary file | U.S. Census Bureau | County | Annual (5-year estimates) | Number of homes heating with oil, propane, gas, electricity |
+| 2 | Residential Energy Consumption Survey (**RECS**) 2020 microdata | U.S. EIA | State, Census division | Survey years (2020; 2024 releasing) | Average fuel use per household, split by space heating and water heating; AC ownership |
 | 3 | State Energy Data System (**SEDS**) | U.S. EIA | State | Annual | Total residential distillate and propane consumption, used to calibrate the model |
-| 4 | Degree Day Statistics | NOAA Climate Prediction Center | State | Monthly | Heating degree days (HDD) and cooling degree days (CDD), the monthly demand pattern |
-| 5 | Climate Divisional Dataset (**nClimDiv**) | NOAA NCEI | Climate division | Monthly | Finer regional degree days within states |
-| 6 | State Heating Oil and Propane Program (**SHOPP**) | U.S. EIA | State | Weekly (Oct to Mar), monthly (Apr to Sep) | Residential heating oil and propane prices |
+| 4 | Climate Divisional Dataset (**nClimDiv**), county degree days | NOAA NCEI | County | Monthly | Heating degree days (HDD) and cooling degree days (CDD), the monthly demand pattern |
+| 5 | Climate Divisional Dataset (**nClimDiv**), statewide degree days | NOAA NCEI | State | Monthly | State-level weather for calibration and summaries |
+| 6 | State Heating Oil and Propane Program (**SHOPP**) | U.S. EIA | State, PADD region | Weekly (Oct to Mar); summer data is sparse | Residential heating oil and propane prices |
 | 7 | Monthly residential electricity sales (Form EIA-861M) | U.S. EIA | State | Monthly | Validates summer cooling demand |
-| 8 | TIGER/Line county boundaries | U.S. Census Bureau | County | Annual | Map shapes and FIPS codes |
+| 8 | Cartographic boundary files (2024, plus 2020 for old Connecticut counties) | U.S. Census Bureau | County | Annual | Map shapes, FIPS codes, Connecticut crosswalk |
 | 9 | Heating fuel dealer listings | CT Department of Consumer Protection registrations (to be confirmed), dealer websites, map listings | Business | One-time snapshot | Dealer locations, services offered, online tools |
 
 ---
@@ -325,6 +326,18 @@ northeast-heating-demand-map/
 
 ---
 
+## Running the Pipeline
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m src.extract.run_all
+```
+
+This downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`. Neither folder is committed. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
+
+---
+
 ## Limitations
 
 - **Modeled, not measured.** County monthly demand is an estimate built from state averages and weather. It shows patterns and relative size well, but it is not an exact gallon count.
@@ -346,12 +359,14 @@ northeast-heating-demand-map/
 - [x] Write project documentation
 
 **Phase 2: Data collection (Python)**
-- [ ] Census ACS B25040 for all Northeast counties
-- [ ] NOAA monthly heating and cooling degree days
-- [ ] EIA RECS consumption per household
-- [ ] EIA SHOPP heating oil and propane prices
-- [ ] EIA SEDS state consumption for calibration
-- [ ] County boundaries and FIPS lookup
+- [x] Census ACS B25040 for all Northeast counties
+- [x] NOAA monthly heating and cooling degree days (county level)
+- [x] EIA RECS consumption per household
+- [x] EIA SHOPP heating oil and propane prices
+- [x] EIA SEDS state consumption for calibration
+- [x] EIA 861M monthly residential electricity sales
+- [x] County boundaries and FIPS lookup
+- [x] Connecticut planning region crosswalk
 
 **Phase 3: Modeling (Python)**
 - [ ] Clean and standardize all sources
