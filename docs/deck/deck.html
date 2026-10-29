@@ -86,7 +86,7 @@
   <div class="kicker">Portfolio project · Data pipeline · Market analytics</div>
   <h1>Northeast Heating &amp; Cooling Demand Map</h1>
   <p class="lede">Where and when the Northeast needs heating oil, propane and AC service, estimated county by county and month by month from public data</p>
-  <span class="pill">In progress · Model built</span>
+  <span class="pill">In progress · Database built</span>
   <div class="title-foot">
     <span>Dhruv Khanna · MS Business Analytics, Quinnipiac University</span>
     <span class="mono">Python · SQL · Tableau</span>
@@ -197,19 +197,19 @@
   <div class="row">
     <div class="card">
       <h3>Star schema</h3>
-      <div class="tag">5 dimensions · 5 facts</div>
+      <div class="tag">SQLite · 5 dimensions · 8 facts</div>
       <ul class="list">
-        <li>State, county, date, fuel and dealer dimensions</li>
-        <li>Monthly demand fact at county × fuel × month</li>
+        <li>About 140,000 rows, checked for broken links on load</li>
+        <li>Demand, cooling, weather, prices and EIA totals</li>
       </ul>
     </div>
     <div class="card">
       <h3>9 SQL analyses</h3>
-      <div class="tag">CTEs · window functions</div>
+      <div class="tag">CTEs · window functions · 7 built</div>
       <ul class="list">
-        <li>Top counties by heating spend</li>
-        <li>Peak month and winter vs. summer balance</li>
-        <li>Dealer density and fit score (CT)</li>
+        <li>Top counties, peak months, winters vs. normal</li>
+        <li>Price volatility and who heats with what</li>
+        <li>Dealer density and fit score (CT, next)</li>
       </ul>
     </div>
     <div class="card">
@@ -222,7 +222,7 @@
       </ul>
     </div>
   </div>
-  <div class="band"><strong>Year-round score:</strong> 60% heating spend percentile + 40% cooling index percentile, to find the best markets for full-service dealers. Weights get a sensitivity check.</div>
+  <div class="band"><strong>Year-round score:</strong> 60% heating spend percentile + 40% cooling index percentile, to find the best markets for full-service dealers. Tested: the weights barely change the ranking.</div>
   <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>06</span></div>
 </section>
 
@@ -243,13 +243,13 @@
 <!-- 8. Status -->
 <section class="slide">
   <div class="kicker">Status and roadmap</div>
-  <h2>The model is built; the SQL database is next</h2>
+  <h2>The database is built; dashboards are next</h2>
   <div class="phases">
     <div class="phase done"><div class="n">01 · DONE</div><h3>Planning</h3><p>Questions, sources, method and schema documented</p></div>
     <div class="phase done"><div class="n">02 · DONE</div><h3>Data collection</h3><p>Census, NOAA and EIA pulls in Python</p></div>
     <div class="phase done"><div class="n">03 · DONE</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
-    <div class="phase next"><div class="n">04 · NEXT</div><h3>SQL</h3><p>Schema, load and nine analyses</p></div>
-    <div class="phase"><div class="n">05</div><h3>Tableau</h3><p>Three dashboards on Tableau Public</p></div>
+    <div class="phase done"><div class="n">04 · DONE</div><h3>SQL</h3><p>Star schema, load and seven analyses</p></div>
+    <div class="phase next"><div class="n">05 · NEXT</div><h3>Tableau</h3><p>Three dashboards on Tableau Public</p></div>
     <div class="phase"><div class="n">06</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
     <div class="phase"><div class="n">07</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
   </div>
