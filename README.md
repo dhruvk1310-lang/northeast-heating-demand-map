@@ -2,31 +2,58 @@
 
 **Where and when does the Northeast need heating fuel and AC service, and which fuel dealers serve that demand?**
 
-An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
+An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in three interactive Tableau dashboards.
 
-> **Status:** Data, demand model, SQL database, Tableau dashboards, and the Connecticut dealer layer complete. Final findings write-up next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
+> **Status:** Complete. All seven phases are done. The full write-up is in [`docs/findings.md`](docs/findings.md).
 >
 > **Live dashboards:** [The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) · [Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs) · [Who to Call First (CT dealers)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
 
 ---
 
+## What I Found
+
+1. **It's a $16.8B market.** That's what the 9 states spent on home heating oil and propane in the 2025-26 season: about 3.2B gallons of oil and 1.0B gallons of propane.
+2. **January runs everything.** December to February is about half the year's gallons, and the peak month is 8 to 18x the slowest one.
+3. **Weather moves gallons, price moves dollars.** In 2022-23 oil hit $4.79 a gallon, so spend went up 9% even though people burned 4% fewer gallons.
+4. **Big counties win on size, oil towns win per home.** By total market, the NYC and Boston counties lead. Per home, it's oil-heavy places with warm summers, like Sussex NJ and Northeastern Connecticut.
+5. **Connecticut's dealers are spread unevenly.** Western CT has 2,206 oil and propane homes per dealer. The Lower CT River Valley has 922. Only 1 in 5 dealers also does HVAC.
+
+More detail, plus how much to trust each number, is in [`docs/findings.md`](docs/findings.md).
+
+### The dashboards
+
+**[The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear):** every county's heating vs. cooling load, month by month.
+
+[![The Thermal Year dashboard](tableau/screenshots/TheThermalYear.png)](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
+
+**[Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs):** total market vs. per home, for all 218 counties.
+
+[![Where the Year-Round Money Is dashboard](tableau/screenshots/WheretheYear-RoundMoneyIs.png)](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs)
+
+**[Who to Call First](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects):** all 468 Connecticut dealers, ranked.
+
+[![Who to Call First dashboard](tableau/screenshots/ConnecticutDealerProspects.png)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
+
+---
+
 ## Table of Contents
 
-1. [Why This Project](#why-this-project)
-2. [Business Questions](#business-questions)
-3. [Scope](#scope)
-4. [Tech Stack](#tech-stack)
-5. [Pipeline Architecture](#pipeline-architecture)
-6. [Data Sources](#data-sources)
-7. [Methodology](#methodology)
-8. [Database Design](#database-design)
-9. [SQL Analysis Plan](#sql-analysis-plan)
-10. [Tableau Dashboards](#tableau-dashboards)
-11. [Repository Structure](#repository-structure)
-12. [Running the Pipeline](#running-the-pipeline)
-13. [Limitations](#limitations)
-14. [Roadmap](#roadmap)
-15. [Author](#author)
+1. [What I Found](#what-i-found)
+2. [Why This Project](#why-this-project)
+3. [Business Questions](#business-questions)
+4. [Scope](#scope)
+5. [Tech Stack](#tech-stack)
+6. [Pipeline Architecture](#pipeline-architecture)
+7. [Data Sources](#data-sources)
+8. [Methodology](#methodology)
+9. [Database Design](#database-design)
+10. [SQL Analysis Plan](#sql-analysis-plan)
+11. [Tableau Dashboards](#tableau-dashboards)
+12. [Repository Structure](#repository-structure)
+13. [Running the Pipeline](#running-the-pipeline)
+14. [Limitations](#limitations)
+15. [Roadmap](#roadmap)
+16. [Author](#author)
 
 ---
 
@@ -420,8 +447,8 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 - [x] Add the dealer dashboard ("Who to Call First")
 
 **Phase 7: Findings**
-- [ ] Write top findings in `docs/findings.md`
-- [ ] Add dashboard screenshots to this README
+- [x] Write top findings in [`docs/findings.md`](docs/findings.md)
+- [x] Add dashboard screenshots to this README
 
 ---
 

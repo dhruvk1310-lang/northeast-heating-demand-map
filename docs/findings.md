@@ -1,42 +1,61 @@
 # Findings
 
-Results from the demand model (Phase 3), the SQL analysis (Phase 4), and the Connecticut dealer pilot (Phase 6). Query results are in `data/processed/analysis/`; dashboards come in Phase 5. All figures are modeled estimates; see [assumptions.md](assumptions.md).
+I wanted to answer three things: where and when the Northeast needs heating fuel and AC, how big that market is, and which dealers are worth calling first. Here's what the data says.
 
-## Market size
+Everything here is modeled from public data (Census, NOAA, EIA, and Connecticut's license registry). It's good for patterns and relative size, not exact gallons. The details are in [assumptions.md](assumptions.md), and the query results are in `data/processed/analysis/`.
 
-- The nine Northeast states spend an estimated **$16.8 billion** on residential heating oil and propane in the 2025-26 season: about **3.2 billion gallons** of heating oil and **1.0 billion gallons** of propane.
-- New York is the largest state market ($4.7 billion), followed by Pennsylvania ($2.9 billion) and Massachusetts ($2.8 billion).
-- The largest county markets are Suffolk County, NY ($686 million), Worcester County, MA ($574 million), Middlesex County, MA ($499 million), and Connecticut's Capitol Planning Region ($472 million).
+## The short version
 
-## Seasonality
+1. **It's a $16.8B market.** That's what the 9 states spent on home heating oil and propane in 2025-26.
+2. **January runs everything.** December to February is about half the year's gallons.
+3. **Weather moves gallons, price moves dollars.** In 2022-23 people burned less oil but spent more.
+4. **Big counties win on size, oil towns win per home.** The best markets change almost completely depending on how you rank them.
+5. **Connecticut's dealers are spread unevenly.** Western CT has more than twice as many oil and propane homes per dealer as the Lower CT River Valley.
 
-- Demand usually peaks in **January**: it did in every state in four of the five seasons, and in every county in 2025-26. December to February account for about half of the year's gallons. In each state the peak month runs 1.8 to 2.6 times the average month, and 8 to 18 times the quietest month (query 2).
-- The exception was 2022-23, which peaked in **December** in seven states because January 2023 was unusually warm.
+## 1. How big is it
 
-## Weather and prices
+- In the 2025-26 season the 9 states spent about **$16.8B** on home heating oil and propane: about **3.2B gallons of oil** and **1.0B gallons of propane**.
+- New York is the biggest state ($4.7B), then Pennsylvania ($2.9B) and Massachusetts ($2.8B).
+- The biggest single counties are Suffolk NY ($686M), Worcester MA ($574M), Middlesex MA ($499M), and Connecticut's Capitol region ($472M).
+- 4.1M Northeast homes heat with oil. That's about 80% of every oil-heated home in the US.
 
-- Four of the last five winters were warmer than the 1991-2020 normal, by up to 13% (2023-24). 2025-26 was the first close-to-normal winter, and region-wide estimated gallons rose 6% and spend 17% over the year before (query 4).
-- Price can outweigh weather. In 2022-23 heating oil averaged **$4.79 a gallon**, up from $3.74, so region-wide spend rose 9% even though gallons fell 4%.
-- Heating oil prices are about twice as volatile as propane within a season: an average swing of 7.7% vs. 3.4% (query 5).
+## 2. When it happens
 
-## Who heats with what
+- Demand peaks in **January** almost every year, and December to February is about half the year's gallons.
+- The peak month is about 2x an average month and 8 to 18x the slowest one. For a dealer, that means trucks and staff get sized for winter, and summer needs other work.
+- 2022-23 was the exception. It peaked in December because January 2023 was unusually warm.
 
-- "Urban oil, rural propane" is only half right (query 6). Propane's share does rise in rural counties (3% of homes in the most urban quarter of counties vs. 15% in the most rural), but so does oil's (14% vs. 38%). Cities mostly heat with utility gas. Oil homes are concentrated in urban counties only because that is where most homes are: the most urban quarter holds 2.2 million of the region's 4.1 million oil homes.
+## 3. Weather vs. price
 
-## Year-round opportunity
+- 4 of the last 5 winters were warmer than normal (2023-24 by 13%). 2025-26 was the first one close to normal, and spend jumped 17%.
+- Price can matter more than weather. In 2022-23 oil hit **$4.79 a gallon**, so spend went up 9% even though people burned 4% fewer gallons.
+- Oil prices swing about twice as much as propane inside a season (7.7% vs. 3.4%).
 
-- Scored on totals, the best year-round markets are the big counties around New York City and Boston, because both heating and cooling demand grow with the number of homes.
-- Scored per home, the leaders are oil-heavy counties outside the big cities with warm summers: Sussex County, NJ; Northeastern Connecticut; Putnam County, NY; and the Lower Connecticut River Valley. Query 3, which compares winter (December to February) fuel use with summer (June to August) cooling per home, agrees: Sussex, Newport RI, and Putnam lead, and four Connecticut planning regions make the top eight. This matters for the Connecticut dealer pilot.
+## 4. Who heats with what
 
-## Connecticut dealer pilot
+- "Cities use oil, rural areas use propane" is only half true. Rural counties do use more propane (15% of homes vs. 3% in the most urban ones), but they also use more oil (38% vs. 14%). Cities mostly run on gas.
+- Oil homes still cluster in cities just because that's where the homes are. The most urban quarter of counties holds 2.2M of the 4.1M oil homes.
 
-- Connecticut has **468 licensed heating fuel dealers** (521 active registrations including out-of-state companies that deliver into the state). About **1 in 5 (20%)** also holds an HVAC contractor license, so is a full-service dealer.
-- Dealer coverage is uneven (query 7). **Western Connecticut** has the most oil and propane homes per dealer, **2,206**, and about $7.3 million of yearly heating spend per dealer. The **Lower Connecticut River Valley** has the fewest, 922 homes and $3.1 million per dealer. Southeastern Connecticut (1,745) and the Northwest Hills (1,671) are also under-served.
-- Greater Bridgeport has the highest share of full-service dealers (30%); Northeastern Connecticut the lowest (12%).
-- The top prospects for a full-service dealer platform (query 8) are established full-service dealers in under-served regions: **Densmore Oil** (Stonington), **Brunelli Energy** (Bozrah), **Patterson Oil** (Torrington), and **Miller Fuel** (Burlington). Western Connecticut supplies 8 of the top 25, Southeastern Connecticut 7.
+## 5. Where the year-round money is
 
-## Model checks
+- Rank by total market and the big New York City and Boston counties win every time, because heating and cooling both grow with the number of homes. Changing the score weights barely moves that.
+- Rank per home and it's a different list: oil-heavy places outside the cities with warm summers, like Sussex NJ, Northeastern Connecticut, Putnam NY, and Newport RI. Those are the best fit for a dealer who sells fuel in winter and AC service in summer.
 
-- The cooling index tracks actual summer residential electricity sales (EIA 861M), with month-to-month correlations of 0.83 to 0.99 in every state except Maine (0.56), where few homes have air conditioning.
-- Before calibration, the model is 8% to 40% below EIA's reported state totals for heating oil, which is expected because those totals include homes that use oil only as a backup or for hot water. It is closest in New Hampshire and Maine (within 10%) and furthest in New Jersey, where RECS sampled only 33 oil homes (query 9).
-- The SQL results match the Python model exactly: the same total spend and gallons, and calibration factors equal to three decimal places.
+## 6. Connecticut: who to call first
+
+- Connecticut has **468 licensed heating fuel dealers**. Only 1 in 5 (20%) also holds an HVAC contractor license, so most are fuel-only.
+- Coverage is uneven. **Western CT has 2,206 oil and propane homes per dealer** (about $7.3M of heating spend each). The Lower CT River Valley has 922.
+- The top prospects are established full-service dealers in under-served regions: **Densmore Oil** (Stonington), **Brunelli Energy** (Bozrah), **Patterson Oil** (Torrington), and **Miller Fuel** (Burlington). Western CT has 8 of the top 25.
+
+## How much to trust this
+
+- The cooling index lines up with real summer electricity sales: 0.83 to 0.99 correlation in every state except Maine (0.56), where few homes have AC.
+- Before calibration the model came in 8 to 40% under EIA's reported oil totals. That's expected, because EIA also counts homes that use oil as a backup or just for hot water. I scaled to EIA's totals and kept both versions.
+- The SQL results match the Python model exactly.
+- Some things I couldn't get: dealer size, websites, and online payment. None of it is in a public record, so I left it out instead of guessing.
+
+## What I'd do next
+
+- Add dealer registries for the other 8 states where they're public, so the dealer view isn't Connecticut only.
+- Re-run it every fall when new prices and weather come in. The whole pipeline rebuilds from one set of commands.
+- Test the fit score against real wins and losses if a dealer software company would share that data.
