@@ -53,18 +53,22 @@ CREATE TABLE dim_fuel (
     is_modeled       INTEGER NOT NULL       -- 1 for fuel_oil and propane
 );
 
--- Filled in Phase 6 (Connecticut dealer pilot).
+-- Connecticut heating fuel dealers (Phase 6), from the state license registry.
 CREATE TABLE dim_dealer (
-    dealer_id            INTEGER PRIMARY KEY,
+    dealer_id            INTEGER PRIMARY KEY,   -- registry credential id
+    registration         TEXT NOT NULL,         -- Home Heating Fuel Dealer registration number
     name                 TEXT NOT NULL,
-    county_fips          TEXT REFERENCES dim_county (county_fips),
+    address              TEXT,
     town                 TEXT,
-    fuels_offered        TEXT,
-    offers_hvac_service  INTEGER,
-    has_online_payment   INTEGER,
-    has_customer_portal  INTEGER,
-    est_size_band        TEXT,
-    website              TEXT
+    state                TEXT,
+    zip5                 TEXT,
+    county_fips          TEXT REFERENCES dim_county (county_fips),  -- planning region; NULL outside CT
+    region_source        TEXT,                  -- zip, town, or out of state
+    offers_hvac_service  INTEGER NOT NULL,      -- 1 if the business also holds an HVAC contractor license
+    hvac_match           TEXT NOT NULL,         -- name, address, or none
+    fuels_in_name        TEXT,                  -- oil and/or propane, when the business name says so
+    license_issued       TEXT,                  -- first issue date of the dealer registration
+    years_licensed       REAL
 );
 
 -- Facts ----------------------------------------------------------------------

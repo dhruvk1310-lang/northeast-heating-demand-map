@@ -48,6 +48,15 @@
 - **The dashboards show the 2025-26 season.** All five seasons are in the data files; the season is set in `build_tableau_workbook.py`.
 - **Headline numbers** on The Thermal Year are written into the dashboard as text when the workbook is built, from `tableau/data/kpis.csv`.
 
+## Connecticut Dealers
+
+- **Dealer list** = active Home Heating Fuel Dealer registrations in the state license registry (data.ct.gov, dataset ngch-56tr). Connecticut requires this registration to sell heating oil or propane to homes, so the list is close to complete. It includes 53 out-of-state companies that deliver into Connecticut; they are kept in `dim_dealer` but have no region and are left out of regional counts.
+- **Planning region** comes from the dealer's ZIP code: each ZIP is assigned to the town holding most of its land (Census 2020 ZCTA-to-county-subdivision file), and each town to its planning region (Census 2024 gazetteer). One dealer whose ZIP did not match was placed by town name. A dealer's address is its office, not its whole delivery area.
+- **Offers HVAC service** = the business also appears on an active Heating, Piping & Cooling contractor license, matched on business name or DBA (ignoring Inc, LLC, Co, punctuation) or on the same street address and ZIP. Name matches can miss a dealer whose HVAC license is under a different company name, so 20% is a floor.
+- **Years licensed** counts from the registration's first issue date. 154 of the 468 Connecticut dealers have no issue date in the registry (mostly long-standing companies), so they get a neutral tenure score of 0.5.
+- **Not collected:** company size, website, and online payment or customer portal. None of these are in a public record; they would need each dealer's website to be checked by hand, so the original schema columns for them were dropped rather than left empty.
+- **Fit score** = 0.5 x offers HVAC service + 0.3 x percentile of the region's oil and propane homes per dealer + 0.2 x percentile of years licensed. It favors established full-service dealers in regions with less competition, the profile most likely to need dispatch, routing, and service software.
+
 ## Scoring Weights
 
 - Year-round score = 0.6 x heating spend percentile + 0.4 x cooling index percentile, computed per heating season across all 218 counties.

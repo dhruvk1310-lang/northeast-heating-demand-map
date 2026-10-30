@@ -1,0 +1,469 @@
+dealer_id,name,town,county_fips,region,offers_hvac_service,hvac_match,fuels_in_name,years_licensed,region_homes_per_dealer,region_pct,tenure_pct,fit_score,prospect_rank,rank_in_region
+287233,Densmore Oil Inc,Stonington,09180,Southeastern Connecticut,1,name,oil,22.1,1745.0,0.875,0.987,0.9599440894568689,1,1
+486264,Brunelli Energy Llc,Bozrah,09180,Southeastern Connecticut,1,address,oil,19.0,1745.0,0.875,0.786,0.9196884984025558,2,2
+289619,Patterson Oil Company,Torrington,09160,Northwest Hills,1,name,oil,21.1,1671.0,0.75,0.901,0.9051916932907348,3,1
+417828,Miller Fuel Llc,Burlington,09160,Northwest Hills,1,name,oil,21.0,1671.0,0.75,0.888,0.9026357827476038,4,2
+289484,Devine Bros Inc,Norwalk,09190,Western Connecticut,1,name,,,2206.0,1.0,0.5,0.9,5,1
+287456,Hoffman Fuel Company,Danbury,09190,Western Connecticut,1,name,oil,,2206.0,1.0,0.5,0.9,6,2
+288041,Jennings Oil Co,Danbury,09190,Western Connecticut,1,name,oil,,2206.0,1.0,0.5,0.9,7,3
+289095,Leahy's Fuels Inc,Danbury,09190,Western Connecticut,1,name,,,2206.0,1.0,0.5,0.9,8,4
+288045,New England Oil Co Inc,Greenwich,09190,Western Connecticut,1,name,oil,,2206.0,1.0,0.5,0.9,9,5
+289093,Richard Shook,Danbury,09190,Western Connecticut,1,address,,,2206.0,1.0,0.5,0.9,10,6
+289468,Westmore Fuel Co Inc,Greenwich,09190,Western Connecticut,1,name,oil,,2206.0,1.0,0.5,0.9,11,7
+1130710,Best Discount Oil,Pawcatuck,09180,Southeastern Connecticut,1,address,oil,14.0,1745.0,0.875,0.575,0.8775159744408946,12,3
+1130707,Best Energy,Pawcatuck,09180,Southeastern Connecticut,1,address,oil,14.0,1745.0,0.875,0.575,0.8775159744408946,13,4
+286901,Benvenuti Oil,Waterford,09180,Southeastern Connecticut,1,name,oil,,1745.0,0.875,0.5,0.8624999999999999,14,5
+289198,Mccarthy Heating Oil Service Inc,Quaker Hill,09180,Southeastern Connecticut,1,name,oil,,1745.0,0.875,0.5,0.8624999999999999,15,6
+2237795,Marandola Fuel Service,New Milford,09190,Western Connecticut,1,name,oil,5.0,2206.0,1.0,0.214,0.8428115015974441,16,8
+288751,General Oil,East Hartford,09110,Capitol,1,name,oil,22.0,1215.0,0.5,0.936,0.8372204472843451,17,1
+287452,Lindell Fuels Inc,Canaan,09160,Northwest Hills,1,name,,,1671.0,0.75,0.5,0.825,18,3
+980569,Sterling Oil Llc,Moosup,09150,Northeastern Connecticut,1,address,oil,15.8,1575.0,0.625,0.665,0.8204073482428115,19,1
+2088590,Ledgelight Propane,Groton,09180,Southeastern Connecticut,1,address,propane,6.1,1745.0,0.875,0.278,0.818091054313099,20,7
+451866,Bruce J Bemer,Glastonbury,09110,Capitol,1,name,,20.0,1215.0,0.5,0.821,0.8142172523961662,21,2
+1329956,Jasinski Fuel Service Llc,Harwinton,09160,Northwest Hills,1,name,oil,10.8,1671.0,0.75,0.441,0.8131789137380192,22,4
+484268,Superior Energy,Vernon,09110,Capitol,1,name,oil,19.1,1215.0,0.5,0.799,0.8097444089456869,23,3
+934064,Connecticut Valley Oil,Enfield,09110,Capitol,1,address,oil,16.4,1215.0,0.5,0.693,0.7886581469648563,24,4
+934062,Suprena Oil,Enfield,09110,Capitol,1,address,oil,16.4,1215.0,0.5,0.693,0.7886581469648563,25,5
+287618,T & S Oil Co,Moosup,09150,Northeastern Connecticut,1,name,oil,,1575.0,0.625,0.5,0.7875,26,2
+937479,Barney Barker Oil Co Inc,Newington,09110,Capitol,1,address,oil,16.3,1215.0,0.5,0.687,0.7873801916932908,27,6
+291001,Eastern Fuel Corporation,Hamden,09170,South Central Connecticut,1,name,oil,20.1,1170.0,0.375,0.859,0.7843849840255591,28,1
+997178,Connecticut Propane & Petroleum,Marlborough,09110,Capitol,1,address,"oil, propane",15.4,1215.0,0.5,0.649,0.7797124600638978,29,7
+1076690,Twin Oil,Wethersfield,09110,Capitol,1,address,oil,14.4,1215.0,0.5,0.591,0.7682108626198083,30,8
+516580,Incredible Oil Llc,Wallingford,09170,South Central Connecticut,1,name,oil,18.1,1170.0,0.375,0.764,0.7652156549520768,31,2
+1196976,Personal Energy Co Llc,New Britain,09110,Capitol,1,name,oil,12.9,1215.0,0.5,0.543,0.7586261980830671,32,9
+420533,Leclaire Fuel Oil Llc,Seymour,09140,Naugatuck Valley,1,address,oil,21.0,987.0,0.25,0.888,0.7526357827476038,33,1
+287642,H C Rohde Oil Company Inc,Wethersfield,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,34,10
+287460,Homestead Fuel Inc,Ellington,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,35,11
+289014,Lemay Oil Co Inc,East Hartford,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,36,12
+287820,Miller Oil Co,Enfield,09110,Capitol,1,address,oil,,1215.0,0.5,0.5,0.75,37,13
+287695,Mitchell Home Services,South Windsor,09110,Capitol,1,name,,,1215.0,0.5,0.5,0.75,38,14
+287693,Mull Brothers Inc,Wethersfield,09110,Capitol,1,name,,,1215.0,0.5,0.5,0.75,39,15
+287454,Robert's Discount Fuel,Enfield,09110,Capitol,1,address,oil,,1215.0,0.5,0.5,0.75,40,16
+296347,Starco Of New Britain,New Britain,09110,Capitol,1,name,,,1215.0,0.5,0.5,0.75,41,17
+287611,Troiano Oil Co,Enfield,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,42,18
+288058,Viking Fuel Oil Co,West Hartford,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,43,19
+289636,Williams Fuel Oil Co Llc,Stafford Springs,09110,Capitol,1,name,oil,,1215.0,0.5,0.5,0.75,44,20
+289160,Best Oil Inc,Waterbury,09140,Naugatuck Valley,1,name,oil,20.1,987.0,0.25,0.859,0.746884984025559,45,2
+1385578,Wilson/norige Oil,Manchester,09110,Capitol,1,address,oil,9.4,1215.0,0.5,0.403,0.7305111821086262,46,21
+515465,F F Hitchcock Oil Company Llc,Cheshire,09140,Naugatuck Valley,1,address,oil,18.1,987.0,0.25,0.764,0.7277156549520767,47,3
+288452,Amodio & Sons Fuel Oil Inc,West Haven,09170,South Central Connecticut,1,name,oil,,1170.0,0.375,0.5,0.7125,48,3
+288040,Blue Flame Oil Co,New Haven,09170,South Central Connecticut,1,name,oil,,1170.0,0.375,0.5,0.7125,49,4
+287639,Delucia Fuel Oil Co Llc,North Haven,09170,South Central Connecticut,1,address,oil,,1170.0,0.375,0.5,0.7125,50,5
+288288,East River Energy,Guilford,09170,South Central Connecticut,1,name,oil,,1170.0,0.375,0.5,0.7125,51,6
+287869,J & E Oil Company,Hamden,09170,South Central Connecticut,1,name,oil,,1170.0,0.375,0.5,0.7125,52,7
+287628,J J Sullivan Inc,Guilford,09170,South Central Connecticut,1,name,,,1170.0,0.375,0.5,0.7125,53,8
+289434,Longobardi Fuel Oil,New Haven,09170,South Central Connecticut,1,address,oil,,1170.0,0.375,0.5,0.7125,54,9
+288458,Petro Home Services,North Haven,09170,South Central Connecticut,1,name,,,1170.0,0.375,0.5,0.7125,55,10
+288053,Roman Oil Heating And Cooling,Meriden,09170,South Central Connecticut,1,name,oil,,1170.0,0.375,0.5,0.7125,56,11
+287826,Tamaro Oil Corporation,Orange,09170,South Central Connecticut,1,address,oil,,1170.0,0.375,0.5,0.7125,57,12
+1026835,Brooks Oil Service Inc,Plymouth,09140,Naugatuck Valley,1,name,oil,15.2,987.0,0.25,0.642,0.7034345047923323,58,4
+385603,Fuel & Service Llc,Durham,09130,Lower Connecticut River Valley,1,address,oil,22.1,922.0,0.0,0.987,0.697444089456869,59,1
+2423464,Admiral Propane Services Llc,Willington,09110,Capitol,1,address,propane,3.9,1215.0,0.5,0.169,0.6838658146964857,60,22
+534309,Polar Energy,Monroe,09120,Greater Bridgeport,1,address,oil,17.4,980.0,0.125,0.732,0.6838258785942491,61,1
+2537220,Somers Oil Service,Broad Brook,09110,Capitol,1,name,oil,3.0,1215.0,0.5,0.137,0.6774760383386582,62,23
+288454,Buddys Fuel Llc,Oxford,09140,Naugatuck Valley,1,address,oil,,987.0,0.25,0.5,0.6749999999999999,63,5
+290501,Cousins Oil Co Inc,Bristol,09140,Naugatuck Valley,1,name,oil,,987.0,0.25,0.5,0.6749999999999999,64,6
+291000,Dependable Energy,Prospect,09140,Naugatuck Valley,1,address,oil,,987.0,0.25,0.5,0.6749999999999999,65,7
+288453,Plymouth Oil Service,Plymouth,09140,Naugatuck Valley,1,address,oil,,987.0,0.25,0.5,0.6749999999999999,66,8
+309450,Arrow Fuel,Stratford,09120,Greater Bridgeport,1,address,oil,,980.0,0.125,0.5,0.6375,67,2
+289075,Levco Tech Inc,Trumbull,09120,Greater Bridgeport,1,name,,,980.0,0.125,0.5,0.6375,68,3
+287435,Parkway Oil Company Inc,Stratford,09120,Greater Bridgeport,1,address,oil,,980.0,0.125,0.5,0.6375,69,4
+289439,Ramos Fuel & Trucking Llc,Bridgeport,09120,Greater Bridgeport,1,address,oil,,980.0,0.125,0.5,0.6375,70,5
+287670,Standard Oil Of Connecticut Inc,Bridgeport,09120,Greater Bridgeport,1,name,oil,,980.0,0.125,0.5,0.6375,71,6
+1268556,Family Oil,Stratford,09120,Greater Bridgeport,1,address,oil,11.4,980.0,0.125,0.479,0.6333466453674121,72,7
+2069844,Leclaire Propane Llc,Seymour,09140,Naugatuck Valley,1,address,propane,6.1,987.0,0.25,0.278,0.630591054313099,73,9
+2923803,East River Energy Inc,Guilford,09170,South Central Connecticut,1,name,oil,0.4,1170.0,0.375,0.026,0.617611821086262,74,13
+2923824,East River Energy Inc,Guilford,09170,South Central Connecticut,1,name,oil,0.4,1170.0,0.375,0.026,0.617611821086262,75,14
+2320532,Adamowski Heating And Cooling Llc,Ansonia,09140,Naugatuck Valley,1,address,,4.5,987.0,0.25,0.201,0.615255591054313,76,10
+2975272,Instaoil,Meriden,09170,South Central Connecticut,1,address,,0.1,1170.0,0.375,0.003,0.6131389776357828,77,15
+288052,Cromwell Energy,Cromwell,09130,Lower Connecticut River Valley,1,name,oil,,922.0,0.0,0.5,0.6,78,2
+288282,Dutch Oil Company Inc,Moodus,09130,Lower Connecticut River Valley,1,name,oil,,922.0,0.0,0.5,0.6,79,3
+286911,Maus & Son Inc,Moodus,09130,Lower Connecticut River Valley,1,name,,,922.0,0.0,0.5,0.6,80,4
+301042,Paul Burdick Oil Co,Old Saybrook,09130,Lower Connecticut River Valley,1,address,oil,,922.0,0.0,0.5,0.6,81,5
+289854,Stielau Oil Co Inc,Middletown,09130,Lower Connecticut River Valley,1,name,oil,,922.0,0.0,0.5,0.6,82,6
+2608159,Tankfarm,Bristol,09140,Naugatuck Valley,1,name,,2.4,987.0,0.25,0.118,0.5986421725239616,83,11
+2653949,Husky Energy & Propane,Woodbury,09140,Naugatuck Valley,1,address,"oil, propane",2.1,987.0,0.25,0.102,0.5954472843450479,84,12
+2666414,Airwise Oil,Watertown,09140,Naugatuck Valley,1,address,oil,1.9,987.0,0.25,0.083,0.5916134185303514,85,13
+2838573,Valley Heating Oil,Prospect,09140,Naugatuck Valley,1,address,oil,1.1,987.0,0.25,0.058,0.5865015974440894,86,14
+2189292,Edgerton Fuels Llc,Monroe,09120,Greater Bridgeport,1,address,,5.6,980.0,0.125,0.24,0.585423322683706,87,8
+2249876,Rural Energy Llc,Trumbull,09120,Greater Bridgeport,1,name,oil,5.1,980.0,0.125,0.23,0.5835063897763578,88,9
+1589054,Westbrook Oil Llc,Westbrook,09130,Lower Connecticut River Valley,1,address,oil,8.1,922.0,0.0,0.361,0.5722044728434504,89,7
+2462785,Premier Propane Llc,Stratford,09120,Greater Bridgeport,1,address,propane,3.6,980.0,0.125,0.16,0.5694488817891373,90,10
+2864569,Dutch Oil Company Inc,Portland,09130,Lower Connecticut River Valley,1,name,oil,1.0,922.0,0.0,0.048,0.5095846645367412,91,8
+2966898,Cromwell Energy,Cromwell,09130,Lower Connecticut River Valley,1,name,oil,0.1,922.0,0.0,0.003,0.5006389776357828,92,9
+287828,Casey Fuel,Ridgefield,09190,Western Connecticut,0,none,oil,22.1,2206.0,1.0,0.987,0.497444089456869,93,9
+287171,Sound Energy Corp,Darien,09190,Western Connecticut,0,none,oil,22.0,2206.0,1.0,0.936,0.48722044728434505,94,10
+444790,Affordable Heating & Fuel Llc,Stamford,09190,Western Connecticut,0,none,oil,20.1,2206.0,1.0,0.859,0.4718849840255591,95,11
+452462,Greenwich Propane Co Inc,Bethel,09190,Western Connecticut,0,none,propane,20.0,2206.0,1.0,0.821,0.4642172523961661,96,12
+452464,New England Propane Co Inc,Bethel,09190,Western Connecticut,0,none,propane,20.0,2206.0,1.0,0.821,0.4642172523961661,97,13
+463401,A & P Fuel,Danbury,09190,Western Connecticut,0,none,oil,19.7,2206.0,1.0,0.805,0.4610223642172524,98,14
+498879,Elshaddai Oil Company,Stamford,09190,Western Connecticut,0,none,oil,18.5,2206.0,1.0,0.776,0.45527156549520764,99,15
+288758,City Coal,New London,09180,Southeastern Connecticut,0,none,,22.0,1745.0,0.875,0.936,0.44972044728434507,100,8
+287725,Dahl,New London,09180,Southeastern Connecticut,0,none,,22.0,1745.0,0.875,0.936,0.44972044728434507,101,9
+287726,Ddlc Energy,New London,09180,Southeastern Connecticut,0,none,oil,22.0,1745.0,0.875,0.936,0.44972044728434507,102,10
+288757,Dollarwise Discount Oil,New London,09180,Southeastern Connecticut,0,none,oil,22.0,1745.0,0.875,0.936,0.44972044728434507,103,11
+288759,Lehigh Oil,New London,09180,Southeastern Connecticut,0,none,oil,22.0,1745.0,0.875,0.936,0.44972044728434507,104,12
+523536,Coastline Fuel,Norwalk,09190,Western Connecticut,0,none,oil,17.8,2206.0,1.0,0.741,0.4482428115015974,105,16
+523539,Piro Petroleum,Norwalk,09190,Western Connecticut,0,none,oil,17.8,2206.0,1.0,0.741,0.4482428115015974,106,17
+391149,Mystic Fuel Llc,Norwich,09180,Southeastern Connecticut,0,none,oil,21.9,1745.0,0.875,0.923,0.4471645367412141,107,13
+888345,Hometown Fuel,Newtown,09190,Western Connecticut,0,none,oil,17.3,2206.0,1.0,0.728,0.4456869009584664,108,18
+901530,Thermanet,Danbury,09190,Western Connecticut,0,none,,17.0,2206.0,1.0,0.719,0.44376996805111824,109,19
+322775,Midknight Oil,North Stonington,09180,Southeastern Connecticut,0,none,oil,20.7,1745.0,0.875,0.879,0.4382188498402556,110,14
+944013,Casey Propane Llc,Ridgefield,09190,Western Connecticut,0,none,propane,16.3,2206.0,1.0,0.687,0.43738019169329073,111,20
+978064,Four Seasons Heating And Cooling,Norwalk,09190,Western Connecticut,0,none,,15.9,2206.0,1.0,0.668,0.4335463258785942,112,21
+986867,Air Solutions Propane Llc,Stamford,09190,Western Connecticut,0,none,propane,15.5,2206.0,1.0,0.652,0.43035143769968054,113,22
+452788,Spicer Advanced Gas,Groton,09180,Southeastern Connecticut,0,none,,20.0,1745.0,0.875,0.821,0.42671725239616615,114,15
+1025438,Stamford Home Oil Inc,Stamford,09190,Western Connecticut,0,none,oil,15.1,2206.0,1.0,0.629,0.42587859424920127,115,23
+487737,Advanced Heating Oil,Groton,09180,Southeastern Connecticut,0,none,oil,19.0,1745.0,0.875,0.786,0.41968849840255595,116,16
+518791,Valley Oil - Willimantic,Willimantic,09180,Southeastern Connecticut,0,none,oil,18.0,1745.0,0.875,0.754,0.41329872204472845,117,17
+347024,A P Summa Fuel Oil Group Llc,Greenwich,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,118,24
+288826,Abc Fuel Oil Llc,Brookfield,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,119,25
+286909,Buzaid-mutual,Danbury,09190,Western Connecticut,0,none,,,2206.0,1.0,0.5,0.4,120,26
+288255,Darien Fuel,Stamford,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,121,27
+287829,Federal Sunoco,Danbury,09190,Western Connecticut,0,none,,,2206.0,1.0,0.5,0.4,122,28
+311820,Fiorilla Heating Oil Inc,Bethel,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,123,29
+289488,L H Gault & Son Inc,Westport,09190,Western Connecticut,0,none,,,2206.0,1.0,0.5,0.4,124,30
+303738,Montanari Fuel Service,Ridgefield,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,125,31
+289489,Reliable Oil & Heating Co Inc,Stamford,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,126,32
+286732,Richard T Layton Co Ltd,New Milford,09190,Western Connecticut,0,none,,,2206.0,1.0,0.5,0.4,127,33
+289490,Steve's Fuel Oil Inc,Stamford,09190,Western Connecticut,0,none,oil,,2206.0,1.0,0.5,0.4,128,34
+451643,"Firehouse Fuels, Llc",Burlington,09160,Northwest Hills,0,none,,20.1,1671.0,0.75,0.859,0.39688498402555905,129,5
+991436,Value Oil Co Llc,North Franklin,09180,Southeastern Connecticut,0,none,oil,15.5,1745.0,0.875,0.652,0.39285143769968056,130,18
+1395711,Jennings Propane Company,Danbury,09190,Western Connecticut,0,none,propane,9.7,2206.0,1.0,0.412,0.38242811501597446,131,35
+1410858,Toro Fuel Llc,Danbury,09190,Western Connecticut,0,none,oil,9.6,2206.0,1.0,0.406,0.3811501597444089,132,36
+1122672,Asi Oil Llc,Norwich,09180,Southeastern Connecticut,0,none,oil,14.1,1745.0,0.875,0.585,0.37943290734824286,133,19
+1451556,Pramer Fuel Inc,Stamford,09190,Western Connecticut,0,none,oil,9.1,2206.0,1.0,0.387,0.37731629392971244,134,37
+1633405,Roman's 10-9 Transport Llc,Stamford,09190,Western Connecticut,0,none,,7.7,2206.0,1.0,0.339,0.3677316293929712,135,38
+1249310,Sunshine Heating Oil,Groton,09180,Southeastern Connecticut,0,none,oil,12.1,1745.0,0.875,0.524,0.36729233226837066,136,20
+1791744,Coastal Energy Llc,Norwalk,09190,Western Connecticut,0,none,oil,7.1,2206.0,1.0,0.319,0.36389776357827475,137,39
+1251152,Broga & Son Fuel,Niantic,09180,Southeastern Connecticut,0,none,oil,11.9,1745.0,0.875,0.505,0.36345846645367413,138,21
+288056,Andersen Oil Co,Ledyard,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,139,22
+288057,Benders Oil Service,Lebanon,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,140,23
+288038,Guy's Inc,Niantic,09180,Southeastern Connecticut,0,none,,,1745.0,0.875,0.5,0.36250000000000004,141,24
+289433,Ives Brothers Inc,Willimantic,09180,Southeastern Connecticut,0,none,,,1745.0,0.875,0.5,0.36250000000000004,142,25
+289613,Norwich Discount Oil Inc,Norwich,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,143,26
+287228,Potter's Oil Service Inc,North Windham,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,144,27
+289642,Uncasville Oil,Uncasville,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,145,28
+310677,Viking Fuel,Norwich,09180,Southeastern Connecticut,0,none,oil,,1745.0,0.875,0.5,0.36250000000000004,146,29
+1270274,Bc Heating & Cooling Llc,Norwich,09180,Southeastern Connecticut,0,none,,11.7,1745.0,0.875,0.489,0.3602635782747604,147,30
+2061580,Top Tier Energy Services Llc,Ridgefield,09190,Western Connecticut,0,none,oil,6.3,2206.0,1.0,0.297,0.35942492012779553,148,40
+1037313,Superior Plus Energy Services Inc,Winsted,09160,Northwest Hills,0,none,oil,15.1,1671.0,0.75,0.629,0.35087859424920126,149,6
+373768,Citizen's Oil Co-op Inc,West Hartford,09110,Capitol,0,none,oil,22.3,1215.0,0.5,0.997,0.3493610223642173,150,24
+1383354,Mcguires Oil Llc,Preston,09180,Southeastern Connecticut,0,none,oil,10.0,1745.0,0.875,0.415,0.3455670926517572,151,31
+1426199,Mohegan Oil Co,Groton,09180,Southeastern Connecticut,0,none,oil,9.2,1745.0,0.875,0.393,0.34109424920127795,152,32
+288746,Automatic Comfort,East Hartford,09110,Capitol,0,none,,22.0,1215.0,0.5,0.936,0.3372204472843451,153,25
+288744,Automatic Tlc,East Hartford,09110,Capitol,0,none,,22.0,1215.0,0.5,0.936,0.3372204472843451,154,26
+288750,Dollar Wise,East Hartford,09110,Capitol,0,none,,22.0,1215.0,0.5,0.936,0.3372204472843451,155,27
+288752,Tlc Oil,East Hartford,09110,Capitol,0,none,oil,22.0,1215.0,0.5,0.936,0.3372204472843451,156,28
+521597,Danielson Oil,Danielson,09150,Northeastern Connecticut,0,none,oil,17.9,1575.0,0.625,0.748,0.33702076677316295,157,3
+1533687,Anytime Fuel Oil,New London,09180,Southeastern Connecticut,0,none,oil,8.2,1745.0,0.875,0.367,0.335982428115016,158,33
+1598518,Groton Oil,New London,09180,Southeastern Connecticut,0,none,oil,8.1,1745.0,0.875,0.361,0.3347044728434505,159,34
+300613,State Line Oil,Granby,09110,Capitol,0,none,oil,21.9,1215.0,0.5,0.923,0.3346645367412141,160,29
+289553,Tony's Oil Co,Southington,09110,Capitol,0,none,oil,21.6,1215.0,0.5,0.914,0.3327476038338658,161,30
+398152,Pinergy,Bloomfield,09110,Capitol,0,none,,21.5,1215.0,0.5,0.911,0.33210862619808307,162,31
+910857,So Low Oil Llc,Canterbury,09150,Northeastern Connecticut,0,none,oil,16.8,1575.0,0.625,0.712,0.3299920127795527,163,4
+1790900,On Demand Fuel Oil Llc,Montville,09180,Southeastern Connecticut,0,none,oil,7.1,1745.0,0.875,0.319,0.32639776357827477,164,35
+354686,Firemen's Fuel Llc,Colebrook,09160,Northwest Hills,0,none,oil,,1671.0,0.75,0.5,0.32499999999999996,165,7
+287433,New England Lubricants Inc,Burlington,09160,Northwest Hills,0,none,,,1671.0,0.75,0.5,0.32499999999999996,166,8
+286892,Winsted Oil Co,Winsted,09160,Northwest Hills,0,none,oil,,1671.0,0.75,0.5,0.32499999999999996,167,9
+1799718,Brodeurs,New London,09180,Southeastern Connecticut,0,none,,7.0,1745.0,0.875,0.31,0.32448083067092653,168,36
+1265720,Elite Energy Llc,Litchfield,09160,Northwest Hills,0,none,oil,11.6,1671.0,0.75,0.486,0.32212460063897763,169,10
+972574,Queen Bee's Oil Inc,Canterbury,09150,Northeastern Connecticut,0,none,oil,16.0,1575.0,0.625,0.671,0.321685303514377,170,5
+286904,Rowayton Fuel & Oil Co Inc,Norwalk,09190,Western Connecticut,0,none,oil,2.1,2206.0,1.0,0.102,0.32044728434504793,171,41
+2085009,Mayday Oil Llc,North Franklin,09180,Southeastern Connecticut,0,none,oil,6.1,1745.0,0.875,0.278,0.31809105431309903,172,37
+453581,All Gas & Equipment Co,Hartford,09110,Capitol,0,none,,20.0,1215.0,0.5,0.821,0.31421725239616616,173,32
+452406,Mockos Propane Gas,Stafford,09110,Capitol,0,none,propane,20.0,1215.0,0.5,0.821,0.31421725239616616,174,33
+452041,State Line Propane Llc,Granby,09110,Capitol,0,none,propane,20.0,1215.0,0.5,0.821,0.31421725239616616,175,34
+329425,Mccormick & Bonner Transport Llc,New Britain,09110,Capitol,0,none,,19.9,1215.0,0.5,0.812,0.31230031948881787,176,35
+2841221,Fortified Fuels Llc,Westport,09190,Western Connecticut,0,none,,1.1,2206.0,1.0,0.058,0.31150159744408945,177,42
+1370657,Family Propane Llc,Torrington,09160,Northwest Hills,0,none,propane,10.2,1671.0,0.75,0.428,0.31062300319488817,178,11
+468814,Quality Oil Company,Plantsville,09110,Capitol,0,none,oil,19.5,1215.0,0.5,0.802,0.3103833865814697,179,36
+2859421,Chris' Fuel Solutions,Brookfield,09190,Western Connecticut,0,none,oil,1.0,2206.0,1.0,0.048,0.3095846645367412,180,43
+2846588,Grand Energy Llc,Stamford,09190,Western Connecticut,0,none,oil,1.0,2206.0,1.0,0.048,0.3095846645367412,181,44
+2866541,Burden Fuel,Norwalk,09190,Western Connecticut,0,none,oil,0.9,2206.0,1.0,0.038,0.307667731629393,182,45
+2966387,Nutmeg Fuel,New Milford,09190,Western Connecticut,0,none,oil,0.1,2206.0,1.0,0.003,0.30063897763578273,183,46
+288096,Connecticut Refining Company,New Haven,09170,South Central Connecticut,0,none,,22.0,1170.0,0.375,0.936,0.29972044728434505,184,16
+514145,Ferrell Gas Co,Vernon,09110,Capitol,0,none,,17.7,1215.0,0.5,0.738,0.2976038338658147,185,37
+1630511,"Warren Valley Enterprises, Llc.",Warren,09160,Northwest Hills,0,none,,7.7,1671.0,0.75,0.339,0.29273162939297126,186,12
+917067,Premier Energy Llc,Collinsville,09110,Capitol,0,none,oil,16.7,1215.0,0.5,0.709,0.29185303514377,187,38
+1252049,Nikko Oil Llc,Canterbury,09150,Northeastern Connecticut,0,none,oil,12.0,1575.0,0.625,0.514,0.29037539936102236,188,6
+423271,Hale Hill Farms Biofuels,Branford,09170,South Central Connecticut,0,none,,20.9,1170.0,0.375,0.882,0.28885782747603833,189,17
+932809,Husky Discount Fuel,Manchester,09110,Capitol,0,none,oil,16.4,1215.0,0.5,0.693,0.28865814696485625,190,39
+1254733,Pomfret Fuel Service Llc,Pomfret Center,09150,Northeastern Connecticut,0,none,oil,11.9,1575.0,0.625,0.505,0.2884584664536741,191,7
+287688,Brooklyn Oil Company,Brooklyn,09150,Northeastern Connecticut,0,none,oil,,1575.0,0.625,0.5,0.2875,192,8
+288061,Ed's Garage Inc,Canterbury,09150,Northeastern Connecticut,0,none,,,1575.0,0.625,0.5,0.2875,193,9
+289647,Higgins And Son Oil Service Inc,Pomfret Center,09150,Northeastern Connecticut,0,none,oil,,1575.0,0.625,0.5,0.2875,194,10
+992645,Deitch Energy,Hartford,09110,Capitol,0,none,oil,15.5,1215.0,0.5,0.652,0.2803514376996805,195,40
+1025259,Kasden Fuel,East Hartford,09110,Capitol,0,none,oil,15.2,1215.0,0.5,0.642,0.2784345047923323,196,41
+455853,Clintonville Oil,North Haven,09170,South Central Connecticut,0,none,oil,20.0,1170.0,0.375,0.821,0.2767172523961661,197,18
+287496,Depalma Oil,West Haven,09170,South Central Connecticut,0,none,oil,20.0,1170.0,0.375,0.821,0.2767172523961661,198,19
+2662454,Spicer Oil,Groton,09180,Southeastern Connecticut,0,none,oil,1.4,1745.0,0.875,0.067,0.2759185303514377,199,38
+2155285,Greyt Oil Llc,Burlington,09160,Northwest Hills,0,none,oil,5.8,1671.0,0.75,0.249,0.2748402555910543,200,13
+457193,Gas Works Propane,Yalesville,09170,South Central Connecticut,0,none,propane,19.9,1170.0,0.375,0.812,0.2748003194888179,201,20
+371600,Strileckis Oil Company Llc,Watertown,09140,Naugatuck Valley,0,none,oil,22.3,987.0,0.25,0.997,0.2743610223642173,202,15
+2159594,Superior Plus Energy Services Inc,Winsted,09160,Northwest Hills,0,none,oil,5.7,1671.0,0.75,0.243,0.2735623003194888,203,14
+1043189,Red Door Oil,West Simsbury,09110,Capitol,0,none,oil,14.9,1215.0,0.5,0.617,0.27332268370607027,204,42
+2159595,Superior Plus Energy Services Inc,Winsted,09160,Northwest Hills,0,none,oil,5.5,1671.0,0.75,0.236,0.2722843450479233,205,15
+486300,First Fuel Oil,North Haven,09170,South Central Connecticut,0,none,oil,19.0,1170.0,0.375,0.786,0.26968849840255593,206,21
+1050859,Curley's Fuel,Windsor,09110,Capitol,0,none,oil,14.7,1215.0,0.5,0.597,0.2694888178913738,207,43
+1053982,Sisters Oil Service Llc,Canton,09110,Capitol,0,none,oil,14.7,1215.0,0.5,0.597,0.2694888178913738,208,44
+1053223,Skip's Discount Oil,West Suffield,09110,Capitol,0,none,oil,14.7,1215.0,0.5,0.597,0.2694888178913738,209,45
+1079926,Ferguson Oil Llc,Enfield,09110,Capitol,0,none,oil,14.2,1215.0,0.5,0.588,0.26757188498402557,210,46
+517343,Ginnetti Energy,East Haven,09170,South Central Connecticut,0,none,oil,18.0,1170.0,0.375,0.754,0.26329872204472843,211,22
+1146499,Fusco Bro,Windsor,09110,Capitol,0,none,,13.8,1215.0,0.5,0.565,0.26309904153354635,212,47
+384866,Curtiss Oil Llc,Prospect,09140,Naugatuck Valley,0,none,oil,22.0,987.0,0.25,0.936,0.26222044728434507,213,16
+1142265,A-1 Propane Llc,Manchester,09110,Capitol,0,none,propane,13.7,1215.0,0.5,0.559,0.26182108626198086,214,48
+1170217,Diesel Direct Inc,South Windsor,09110,Capitol,0,none,,13.4,1215.0,0.5,0.556,0.26118210862619806,215,49
+528519,Connecticut Energy Solutions Llc,Meriden,09170,South Central Connecticut,0,none,oil,17.6,1170.0,0.375,0.735,0.2594648562300319,216,23
+393820,Kenny's Oil Llc,Southbury,09140,Naugatuck Valley,0,none,oil,21.8,987.0,0.25,0.92,0.2590255591054313,217,17
+1615150,1st. Choice Fuel Llc,Woodstock,09150,Northeastern Connecticut,0,none,oil,7.9,1575.0,0.625,0.351,0.25778753993610226,218,11
+301754,Diversified Petroleum Service Llc,Wolcott,09140,Naugatuck Valley,0,none,oil,21.6,987.0,0.25,0.914,0.2577476038338658,219,18
+890373,"A & L Family Oil, Llc",Meriden,09170,South Central Connecticut,0,none,oil,17.2,1170.0,0.375,0.725,0.2575479233226837,220,24
+1232506,Compass Energy Llc,Simsbury,09110,Capitol,0,none,oil,12.2,1215.0,0.5,0.527,0.25543130990415336,221,50
+416517,Angel Fuel Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,21.1,987.0,0.25,0.901,0.2551916932907348,222,19
+1253579,Energy Direct,Granby,09110,Capitol,0,none,oil,12.0,1215.0,0.5,0.514,0.2528753993610224,223,51
+421205,It Energy Llc,Watertown,09140,Naugatuck Valley,0,none,oil,21.0,987.0,0.25,0.888,0.25263578274760384,224,20
+303022,A-1 Oil Co.,Windsor Locks,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,225,52
+287650,Aaa Oil Company,Wethersfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,226,53
+286899,Affordable Fuel Co Llc,Coventry,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,227,54
+289685,American Fuel Oil Co Inc,Coventry,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,228,55
+288035,"Andrews Oil Company & Gas Services, Inc.",South Windsor,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,229,56
+288333,Artic Oil Co Of Southington Inc,Southington,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,230,57
+287471,Brothers Oil Co Inc,East Hartford,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,231,58
+287627,City Oil Co Inc,New Britain,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,232,59
+335653,Clear River Fuel Oil Llc,East Hartford,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,233,60
+287612,Dick's Discount Oil,Enfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,234,61
+289635,E-z Oil Company Inc,Manchester,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,235,62
+288448,Festi's Oil Service Inc,Stafford Springs,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,236,63
+324183,Fuelco Discount,Newington,09110,Capitol,0,none,,,1215.0,0.5,0.5,0.25,237,64
+288072,Glastonbury Oil Company,Glastonbury,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,238,65
+289074,Krupa Oil Co,Suffield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,239,66
+291459,Leets Oil,Mansfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,240,67
+289640,Minute Man Oil,Farmington,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,241,68
+287620,Newgate Oil,West Hartford,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,242,69
+324170,Newington Oil,Newington,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,243,70
+305113,P J Mirabelli Enterprises Inc,Newington,09110,Capitol,0,none,,,1215.0,0.5,0.5,0.25,244,71
+324172,Polar Oil,Newington,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,245,72
+287632,Pride Fuel Co Llc,West Hartford,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,246,73
+287617,Rich's Oil Service Inc,Enfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,247,74
+324175,Simsbury Oil,Newington,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,248,75
+288936,Spring Brook Ice & Fuel,New Britain,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,249,76
+287240,Springer Oil Ltd,Bloomfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,250,77
+289440,Teddy's Oil & Energy Llc,Manchester,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,251,78
+287658,Town Oil Co Inc,Wethersfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,252,79
+304356,Trinks Brothers Oil Llc,Manchester,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,253,80
+287613,Val-u Oil,Enfield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,254,81
+286916,Warren J Gottier Fuel Co Inc,Rockville,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,255,82
+286906,Wat Holding Llc,Windsor Locks,09110,Capitol,0,none,,,1215.0,0.5,0.5,0.25,256,83
+287614,West Side Oil Co.,West Suffield,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,257,84
+303021,Windsor Locks Oil,Windsor Locks,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,258,85
+288641,Wyman Oil Company,Manchester,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,259,86
+291461,Yankee Oil Inc,Mansfield Center,09110,Capitol,0,none,oil,,1215.0,0.5,0.5,0.25,260,87
+954311,Ashley's Energy Llc,East Haven,09170,South Central Connecticut,0,none,oil,16.1,1170.0,0.375,0.677,0.2479632587859425,261,25
+954306,Aspen Heating & Cooling Llc,East Haven,09170,South Central Connecticut,0,none,,16.1,1170.0,0.375,0.677,0.2479632587859425,262,26
+1269070,Complete Energy Inc,Enfield,09110,Capitol,0,none,oil,11.7,1215.0,0.5,0.489,0.2477635782747604,263,88
+453270,Pioneer Gas & Appliance Co Inc,Beacon Falls,09140,Naugatuck Valley,0,none,,20.1,987.0,0.25,0.859,0.24688498402555908,264,21
+1296481,G & G Oil Company,Southington,09110,Capitol,0,none,oil,11.3,1215.0,0.5,0.476,0.2452076677316294,265,89
+2086984,Town & Country Discount Oil & Fuel Llc,Voluntown,09150,Northeastern Connecticut,0,none,oil,6.1,1575.0,0.625,0.278,0.24309105431309905,266,12
+2658470,Mission Fuels Llc,Harwinton,09160,Northwest Hills,0,none,,2.0,1671.0,0.75,0.089,0.24289137380191692,267,16
+1261533,Promise Propane Llc,Newington,09110,Capitol,0,none,propane,11.1,1215.0,0.5,0.463,0.2426517571884984,268,90
+2674755,Laplaca Oil And Propane,Goshen,09160,Northwest Hills,0,none,"oil, propane",1.9,1671.0,0.75,0.083,0.24161341853035143,269,17
+1308043,Taylor Energy,Broad Brook,09110,Capitol,0,none,oil,11.0,1215.0,0.5,0.457,0.24137380191693292,270,91
+452455,Paraco Gas Of Ct,Waterbury,09140,Naugatuck Valley,0,none,,20.0,987.0,0.25,0.821,0.23921725239616615,271,22
+454994,Select Oil,Thomaston,09140,Naugatuck Valley,0,none,oil,20.0,987.0,0.25,0.821,0.23921725239616615,272,23
+2089006,Sanoco,Brooklyn,09150,Northeastern Connecticut,0,none,,6.0,1575.0,0.625,0.256,0.2386182108626198,273,13
+2082555,Uncas Gas,Danielson,09150,Northeastern Connecticut,0,none,,6.0,1575.0,0.625,0.256,0.2386182108626198,274,14
+2082556,Uncas Gas,Danielson,09150,Northeastern Connecticut,0,none,,6.0,1575.0,0.625,0.256,0.2386182108626198,275,15
+2082563,Uncas Gas,Danielson,09150,Northeastern Connecticut,0,none,,6.0,1575.0,0.625,0.256,0.2386182108626198,276,16
+2082564,Uncas Gas,Danielson,09150,Northeastern Connecticut,0,none,,6.0,1575.0,0.625,0.256,0.2386182108626198,277,17
+2799563,Tudor Energy Llc,Burlington,09160,Northwest Hills,0,none,oil,1.4,1671.0,0.75,0.067,0.23841853035143767,278,18
+1364659,Bahres Heating Oil Llc,Canton,09110,Capitol,0,none,oil,10.3,1215.0,0.5,0.431,0.23626198083067093,279,92
+1039903,Rocky's Fuel,New Haven,09170,South Central Connecticut,0,none,oil,14.9,1170.0,0.375,0.617,0.2358226837060703,280,27
+1374024,Amber Oil Inc,Broad Brook,09110,Capitol,0,none,oil,10.1,1215.0,0.5,0.422,0.23434504792332267,281,93
+1047081,Forbes Premium Fuel,East Haven,09170,South Central Connecticut,0,none,oil,14.8,1170.0,0.375,0.607,0.23390575079872206,282,28
+504685,Mckinley Oil,Cheshire,09140,Naugatuck Valley,0,none,oil,18.4,987.0,0.25,0.773,0.22963258785942492,283,24
+509086,Anytime Oil Llc,Middlebury,09140,Naugatuck Valley,0,none,oil,18.3,987.0,0.25,0.77,0.22899361022364217,284,25
+1439256,Handford Oil,Bloomfield,09110,Capitol,0,none,oil,9.2,1215.0,0.5,0.393,0.22859424920127797,285,94
+1131052,Martino's Fuel,West Haven,09170,South Central Connecticut,0,none,oil,14.0,1170.0,0.375,0.575,0.22751597444089455,286,29
+518203,Partners Fuel,Shelton,09140,Naugatuck Valley,0,none,oil,18.0,987.0,0.25,0.754,0.22579872204472845,287,26
+1453814,Prime Propane,Manchester,09110,Capitol,0,none,propane,9.0,1215.0,0.5,0.374,0.22476038338658147,288,95
+1151366,Cod Oil.com,North Haven,09170,South Central Connecticut,0,none,oil,13.3,1170.0,0.375,0.553,0.22304313099041534,289,30
+1151455,Jordan's Fuel,New Haven,09170,South Central Connecticut,0,none,oil,13.2,1170.0,0.375,0.55,0.2224041533546326,290,31
+389100,Southern Connecticut Ice And Oil Llc,Bridgeport,09120,Greater Bridgeport,0,none,oil,21.9,980.0,0.125,0.923,0.22216453674121409,291,11
+1464251,Eazy Oil Llc,Plantsville,09110,Capitol,0,none,oil,7.8,1215.0,0.5,0.348,0.21964856230031948,292,96
+1220429,Petro Commercial Services,North Haven,09170,South Central Connecticut,0,none,,12.4,1170.0,0.375,0.534,0.21920926517571887,293,32
+1625982,Bloomfield Fuel Oil,East Hartford,09110,Capitol,0,none,oil,7.7,1215.0,0.5,0.339,0.21773162939297125,294,97
+289627,Sippin Energy Products,Monroe,09120,Greater Bridgeport,0,none,oil,21.0,980.0,0.125,0.888,0.21513578274760384,295,12
+922003,Federal Oil Llc,Ansonia,09140,Naugatuck Valley,0,none,oil,16.4,987.0,0.25,0.693,0.21365814696485624,296,27
+289320,A Best Buy Premium Fuel & Trucking Llc,Branford,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,297,33
+289744,A Gambardella Heating & A/c,Branford,09170,South Central Connecticut,0,none,,,1170.0,0.375,0.5,0.2125,298,34
+305915,Annie's Fuel,Meriden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,299,35
+286898,Cents-able Oil,New Haven,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,300,36
+287468,F H Mott Fuel Llc,Hamden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,301,37
+287631,F Perrelli & Sons Fuel Inc,East Haven,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,302,38
+289082,G J Giacco Inc,Meriden,09170,South Central Connecticut,0,none,,,1170.0,0.375,0.5,0.2125,303,39
+289826,Grant Brothers Fuel Oil Inc,Meriden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,304,40
+289487,Low Cost Oil Company Llc,Hamden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,305,41
+288159,Meriden Oil Co,Meriden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,306,42
+287248,Miller's Fuel Oil Inc,East Haven,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,307,43
+288814,Mim's Oil Company Llc,Meriden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,308,44
+289853,Port Service Inc,New Haven,09170,South Central Connecticut,0,none,,,1170.0,0.375,0.5,0.2125,309,45
+310281,Ryan Oil Co,Hamden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,310,46
+287710,Suburban Oil Co Llc,Northford,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,311,47
+286900,Tracey Energy Services Llc,New Haven,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,312,48
+287635,Tuxis-ohr's Fuel Inc,Meriden,09170,South Central Connecticut,0,none,oil,,1170.0,0.375,0.5,0.2125,313,49
+1792366,C N M Heating Cooling & Piping Llc,Storrs Mansfield,09110,Capitol,0,none,,7.0,1215.0,0.5,0.31,0.21198083067092652,314,98
+1256711,Durso & Son Home Heating Oil Llc,Madison,09170,South Central Connecticut,0,none,oil,11.8,1170.0,0.375,0.495,0.21154153354632588,315,50
+1807961,Top Tier Fuel Llc,Windsor Locks,09110,Capitol,0,none,oil,6.9,1215.0,0.5,0.307,0.21134185303514377,316,99
+968501,Baribault Propane,Oakville,09140,Naugatuck Valley,0,none,propane,16.1,987.0,0.25,0.677,0.21046325878594252,317,28
+980134,B & H Oil,Waterbury,09140,Naugatuck Valley,0,none,oil,15.7,987.0,0.25,0.661,0.20726837060702874,318,29
+2085377,Bridgeworks Fuel Llc,Plainville,09110,Capitol,0,none,oil,6.1,1215.0,0.5,0.278,0.20559105431309904,319,100
+1309177,Hurricane Energy Heating & Cooling Llc,North Branford,09170,South Central Connecticut,0,none,oil,11.1,1170.0,0.375,0.463,0.2051517571884984,320,51
+1319137,Merrill Oil Llc,Woodbridge,09170,South Central Connecticut,0,none,oil,10.9,1170.0,0.375,0.444,0.2013178913738019,321,52
+1322386,Purplefuels Llc,Branford,09170,South Central Connecticut,0,none,,10.9,1170.0,0.375,0.444,0.2013178913738019,322,53
+1031165,Victory Fuel Llc,Bethlehem,09140,Naugatuck Valley,0,none,oil,15.1,987.0,0.25,0.629,0.2008785942492013,323,30
+1039113,Phillips Oil Llc,Prospect,09140,Naugatuck Valley,0,none,oil,15.0,987.0,0.25,0.626,0.20023961661341855,324,31
+457448,Ben's Fuel,Bridgeport,09120,Greater Bridgeport,0,none,oil,19.9,980.0,0.125,0.812,0.1998003194888179,325,13
+1040352,J & D Oil,Thomaston,09140,Naugatuck Valley,0,none,oil,14.9,987.0,0.25,0.617,0.1983226837060703,326,32
+1046986,Mercury Energy Distributors Inc,Waterbury,09140,Naugatuck Valley,0,none,oil,14.8,987.0,0.25,0.607,0.19640575079872205,327,33
+1380701,Madison Oil,Guilford,09170,South Central Connecticut,0,none,oil,10.0,1170.0,0.375,0.415,0.1955670926517572,328,54
+492221,American Fuel - Division Of Kerigan's Fuel Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,18.8,980.0,0.125,0.78,0.19341054313099043,329,14
+1076829,Dime Oil Company Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,14.4,987.0,0.25,0.591,0.1932108626198083,330,34
+2245880,Shaffer Beacon Mechanical Llc,Granby,09110,Capitol,0,none,,5.0,1215.0,0.5,0.214,0.1928115015974441,331,101
+2266172,Ym Industries Inc,Bolton,09110,Capitol,0,none,,5.0,1215.0,0.5,0.214,0.1928115015974441,332,102
+2266204,Ym Industries Inc,Bolton,09110,Capitol,0,none,,5.0,1215.0,0.5,0.214,0.1928115015974441,333,103
+1143315,Kms Oil Company Llc,Shelton,09140,Naugatuck Valley,0,none,oil,13.8,987.0,0.25,0.565,0.18809904153354634,334,35
+323218,Heating Oil Partners Lp,Killingworth,09130,Lower Connecticut River Valley,0,none,"oil, propane",22.0,922.0,0.0,0.936,0.18722044728434506,335,10
+288754,Saybrook Oil,Portland,09130,Lower Connecticut River Valley,0,none,oil,22.0,922.0,0.0,0.936,0.18722044728434506,336,11
+288755,Valley Oil,Portland,09130,Lower Connecticut River Valley,0,none,oil,22.0,922.0,0.0,0.936,0.18722044728434506,337,12
+1593960,Bethany Fuel Llc,Bethany,09170,South Central Connecticut,0,none,oil,8.2,1170.0,0.375,0.367,0.18598242811501597,338,55
+389595,Just Clean Fuel Llc,Westbrook,09130,Lower Connecticut River Valley,0,none,oil,21.9,922.0,0.0,0.923,0.18466453674121408,339,13
+1189190,Litchfield County Fuel Oils Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,12.9,987.0,0.25,0.543,0.18362619808306707,340,36
+1185138,Armstrong Home Heating Oil Llc,Terryville,09140,Naugatuck Valley,0,none,oil,12.8,987.0,0.25,0.537,0.18234824281150158,341,37
+1203191,Thurston Energy,Naugatuck,09140,Naugatuck Valley,0,none,oil,12.8,987.0,0.25,0.537,0.18234824281150158,342,38
+411265,T & S Home Heating,Portland,09130,Lower Connecticut River Valley,0,none,,21.3,922.0,0.0,0.907,0.18146964856230033,343,14
+1237355,Pricerite Oil Llc,Watertown,09140,Naugatuck Valley,0,none,oil,12.2,987.0,0.25,0.527,0.18043130990415335,344,39
+909320,J Services Llc,Bridgeport,09120,Greater Bridgeport,0,none,,16.8,980.0,0.125,0.712,0.17999201277955273,345,15
+1641376,Fillerup Inc,Meriden,09170,South Central Connecticut,0,none,,7.6,1170.0,0.375,0.335,0.1795926517571885,346,56
+1211266,Clock Town Energy Llc,Thomaston,09140,Naugatuck Valley,0,none,oil,12.0,987.0,0.25,0.514,0.17787539936102237,347,40
+1789789,M&m Fuel Oils,Guilford,09170,South Central Connecticut,0,none,oil,7.1,1170.0,0.375,0.319,0.17639776357827475,348,57
+421503,J J Vinci Oil Co,Middletown,09130,Lower Connecticut River Valley,0,none,oil,20.9,922.0,0.0,0.882,0.17635782747603834,349,15
+1254531,Brainard's Heating Oil Llc,Shelton,09140,Naugatuck Valley,0,none,oil,11.9,987.0,0.25,0.505,0.17595846645367413,350,41
+435569,River Valley Oil Service,Middletown,09130,Lower Connecticut River Valley,0,none,oil,20.5,922.0,0.0,0.875,0.17507987220447285,351,16
+289066,Baribault Oil,Oakville,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,352,42
+288046,Barrett Family Oil Co,Thomaston,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,353,43
+290725,Berkshire Oil Inc,Bristol,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,354,44
+287131,Brass City,Waterbury,09140,Naugatuck Valley,0,none,,,987.0,0.25,0.5,0.175,355,45
+288776,Dal Fuel Oil Co Llc,Naugatuck,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,356,46
+299584,Eagle Oil Co,Bethlehem,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,357,47
+288467,Frank C Vierra,Waterbury,09140,Naugatuck Valley,0,none,,,987.0,0.25,0.5,0.175,358,48
+289323,Hillcrest Fuel Inc,Ansonia,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,359,49
+287134,J Thurston,Waterbury,09140,Naugatuck Valley,0,none,,,987.0,0.25,0.5,0.175,360,50
+286734,Mann Inc,Ansonia,09140,Naugatuck Valley,0,none,,,987.0,0.25,0.5,0.175,361,51
+288298,Nelson Oil,Thomaston,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,362,52
+287522,South Britain Oil Llc,Southbury,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,363,53
+292803,Thomaston Oil,Thomaston,09140,Naugatuck Valley,0,none,oil,,987.0,0.25,0.5,0.175,364,54
+2551020,Burn Oil Llc,Marlborough,09110,Capitol,0,none,oil,2.7,1215.0,0.5,0.125,0.17492012779552715,365,104
+1260347,Omni Energy Llc,Watertown,09140,Naugatuck Valley,0,none,oil,11.8,987.0,0.25,0.495,0.1740415335463259,366,55
+1789168,Affordable Fuels Llc,East Haven,09170,South Central Connecticut,0,none,,6.5,1170.0,0.375,0.3,0.17256389776357828,367,58
+2627040,L V Fuel Co Llc,South Glastonbury,09110,Capitol,0,none,oil,2.3,1215.0,0.5,0.112,0.17236421725239615,368,105
+2625451,Wilson-norige Oil Company,Broad Brook,09110,Capitol,0,none,oil,2.3,1215.0,0.5,0.112,0.17236421725239615,369,106
+1264438,Oil Man,Wolcott,09140,Naugatuck Valley,0,none,oil,11.4,987.0,0.25,0.479,0.17084664536741215,370,56
+2634698,Primary Energy Llc,Hebron,09110,Capitol,0,none,oil,2.0,1215.0,0.5,0.089,0.16789137380191693,371,107
+1311281,Penny Oil Energy Distributors Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,11.1,987.0,0.25,0.463,0.1676517571884984,372,57
+1313350,Power Fuels Propane Llc,Bristol,09140,Naugatuck Valley,0,none,propane,11.1,987.0,0.25,0.463,0.1676517571884984,373,58
+1301799,Seymour Oil And Propane,Seymour,09140,Naugatuck Valley,0,none,"oil, propane",11.0,987.0,0.25,0.457,0.1663738019169329,374,59
+449631,Quality Propane Inc,Clinton,09130,Lower Connecticut River Valley,0,none,propane,20.0,922.0,0.0,0.821,0.16421725239616614,375,17
+1359380,Boss Oil Co Llc,Thomaston,09140,Naugatuck Valley,0,none,oil,10.4,987.0,0.25,0.435,0.1619009584664537,376,60
+287872,B & B Petroleum Inc,Portland,09130,Lower Connecticut River Valley,0,none,oil,19.8,922.0,0.0,0.808,0.16166134185303516,377,18
+1376145,Trio Energy Llc,Naugatuck,09140,Naugatuck Valley,0,none,oil,10.1,987.0,0.25,0.422,0.15934504792332269,378,61
+2870317,S + S Oil Co,East Hartford,09110,Capitol,0,none,oil,0.9,1215.0,0.5,0.038,0.15766773162939296,379,108
+485732,United Fuel Oil,Durham,09130,Lower Connecticut River Valley,0,none,oil,19.0,922.0,0.0,0.786,0.15718849840255592,380,19
+2884391,Wilson-norige Oil Company,Broad Brook,09110,Capitol,0,none,oil,0.7,1215.0,0.5,0.035,0.15702875399361022,381,109
+2900426,Edpo Llc,Stafford Springs,09110,Capitol,0,none,,0.6,1215.0,0.5,0.032,0.15638977635782747,382,110
+1403391,Mercury Engergy,Waterbury,09140,Naugatuck Valley,0,none,,9.6,987.0,0.25,0.406,0.15615015974440893,383,62
+492297,American Oil & Heating,Middlefield,09130,Lower Connecticut River Valley,0,none,oil,18.8,922.0,0.0,0.78,0.15591054313099043,384,20
+1427296,Blackhawk Oil,Bristol,09140,Naugatuck Valley,0,none,oil,9.3,987.0,0.25,0.399,0.15487220447284344,385,63
+2943833,Beacon Oil Llc,Granby,09110,Capitol,0,none,oil,0.3,1215.0,0.5,0.022,0.15447284345047924,386,111
+2948713,Real Heating Oil Llc,Southington,09110,Capitol,0,none,oil,0.2,1215.0,0.5,0.016,0.15319488817891375,387,112
+2961323,Tower Klebe Energy,Plainville,09110,Capitol,0,none,oil,0.0,1215.0,0.5,0.0,0.15,388,113
+1451837,Dollarwise Discount Oil,Waterbury,09140,Naugatuck Valley,0,none,oil,9.0,987.0,0.25,0.374,0.14976038338658149,389,64
+1456542,Gaski Energy Llc,Bristol,09140,Naugatuck Valley,0,none,oil,9.0,987.0,0.25,0.374,0.14976038338658149,390,65
+522175,Daniels Propane,Portland,09130,Lower Connecticut River Valley,0,none,propane,17.9,922.0,0.0,0.748,0.14952076677316295,391,21
+2379108,Alpine Heating & Cooling,North Haven,09170,South Central Connecticut,0,none,,4.4,1170.0,0.375,0.182,0.1489217252396166,392,59
+2379125,Davis Oil,North Haven,09170,South Central Connecticut,0,none,oil,4.4,1170.0,0.375,0.182,0.1489217252396166,393,60
+2379127,James Heating,North Haven,09170,South Central Connecticut,0,none,,4.4,1170.0,0.375,0.182,0.1489217252396166,394,61
+2279817,Krall Energy,North Haven,09170,South Central Connecticut,0,none,oil,4.4,1170.0,0.375,0.182,0.1489217252396166,395,62
+2379159,Only Oil,North Haven,09170,South Central Connecticut,0,none,oil,4.4,1170.0,0.375,0.182,0.1489217252396166,396,63
+2379154,Vadney Fuel,North Haven,09170,South Central Connecticut,0,none,oil,4.4,1170.0,0.375,0.182,0.1489217252396166,397,64
+1609443,Annie's Oil Llc,Prospect,09140,Naugatuck Valley,0,none,oil,8.0,987.0,0.25,0.355,0.145926517571885,398,66
+1612100,Best Price Oil,Waterbury,09140,Naugatuck Valley,0,none,oil,8.0,987.0,0.25,0.355,0.145926517571885,399,67
+898901,Dollar Wise,Portland,09130,Lower Connecticut River Valley,0,none,,17.1,922.0,0.0,0.722,0.14440894568690096,400,22
+922672,Dutch Propane Llc,Moodus,09130,Lower Connecticut River Valley,0,none,propane,16.6,922.0,0.0,0.706,0.1412140575079872,401,23
+2518090,Buchta Oil Service,Guilford,09170,South Central Connecticut,0,none,oil,3.0,1170.0,0.375,0.137,0.13997603833865813,402,65
+2529445,Heating Oil Delivery Llc,Orange,09170,South Central Connecticut,0,none,oil,3.0,1170.0,0.375,0.137,0.13997603833865813,403,66
+1788353,Family Discount Heating Oil,Wolcott,09140,Naugatuck Valley,0,none,oil,7.1,987.0,0.25,0.319,0.13889776357827477,404,68
+292017,Hi Ho Petroleum,Bridgeport,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,405,16
+287550,Joe's Fuel Co Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,406,17
+287469,Kaufman Fuel,Bridgeport,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,407,18
+289010,Kerigan's Fuel Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,408,19
+288097,Santa Fuel Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,409,20
+364556,Swanson Fuel Inc,Monroe,09120,Greater Bridgeport,0,none,oil,,980.0,0.125,0.5,0.1375,410,21
+1603650,Martin Heating Oil Llc,Wolcott,09140,Naugatuck Valley,0,none,oil,7.0,987.0,0.25,0.31,0.1369808306709265,411,69
+1210409,Knight Fuel Oil Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,11.8,980.0,0.125,0.495,0.1365415335463259,412,22
+2033100,Quinoco Energy,Bristol,09140,Naugatuck Valley,0,none,oil,6.5,987.0,0.25,0.3,0.13506389776357827,413,70
+973935,Onlineoil.com,Middletown,09130,Lower Connecticut River Valley,0,none,,16.0,922.0,0.0,0.671,0.13418530351437702,414,24
+1317828,Residential Fuel Systems Llc,Stratford,09120,Greater Bridgeport,0,none,oil,10.9,980.0,0.125,0.444,0.12631789137380192,415,23
+2085822,Easy Oil Llc,Cheshire,09140,Naugatuck Valley,0,none,oil,6.0,987.0,0.25,0.256,0.12611821086261982,416,71
+2093744,Gary Franco Propane Llc,Oxford,09140,Naugatuck Valley,0,none,propane,6.0,987.0,0.25,0.256,0.12611821086261982,417,72
+1034211,Brazos Oil Llc,Portland,09130,Lower Connecticut River Valley,0,none,oil,15.1,922.0,0.0,0.629,0.12587859424920128,418,25
+2104834,Westconn Energy Llc,Seymour,09140,Naugatuck Valley,0,none,oil,5.9,987.0,0.25,0.252,0.12547923322683707,419,73
+2230950,Belica Fuel Oil Llc,Southbury,09140,Naugatuck Valley,0,none,oil,5.2,987.0,0.25,0.233,0.12164536741214058,420,74
+1044783,Addies Oil Llc,Middletown,09130,Lower Connecticut River Valley,0,none,oil,14.8,922.0,0.0,0.607,0.12140575079872205,421,26
+2261013,Right Energy Inc,Prospect,09140,Naugatuck Valley,0,none,oil,5.0,987.0,0.25,0.214,0.1178115015974441,422,75
+2273671,Oxford Propane,Shelton,09140,Naugatuck Valley,0,none,propane,4.9,987.0,0.25,0.208,0.11653354632587859,423,76
+1134280,Didato's Oil Service,Middletown,09130,Lower Connecticut River Valley,0,none,oil,13.9,922.0,0.0,0.572,0.11437699680511182,424,27
+1456615,Dollarwise Discount Oil,Bridgeport,09120,Greater Bridgeport,0,none,oil,9.0,980.0,0.125,0.374,0.11226038338658148,425,24
+1147571,Scott Energy Of Ct Llc,Moodus,09130,Lower Connecticut River Valley,0,none,oil,13.7,922.0,0.0,0.559,0.11182108626198084,426,28
+2410463,Fjb Oil Llc,Wolcott,09140,Naugatuck Valley,0,none,oil,4.1,987.0,0.25,0.173,0.10950479233226837,427,77
+2406108,Oil Dogs Llc,Cheshire,09140,Naugatuck Valley,0,none,oil,4.1,987.0,0.25,0.173,0.10950479233226837,428,78
+2445749,Valiant Energy Solutions,Waterbury,09140,Naugatuck Valley,0,none,oil,3.7,987.0,0.25,0.166,0.10822683706070288,429,79
+288254,Bystrek's Oil Company Llc,Middlefield,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,430,29
+288844,C. Shefcyk & Sons,Portland,09130,Lower Connecticut River Valley,0,none,,,922.0,0.0,0.5,0.1,431,30
+289012,Daniels Oil Co,Portland,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,432,31
+354964,Dimauro Oil Co Llc,Portland,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,433,32
+289147,Foley Furnace Inc,Chester,09130,Lower Connecticut River Valley,0,none,,,922.0,0.0,0.5,0.1,434,33
+289270,John Zanardi Oil Co Inc,Chester,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,435,34
+288459,Long Hill Oil,Clinton,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,436,35
+289182,Pennywise Oil Company Inc,Westbrook,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,437,36
+289888,Sound Petroleum Ii Inc,Clinton,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,438,37
+311809,Taylor Oil Northeast Inc,Portland,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,439,38
+287467,Wilcox Fuel Inc,Westbrook,09130,Lower Connecticut River Valley,0,none,oil,,922.0,0.0,0.5,0.1,440,39
+2572285,East Coast Fuels Llc,Bristol,09140,Naugatuck Valley,0,none,,2.7,987.0,0.25,0.125,0.09992012779552716,441,80
+2590199,Omni Propane Llc,Watertown,09140,Naugatuck Valley,0,none,propane,2.5,987.0,0.25,0.121,0.09928115015974441,442,81
+2649248,Massimo Fuel Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,2.1,987.0,0.25,0.102,0.09544728434504793,443,82
+2663519,Bd Energy,Ansonia,09140,Naugatuck Valley,0,none,oil,2.0,987.0,0.25,0.089,0.09289137380191693,444,83
+2667876,Bd Energy,Ansonia,09140,Naugatuck Valley,0,none,oil,2.0,987.0,0.25,0.089,0.09289137380191693,445,84
+2684688,J&a Oil Delivery Llc,Naugatuck,09140,Naugatuck Valley,0,none,oil,1.7,987.0,0.25,0.08,0.09097444089456869,446,85
+1320817,Patriot Discount Oil Llc,Middletown,09130,Lower Connecticut River Valley,0,none,oil,10.9,922.0,0.0,0.444,0.08881789137380192,447,40
+1351943,River Valley Propane Inc,Middletown,09130,Lower Connecticut River Valley,0,none,propane,10.4,922.0,0.0,0.435,0.08690095846645368,448,41
+2159117,Cuzzi Oil Llc,Bridgeport,09120,Greater Bridgeport,0,none,oil,5.7,980.0,0.125,0.243,0.08606230031948882,449,25
+2867527,Bag Oil Llc,Waterbury,09140,Naugatuck Valley,0,none,oil,0.9,987.0,0.25,0.038,0.08266773162939296,450,86
+2291901,Dragon Fuel Llc,Stratford,09120,Greater Bridgeport,0,none,oil,4.7,980.0,0.125,0.204,0.07839456869009584,451,26
+2954660,Kingston Oil Llc,Wolcott,09140,Naugatuck Valley,0,none,oil,0.2,987.0,0.25,0.016,0.07819488817891374,452,87
+1440398,Reliable Energy Of Colchester Llc,Portland,09130,Lower Connecticut River Valley,0,none,oil,9.1,922.0,0.0,0.387,0.07731629392971247,453,42
+2973288,Prime Oil,Wolcott,09140,Naugatuck Valley,0,none,oil,0.1,987.0,0.25,0.003,0.07563897763578274,454,88
+2450159,Heatly,Bridgeport,09120,Greater Bridgeport,0,none,,3.6,980.0,0.125,0.16,0.06944888178913738,455,27
+2536230,Recharge Fuel Llc,Stratford,09120,Greater Bridgeport,0,none,oil,3.1,980.0,0.125,0.153,0.06817092651757188,456,28
+1658581,Wilcox Oil Online,Westbrook,09130,Lower Connecticut River Valley,0,none,oil,7.4,922.0,0.0,0.332,0.06645367412140575,457,43
+2539059,New Canaan Oil Co,Bridgeport,09120,Greater Bridgeport,0,none,oil,3.0,980.0,0.125,0.137,0.06497603833865814,458,29
+2539043,Servco Oil Inc,Bridgeport,09120,Greater Bridgeport,0,none,oil,3.0,980.0,0.125,0.137,0.06497603833865814,459,30
+2557019,Village Oil,Bridgeport,09120,Greater Bridgeport,0,none,oil,2.8,980.0,0.125,0.134,0.0643370607028754,460,31
+2557014,Branchville Oil,Bridgeport,09120,Greater Bridgeport,0,none,oil,2.7,980.0,0.125,0.125,0.06242012779552716,461,32
+289319,Peter H Mortensen Vinci Co (the),Middletown,09130,Lower Connecticut River Valley,0,none,,6.1,922.0,0.0,0.278,0.05559105431309905,462,44
+2796265,Apple Oil,Bridgeport,09120,Greater Bridgeport,0,none,oil,1.5,980.0,0.125,0.073,0.05219648562300319,463,33
+2271332,Groeper Oil,Middletown,09130,Lower Connecticut River Valley,0,none,oil,4.9,922.0,0.0,0.208,0.0415335463258786,464,45
+2395762,Mirabito Energy Products,Portland,09130,Lower Connecticut River Valley,0,none,oil,4.1,922.0,0.0,0.173,0.03450479233226837,465,46
+2463690,Market Oil,Moodus,09130,Lower Connecticut River Valley,0,none,oil,3.4,922.0,0.0,0.157,0.031309904153354634,466,47
+2697663,Connecticut Oil Recycling Services Llc,Middletown,09130,Lower Connecticut River Valley,0,none,oil,1.6,922.0,0.0,0.077,0.015335463258785943,467,48
+2841699,F And F Fuel Llc,East Hampton,09130,Lower Connecticut River Valley,0,none,oil,1.1,922.0,0.0,0.058,0.011501597444089457,468,49

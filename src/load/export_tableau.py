@@ -14,6 +14,8 @@ Outputs (tableau/data):
                         (positive) or cooling (negative)
   county_scores.csv     county x scoring basis (Total, Per home), latest season
   kpis.csv              headline numbers per heating season, formatted for display
+  ct_regions.csv        Connecticut planning region x dealer density (from SQL query 7)
+  ct_prospects.csv      Connecticut dealers with fit score and rank (from vw_dealer_opportunity)
 """
 
 import geopandas as gpd
@@ -142,6 +144,24 @@ def kpis(cm: pd.DataFrame) -> None:
     print(f"  wrote kpis.csv: {len(out)} rows")
 
 
+def ct_dealers() -> None:
+    def short_region(s: pd.Series) -> pd.Series:
+        return s.str.replace("Connecticut", "CT", regex=False)
+
+    regions = pd.read_csv(PROCESSED / "analysis" / "07_dealer_density.csv")
+    regions["region"] = short_region(regions["region"])
+    regions.to_csv(OUT / "ct_regions.csv", index=False)
+    p = pd.read_csv(PROCESSED / "tableau" / "vw_dealer_opportunity.csv")
+    p["region"] = short_region(p["region"])
+    p["fit_score"] = (p["fit_score"] * 100).round(1)
+    short_name = p["name"].str.replace(r"\s+(Inc|Llc|Co|Corp|Company|Corporation)\.?$", "", regex=True)
+    p["label"] = p["prospect_rank"].astype(str) + ". " + short_name + ", " + p["town"]
+    p = p[["prospect_rank", "label", "name", "town", "region", "offers_hvac_service", "years_licensed",
+           "region_homes_per_dealer", "fit_score"]].sort_values("prospect_rank")
+    p.to_csv(OUT / "ct_prospects.csv", index=False)
+    print(f"  wrote ct_regions.csv: {len(regions)} regions; ct_prospects.csv: {len(p)} dealers")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     acs = pd.read_csv(INTERIM / "acs_households_by_fuel.csv", dtype=FIPS)
@@ -151,6 +171,7 @@ def main() -> None:
     seasonal_pulse(cm)
     county_scores()
     kpis(cm)
+    ct_dealers()
 
 
 if __name__ == "__main__":

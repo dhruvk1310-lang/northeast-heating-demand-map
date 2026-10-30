@@ -4,7 +4,7 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Data, demand model, SQL database, and Tableau dashboards complete. Connecticut dealer layer next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
+> **Status:** Data, demand model, SQL database, Tableau dashboards, and the Connecticut dealer layer complete. Final findings write-up next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 >
 > **Live dashboards:** [The Thermal Year on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
 
@@ -98,7 +98,7 @@ flowchart LR
         B[EIA RECS and SEDS<br/>consumption per household]
         C[NOAA<br/>heating and cooling degree days]
         D[EIA SHOPP<br/>heating oil and propane prices]
-        E[Dealer listings<br/>CT pilot]
+        E[CT license registry<br/>heating fuel dealers]
     end
 
     subgraph Python
@@ -140,7 +140,7 @@ All sources are public and free.
 | 6 | State Heating Oil and Propane Program (**SHOPP**) | U.S. EIA | State, PADD region | Weekly (Oct to Mar); summer data is sparse | Residential heating oil and propane prices |
 | 7 | Monthly residential electricity sales (Form EIA-861M) | U.S. EIA | State | Monthly | Validates summer cooling demand |
 | 8 | Cartographic boundary files (2024, plus 2020 for old Connecticut counties) | U.S. Census Bureau | County | Annual | Map shapes, FIPS codes, Connecticut crosswalk |
-| 9 | Heating fuel dealer listings | CT Department of Consumer Protection registrations (to be confirmed), dealer websites, map listings | Business | One-time snapshot | Dealer locations, services offered, online tools |
+| 9 | State Licenses and Credentials: Home Heating Fuel Dealer and Heating, Piping & Cooling contractor licenses | CT Department of Consumer Protection (data.ct.gov) | Business | Snapshot | Dealer locations, services offered, online tools |
 
 ---
 
@@ -247,7 +247,7 @@ The schema is in [`sql/schema/01_create_tables.sql`](sql/schema/01_create_tables
 | `dim_county` | 218 | `county_fips`, `state_fips`, `county_name`, `land_area_sqmi`, `latitude`, `longitude` |
 | `dim_date` | 444 | `date_key` (YYYYMM), `year`, `month`, `month_name`, `heating_season` (e.g. 2024-25), `is_heating_month` |
 | `dim_fuel` | 9 | `fuel_id`, `fuel_name`, `btu_per_gallon`, `unit`, `is_modeled` |
-| `dim_dealer` | Phase 6 | `dealer_id`, `name`, `county_fips`, `town`, `fuels_offered`, `offers_hvac_service`, `has_online_payment`, `has_customer_portal`, `est_size_band`, `website` |
+| `dim_dealer` | 521 | `dealer_id`, `registration`, `name`, `town`, `zip5`, `county_fips` (planning region), `offers_hvac_service`, `hvac_match`, `fuels_in_name`, `years_licensed` |
 
 ### Fact tables
 
@@ -278,17 +278,17 @@ Each analysis is a saved query in `sql/analysis/`. The most useful results also 
 | 4 | Heating season comparison: how much colder or warmer each winter was vs. normal, and the effect on demand | CTEs, weighted averages, `LAG()` |
 | 5 | Price trends and volatility by state and fuel | Moving averages, standard deviation (computed, since SQLite has no `STDDEV`) |
 | 6 | Oil-to-propane mix by county (urban oil vs. rural propane pattern) | Ratios, `NTILE()` |
-| 7 | Dealer density: oil and propane homes per dealer by county (CT). *Phase 6, needs dealer data* | Joins with dealer table, `LEFT JOIN` gaps |
-| 8 | Dealer fit score and ranked prospect list (CT). *Phase 6, needs dealer data* | Weighted scoring, `ROW_NUMBER()` |
+| 7 | Dealer density: oil and propane homes per dealer by planning region (CT) | Joins with dealer table, `LEFT JOIN` gaps |
+| 8 | Dealer fit score and ranked prospect list (CT) | Weighted scoring, `ROW_NUMBER()` |
 | 9 | Model calibration: modeled vs. reported state consumption | Joins, percent error |
 
-**Tableau views:** `vw_county_month_demand`, `vw_county_annual_summary`, `vw_state_seasonality` (built), and `vw_dealer_opportunity` (Phase 6). Tableau Public cannot connect to SQLite, so each view is also exported to `data/processed/tableau/`. Query results are saved in `data/processed/analysis/`.
+**Tableau views:** `vw_county_month_demand`, `vw_county_annual_summary`, `vw_state_seasonality`, and `vw_dealer_opportunity`. Tableau Public cannot connect to SQLite, so each view is also exported to `data/processed/tableau/`. Query results are saved in `data/processed/analysis/`.
 
 ---
 
 ## Tableau Dashboards
 
-Two dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. **[Open them on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear).** The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
+Three dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. **[Open them on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear).** The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
 
 ### The Thermal Year
 - County map colored by **thermal load**: each county's heating gallons per home minus its cooling demand per home, from +1 (all heating) to -1 (all cooling)
@@ -311,7 +311,10 @@ The workbook is generated by code rather than edited by hand, so it can be rebui
 
 The map's data source (county shapes related to monthly county data) comes from a template saved by Tableau itself in `tableau/templates/`.
 
-A Connecticut dealer dashboard follows in Phase 6.
+### Who to Call First (Connecticut pilot)
+- All 468 licensed heating fuel dealers in Connecticut, matched to HVAC contractor licenses (20% are full-service)
+- Oil and propane homes per dealer in each of the 9 planning regions: Western CT is the most under-served (2,206 homes per dealer), the Lower CT River Valley the least (922)
+- Top 15 prospects by fit score: 50% offers HVAC service, 30% how under-served the region is, 20% years licensed
 
 ---
 
@@ -401,7 +404,7 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 **Phase 4: Database and analysis (SQL)**
 - [x] Create star schema
 - [x] Load processed tables
-- [x] Write analysis queries 1 to 6 and 9 (7 and 8 need the dealer data from Phase 6)
+- [x] Write analysis queries 1 to 9
 - [x] Build Tableau views (and CSV exports for Tableau Public)
 
 **Phase 5: Dashboard (Tableau)**
@@ -411,10 +414,10 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 - [x] [Publish to Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
 
 **Phase 6: Dealer layer (Connecticut)**
-- [ ] Collect and verify CT dealer list
-- [ ] Enrich with services and online tools
-- [ ] Fit score and prospect ranking
-- [ ] Add Dashboard 4
+- [x] Collect the CT dealer list (state license registry: 521 active dealers, 468 in Connecticut)
+- [x] Enrich with services (HVAC contractor license match). Online tools were dropped: they are not in any public record
+- [x] Fit score and prospect ranking (`vw_dealer_opportunity`, queries 7 and 8)
+- [x] Add the dealer dashboard ("Who to Call First")
 
 **Phase 7: Findings**
 - [ ] Write top findings in `docs/findings.md`

@@ -45,9 +45,12 @@ FONT_BOLD = "Tableau Semibold"
 MAP = "federated.1d875mm13w789317ga6xj1ro064z"
 PULSE = "federated.pulse0thermal0year0000000001"
 SCORES = "federated.scores0thermal0year00000001"
+CT_REGIONS = "federated.ctregions0thermal0year000001"
+CT_PROSPECTS = "federated.ctprospects0thermal0year0001"
 PARAMS = "Parameters"
 P_MONTH = "[Parameter 1]"
-CAPTIONS = {MAP: "counties.geojson+ (Multiple Connections)", PULSE: "Seasonal pulse",
+CAPTIONS = {CT_REGIONS: "Connecticut regions", CT_PROSPECTS: "Connecticut dealers",
+            MAP: "counties.geojson+ (Multiple Connections)", PULSE: "Seasonal pulse",
             SCORES: "County scores"}
 P_BASIS = "[Parameter 2]"
 # True when a row's month_date is the month chosen in the Month parameter.
@@ -211,6 +214,41 @@ def pulse_datasource() -> str:
         "Bar color code", "integer", "measure", "quantitative",
         f"IF [kind] = 'Cooling' AND {MONTH_MATCH} THEN 2 ELSEIF [kind] = 'Cooling' THEN 1 ELSEIF {MONTH_MATCH} THEN 4 ELSE 3 END")}
     return text_datasource(PULSE, "Seasonal pulse", "seasonal_pulse.csv", cols, calcs, "seasonal_pulse", "pulse")
+
+
+def ct_regions_datasource() -> str:
+    cols = [
+        ("region", "string", "dimension", "nominal", "Region"),
+        ("oil_homes", "integer", "measure", "quantitative", "Oil Homes"),
+        ("propane_homes", "integer", "measure", "quantitative", "Propane Homes"),
+        ("dealers", "integer", "measure", "quantitative", "Dealers"),
+        ("hvac_dealers", "integer", "measure", "quantitative", "Full-Service Dealers"),
+        ("pct_full_service", "real", "measure", "quantitative", "% Full-Service"),
+        ("homes_per_dealer", "real", "measure", "quantitative", "Homes per Dealer"),
+        ("spend_per_dealer_musd", "real", "measure", "quantitative", "Spend per Dealer ($M)"),
+        ("underserved_rank", "integer", "measure", "quantitative", "Under-served Rank"),
+    ]
+    return text_datasource(CT_REGIONS, "Connecticut regions", "ct_regions.csv", cols, {}, "ct_regions", "ct_regions")
+
+
+CT_PROSPECT_COLS = [
+    ("prospect_rank", "integer", "measure", "quantitative", "Prospect Rank"),
+    ("label", "string", "dimension", "nominal", "Dealer"),
+    ("name", "string", "dimension", "nominal", "Name"),
+    ("town", "string", "dimension", "nominal", "Town"),
+    ("region", "string", "dimension", "nominal", "Region"),
+    ("offers_hvac_service", "integer", "measure", "quantitative", "Offers HVAC Service"),
+    ("years_licensed", "real", "measure", "quantitative", "Years Licensed"),
+    ("region_homes_per_dealer", "real", "measure", "quantitative", "Region Homes per Dealer"),
+    ("fit_score", "real", "measure", "quantitative", "Fit Score"),
+]
+
+
+def ct_prospects_datasource() -> str:
+    calcs = {"Calculation_top_15": ("Top 15", "boolean", "dimension", "nominal", "[prospect_rank] <= 15"),
+             "Calculation_fit_label": ("Fit score label", "string", "dimension", "nominal", "STR(ROUND([fit_score], 1))")}
+    return text_datasource(CT_PROSPECTS, "Connecticut dealers", "ct_prospects.csv", CT_PROSPECT_COLS, calcs,
+                           "ct_prospects", "ct_prospects")
 
 
 def scores_datasource() -> str:
@@ -388,12 +426,14 @@ CODE_PALETTES = {
     # Preferences.tps (which Tableau prefers over the workbook's) cannot override them.
     "NE Heating Quadrant Codes": [FAINT, ICE, EMBER, "#F2C14E"],  # Low demand, Summer only, Winter only, Year-round
     "NE Heating Pulse Codes": [ICE_DIM, ICE_LIGHT, EMBER_DIM, GOLD],  # Cooling, Cooling (month), Heating, Heating (month)
+    "NE Heating HVAC Codes": [FAINT, GOLD],  # 0 = fuel only, 1 = also HVAC service
+    "NE Heating Ember Ramp": [EMBER_DIM, EMBER, GOLD],  # low to high
 }
 
 
-def continuous_color_rule(field_ref: str, palette: str) -> str:
+def continuous_color_rule(field_ref: str, palette: str, low: float = 1.0, high: float = 4.0) -> str:
     return f"""          <style-rule element='mark'>
-            <encoding attr='color' field='{field_ref}' max='4.0' min='1.0' palette='{palette}' type='interpolated' />
+            <encoding attr='color' field='{field_ref}' max='{high}' min='{low}' palette='{palette}' type='interpolated' />
           </style-rule>
 """
 
@@ -674,6 +714,129 @@ def scatter() -> str:
                      inst(s, "cooling_pct", "sum", "qk"), inst(s, "heating_pct", "sum", "qk"))
 
 
+def bar_style(axis_field: str, label_color: str, extra: str = "", header_field: str = "", width: int = 0) -> str:
+    """Horizontal bar sheet: hidden value axis, readable row headers and labels."""
+    header_width = (f"\n            <format attr='width' field='{header_field}' value='{width}' />"
+                    if header_field else "")
+    return sheet_style(extra + f"""          <style-rule element='axis'>
+            <format attr='display' class='0' field='{axis_field}' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>{header_width}
+            <format attr='color' value='{TEXT}' />
+            <format attr='font-family' value='{FONT}' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='{label_color}' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+""")
+
+
+def ct_region_density() -> str:
+    r = CT_REGIONS
+    cols = [
+        ("region", "string", "dimension", "nominal", "Region"),
+        ("homes_per_dealer", "real", "measure", "quantitative", "Homes per Dealer"),
+        ("dealers", "integer", "measure", "quantitative", "Dealers"),
+        ("pct_full_service", "real", "measure", "quantitative", "% Full-Service"),
+        ("spend_per_dealer_musd", "real", "measure", "quantitative", "Spend per Dealer ($M)"),
+    ]
+    insts = [("region", "none", "nk", "nominal"), ("homes_per_dealer", "sum", "qk", "quantitative"),
+             ("dealers", "sum", "qk", "quantitative"), ("pct_full_service", "sum", "qk", "quantitative"),
+             ("spend_per_dealer_musd", "sum", "qk", "quantitative")]
+    region_ref, value_ref = inst(r, "region", "none", "nk"), inst(r, "homes_per_dealer", "sum", "qk")
+    view = "\n".join([
+        deps(r, cols, insts),
+        f"          <sort class='computed' column='{region_ref}' direction='DESC' using='{value_ref}' />",
+        "          <aggregation value='true' />",
+    ])
+    style = bar_style(value_ref, GOLD, continuous_color_rule(value_ref, "NE Heating Ember Ramp", 900.0, 2250.0),
+                      region_ref, 190)
+    tip = tooltip([
+        (f"<{region_ref}>\n", TEXT, True),
+        (f"<{value_ref}>", GOLD, True), (" oil and propane homes per dealer\n", MUTED, False),
+        (f"<{inst(r, 'dealers', 'sum', 'qk')}>", TEXT, False), (" dealers, ", MUTED, False),
+        (f"<{inst(r, 'pct_full_service', 'sum', 'qk')}>", TEXT, False), ("% also do HVAC\n", MUTED, False),
+        ("$", MUTED, False), (f"<{inst(r, 'spend_per_dealer_musd', 'sum', 'qk')}>", GOLD, False),
+        ("M of yearly heating spend per dealer", MUTED, False),
+    ])
+    panes = f"""          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='{value_ref}' />
+              <text column='{value_ref}' />
+              <tooltip column='{inst(r, "dealers", "sum", "qk")}' />
+              <tooltip column='{inst(r, "pct_full_service", "sum", "qk")}' />
+              <tooltip column='{inst(r, "spend_per_dealer_musd", "sum", "qk")}' />
+            </encodings>
+{tip}
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='0.6' />
+              </style-rule>
+            </style>
+          </pane>"""
+    return worksheet("CT Region Density", [r], view, style, panes, region_ref, value_ref)
+
+
+def ct_prospects() -> str:
+    c = CT_PROSPECTS
+    cols = CT_PROSPECT_COLS + [("Calculation_top_15", "boolean", "dimension", "nominal", "Top 15", "[prospect_rank] <= 15"),
+                               ("Calculation_fit_label", "string", "dimension", "nominal", "Fit score label", "STR(ROUND([fit_score], 1))")]
+    insts = [("label", "none", "nk", "nominal"), ("fit_score", "sum", "qk", "quantitative"),
+             ("prospect_rank", "sum", "qk", "quantitative"), ("offers_hvac_service", "avg", "qk", "quantitative"),
+             ("region", "attr", "nk", "nominal"), ("years_licensed", "sum", "qk", "quantitative"),
+             ("region_homes_per_dealer", "sum", "qk", "quantitative"), ("Calculation_top_15", "none", "nk", "nominal"),
+             ("Calculation_fit_label", "attr", "nk", "nominal")]
+    label_ref, score_ref = inst(c, "label", "none", "nk"), inst(c, "fit_score", "sum", "qk")
+    view = "\n".join([
+        deps(c, cols, insts),
+        member_filter(c, "Calculation_top_15", "nk", "true"),
+        f"          <sort class='computed' column='{label_ref}' direction='ASC' using='{inst(c, 'prospect_rank', 'sum', 'qk')}' />",
+        f"          <slices>\n            <column>[{c}].[none:Calculation_top_15:nk]</column>\n          </slices>",
+        "          <aggregation value='true' />",
+    ])
+    hvac_ref = inst(c, "offers_hvac_service", "avg", "qk")
+    style = bar_style(score_ref, MUTED, continuous_color_rule(hvac_ref, "NE Heating HVAC Codes", 0.0, 1.0) + f"""          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='{score_ref}' field-type='quantitative' max='110' min='0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+""", label_ref, 290)
+    tip = tooltip([
+        (f"<{label_ref}>\n", TEXT, True),
+        (f"<{inst(c, 'region', 'attr', 'nk')}>\n", MUTED, False),
+        ("Fit score ", MUTED, False), (f"<{score_ref}>\n", GOLD, True),
+        ("Licensed ", MUTED, False), (f"<{inst(c, 'years_licensed', 'sum', 'qk')}>", TEXT, False),
+        (" years. Region: ", MUTED, False), (f"<{inst(c, 'region_homes_per_dealer', 'sum', 'qk')}>", TEXT, False),
+        (" homes per dealer", MUTED, False),
+    ])
+    panes = f"""          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='{hvac_ref}' />
+              <text column='{inst(c, "Calculation_fit_label", "attr", "nk")}' />
+              <tooltip column='{inst(c, "region", "attr", "nk")}' />
+              <tooltip column='{inst(c, "years_licensed", "sum", "qk")}' />
+              <tooltip column='{inst(c, "region_homes_per_dealer", "sum", "qk")}' />
+            </encodings>
+{tip}
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='0.6' />
+              </style-rule>
+            </style>
+          </pane>"""
+    return worksheet("CT Prospects", [c], view, style, panes, label_ref, score_ref)
+
+
 def top_markets() -> str:
     s, cols = score_columns()
     inst_list = [
@@ -934,6 +1097,53 @@ def year_round_dashboard() -> str:
     return dashboard("Where the Year-Round Money Is", tree)
 
 
+def ct_dashboard() -> str:
+    regions = pd.read_csv(DATA / "ct_regions.csv")
+    prospects = pd.read_csv(DATA / "ct_prospects.csv")
+    top, low = regions.iloc[0], regions.iloc[-1]
+    full_service = prospects["offers_hvac_service"].mean()
+    tiles = [
+        (f"{len(prospects)}", "licensed heating fuel dealers in Connecticut"),
+        (f"{full_service:.0%}", "also licensed for HVAC: full-service"),
+        (f"{top.homes_per_dealer:,.0f}", f"homes per dealer in {top.region}, the most under-served"),
+        (f"{low.homes_per_dealer:,.0f}", f"homes per dealer in {low.region}"),
+    ]
+    tile_nodes = [{"kind": "text", "margin": 10, "background": PANEL, "runs": [
+        (value, GOLD, FONT_BOLD, 26), "\n", (label, MUTED, FONT, 11)]} for value, label in tiles]
+    method = {"kind": "text", "margin": 12, "background": PANEL, "runs": [
+        ("HOW DEALERS ARE SCORED", EMBER, FONT_BOLD, 10), "\n",
+        ("Fit score = 50% offers HVAC service + 30% how under-served its region is (homes per dealer) "
+         "+ 20% years licensed. ", MUTED, FONT, 11),
+        ("Full-service dealers in crowded-out regions are the best fit for a dispatch, routing and service platform. ",
+         TEXT, FONT, 11), "\n",
+        ("■ ", GOLD, FONT, 13), ("Also does HVAC   ", TEXT, FONT, 11),
+        ("■ ", FAINT, FONT, 13), ("Fuel only", TEXT, FONT, 11),
+    ]}
+    left_title = {"kind": "text", "margin": 8, "runs": [
+        ("HOMES PER DEALER", EMBER, FONT_BOLD, 10), "\n",
+        ("Oil and propane homes per licensed dealer, by planning region", MUTED, FONT, 10)]}
+    right_title = {"kind": "text", "margin": 8, "runs": [
+        ("TOP 15 PROSPECTS", EMBER, FONT_BOLD, 10), "\n",
+        ("Ranked by fit score, out of 100", MUTED, FONT, 10)]}
+    source = {"kind": "text", "margin": 10, "runs": [(
+        "Sources: Connecticut Department of Consumer Protection license registry (data.ct.gov), Census ACS 2020-24. "
+        "Dealers are placed in planning regions by ZIP code.   Dhruv Khanna  ·  "
+        "github.com/dhruvk1310-lang/northeast-heating-demand-map", FAINT, FONT, 9)]}
+    tree = ("v", [
+        (13, header("CONNECTICUT PILOT  ·  468 DEALERS, 9 PLANNING REGIONS", "Who to call first",
+                    "Every licensed heating fuel dealer in Connecticut, matched to HVAC contractor licenses and "
+                    "to the oil and propane homes around them.")),
+        (10, ("h", [(1, t) for t in tile_nodes])),
+        (64, ("h", [
+            (44, ("v", [(9, left_title), (91, {"kind": "sheet", "name": "CT Region Density"})])),
+            (56, ("v", [(9, right_title), (91, {"kind": "sheet", "name": "CT Prospects"})])),
+        ])),
+        (9, method),
+        (4, source),
+    ])
+    return dashboard("Connecticut Dealer Prospects", tree)
+
+
 def dashboard_window(name: str, sheets: list[str]) -> str:
     vps = "\n".join(f"        <viewpoint name={q(s)} />" for s in sheets)
     return f"""    <window class='dashboard' maximized='true' name={q(name)}>
@@ -979,11 +1189,11 @@ def sheet_window(name: str) -> str:
 
 
 def workbook(dashboards: str = "", windows: str = "") -> str:
-    sheets = [thermal_map(), seasonal_pulse(), scatter(), top_markets()]
-    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets"]
+    sheets = [thermal_map(), seasonal_pulse(), scatter(), top_markets(), ct_region_density(), ct_prospects()]
+    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets", "CT Region Density", "CT Prospects"]
     window_xml = windows or "\n".join(sheet_window(n) for n in names)
     body = f"""  <datasources>{parameters()}
-{map_datasource()}{pulse_datasource()}{scores_datasource()}
+{map_datasource()}{pulse_datasource()}{scores_datasource()}{ct_regions_datasource()}{ct_prospects_datasource()}
   </datasources>
   <mapsources>
     <mapsource name='Tableau' />
@@ -1019,11 +1229,13 @@ def workbook(dashboards: str = "", windows: str = "") -> str:
 
 
 def main() -> None:
-    dashboards = f"\n  <dashboards>{thermal_year_dashboard()}{year_round_dashboard()}\n  </dashboards>"
-    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets"]
+    dashboards = (f"\n  <dashboards>{thermal_year_dashboard()}{year_round_dashboard()}{ct_dashboard()}"
+                  "\n  </dashboards>")
+    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets", "CT Region Density", "CT Prospects"]
     windows = "\n".join([sheet_window(n) for n in names] + [
         dashboard_window("The Thermal Year", ["Seasonal Pulse", "Thermal Map"]),
         dashboard_window("Where the Year-Round Money Is", ["Top Markets", "Year-Round Scatter"]),
+        dashboard_window("Connecticut Dealer Prospects", ["CT Prospects", "CT Region Density"]),
     ])
     OUT.write_text(workbook(dashboards, windows))
     print(f"  wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size / 1e3:.0f} KB)")

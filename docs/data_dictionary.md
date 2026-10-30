@@ -77,6 +77,12 @@ FIPS codes are stored as text with leading zeros (`09110`, not `9110`).
 | county_season_summary | heating_pct, cooling_pct | float | Percentile among the 218 counties that season | Model |
 | county_season_summary | year_round_score, year_round_rank, quadrant | | 0.6 x heating_pct + 0.4 x cooling_pct, its rank, and quadrant | Model |
 | county_season_summary | *_per_home columns | | Same, but scored on spend and cooling per home | Model |
+| ct_dealers (interim) | dealer_id, registration | text | Registry credential id and dealer registration number | CT license registry |
+| ct_dealers (interim) | name, address, town, state, zip5 | text | Business name (DBA if any) and office address | CT license registry |
+| ct_dealers (interim) | in_ct, region_fips, region_source | | Whether the office is in Connecticut; its planning region and how it was found (`zip`, `town`, `out of state`) | Census crosswalks |
+| ct_dealers (interim) | offers_hvac_service, hvac_match | | 1 if also on an active HVAC contractor license; matched by `name`, `address`, or `none` | CT license registry |
+| ct_dealers (interim) | fuels_in_name | text | `oil` and/or `propane` when the business name says so | Computed |
+| ct_dealers (interim) | license_issued, years_licensed | | First issue date of the registration and years since | CT license registry |
 | calibration | state_abbr, fuel, years | | State, fuel, calendar years compared | Model |
 | calibration | modeled_gallons, seds_gallons | float | Uncalibrated model total vs. EIA SEDS total | Model, EIA SEDS |
 | calibration | factor, pct_error_before | float | SEDS / model, and the model's error before scaling | Model |

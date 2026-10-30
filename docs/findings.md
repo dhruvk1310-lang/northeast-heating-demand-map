@@ -1,6 +1,6 @@
 # Findings
 
-Results from the demand model (Phase 3) and the SQL analysis (Phase 4). Query results are in `data/processed/analysis/`; dashboards come in Phase 5. All figures are modeled estimates; see [assumptions.md](assumptions.md).
+Results from the demand model (Phase 3), the SQL analysis (Phase 4), and the Connecticut dealer pilot (Phase 6). Query results are in `data/processed/analysis/`; dashboards come in Phase 5. All figures are modeled estimates; see [assumptions.md](assumptions.md).
 
 ## Market size
 
@@ -27,6 +27,13 @@ Results from the demand model (Phase 3) and the SQL analysis (Phase 4). Query re
 
 - Scored on totals, the best year-round markets are the big counties around New York City and Boston, because both heating and cooling demand grow with the number of homes.
 - Scored per home, the leaders are oil-heavy counties outside the big cities with warm summers: Sussex County, NJ; Northeastern Connecticut; Putnam County, NY; and the Lower Connecticut River Valley. Query 3, which compares winter (December to February) fuel use with summer (June to August) cooling per home, agrees: Sussex, Newport RI, and Putnam lead, and four Connecticut planning regions make the top eight. This matters for the Connecticut dealer pilot.
+
+## Connecticut dealer pilot
+
+- Connecticut has **468 licensed heating fuel dealers** (521 active registrations including out-of-state companies that deliver into the state). About **1 in 5 (20%)** also holds an HVAC contractor license, so is a full-service dealer.
+- Dealer coverage is uneven (query 7). **Western Connecticut** has the most oil and propane homes per dealer, **2,206**, and about $7.3 million of yearly heating spend per dealer. The **Lower Connecticut River Valley** has the fewest, 922 homes and $3.1 million per dealer. Southeastern Connecticut (1,745) and the Northwest Hills (1,671) are also under-served.
+- Greater Bridgeport has the highest share of full-service dealers (30%); Northeastern Connecticut the lowest (12%).
+- The top prospects for a full-service dealer platform (query 8) are established full-service dealers in under-served regions: **Densmore Oil** (Stonington), **Brunelli Energy** (Bozrah), **Patterson Oil** (Torrington), and **Miller Fuel** (Burlington). Western Connecticut supplies 8 of the top 25, Southeastern Connecticut 7.
 
 ## Model checks
 

@@ -37,6 +37,15 @@
       <color>#7a3416</color>
       <color>#ffc46b</color>
     </color-palette>
+    <color-palette name='NE Heating HVAC Codes' type='ordered-sequential'>
+      <color>#3a4659</color>
+      <color>#ffc46b</color>
+    </color-palette>
+    <color-palette name='NE Heating Ember Ramp' type='ordered-sequential'>
+      <color>#7a3416</color>
+      <color>#e0662b</color>
+      <color>#ffc46b</color>
+    </color-palette>
   </preferences>
   <style>
     <style-rule element='all'>
@@ -841,6 +850,184 @@
         </objects>
       </object-graph>
     </datasource>
+    <datasource caption="Connecticut regions" inline='true' name='federated.ctregions0thermal0year000001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Connecticut regions" name='textscan.ctregions0thermal0year000001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='ct_regions.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.ctregions0thermal0year000001' name='ct_regions.csv' table='[ct_regions#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='region' ordinal='0' />
+            <column datatype='integer' name='oil_homes' ordinal='1' />
+            <column datatype='integer' name='propane_homes' ordinal='2' />
+            <column datatype='integer' name='dealers' ordinal='3' />
+            <column datatype='integer' name='hvac_dealers' ordinal='4' />
+            <column datatype='real' name='pct_full_service' ordinal='5' />
+            <column datatype='real' name='homes_per_dealer' ordinal='6' />
+            <column datatype='real' name='spend_per_dealer_musd' ordinal='7' />
+            <column datatype='integer' name='underserved_rank' ordinal='8' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[region]' value='[ct_regions.csv].[region]' />
+          <map key='[oil_homes]' value='[ct_regions.csv].[oil_homes]' />
+          <map key='[propane_homes]' value='[ct_regions.csv].[propane_homes]' />
+          <map key='[dealers]' value='[ct_regions.csv].[dealers]' />
+          <map key='[hvac_dealers]' value='[ct_regions.csv].[hvac_dealers]' />
+          <map key='[pct_full_service]' value='[ct_regions.csv].[pct_full_service]' />
+          <map key='[homes_per_dealer]' value='[ct_regions.csv].[homes_per_dealer]' />
+          <map key='[spend_per_dealer_musd]' value='[ct_regions.csv].[spend_per_dealer_musd]' />
+          <map key='[underserved_rank]' value='[ct_regions.csv].[underserved_rank]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Region" datatype='string' name='[region]' role='dimension' type='nominal' />
+      <column caption="Oil Homes" datatype='integer' name='[oil_homes]' role='measure' type='quantitative' />
+      <column caption="Propane Homes" datatype='integer' name='[propane_homes]' role='measure' type='quantitative' />
+      <column caption="Dealers" datatype='integer' name='[dealers]' role='measure' type='quantitative' />
+      <column caption="Full-Service Dealers" datatype='integer' name='[hvac_dealers]' role='measure' type='quantitative' />
+      <column caption="% Full-Service" datatype='real' name='[pct_full_service]' role='measure' type='quantitative' />
+      <column caption="Homes per Dealer" datatype='real' name='[homes_per_dealer]' role='measure' type='quantitative' />
+      <column caption="Spend per Dealer ($M)" datatype='real' name='[spend_per_dealer_musd]' role='measure' type='quantitative' />
+      <column caption="Under-served Rank" datatype='integer' name='[underserved_rank]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/ct_regions.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31' table='[Extract].[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31]' type='table' />
+          </relation>
+          <cols>
+            <map key='[region]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[region]' />
+            <map key='[oil_homes]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[oil_homes]' />
+            <map key='[propane_homes]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[propane_homes]' />
+            <map key='[dealers]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[dealers]' />
+            <map key='[hvac_dealers]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[hvac_dealers]' />
+            <map key='[pct_full_service]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[pct_full_service]' />
+            <map key='[homes_per_dealer]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[homes_per_dealer]' />
+            <map key='[spend_per_dealer_musd]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[spend_per_dealer_musd]' />
+            <map key='[underserved_rank]' value='[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31].[underserved_rank]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='ct_regions.csv' id='ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31'>
+            <properties context=''>
+              <relation connection='textscan.ctregions0thermal0year000001' name='ct_regions.csv' table='[ct_regions#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='region' ordinal='0' />
+            <column datatype='integer' name='oil_homes' ordinal='1' />
+            <column datatype='integer' name='propane_homes' ordinal='2' />
+            <column datatype='integer' name='dealers' ordinal='3' />
+            <column datatype='integer' name='hvac_dealers' ordinal='4' />
+            <column datatype='real' name='pct_full_service' ordinal='5' />
+            <column datatype='real' name='homes_per_dealer' ordinal='6' />
+            <column datatype='real' name='spend_per_dealer_musd' ordinal='7' />
+            <column datatype='integer' name='underserved_rank' ordinal='8' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31' table='[Extract].[ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Connecticut dealers" inline='true' name='federated.ctprospects0thermal0year0001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Connecticut dealers" name='textscan.ctprospects0thermal0year0001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='ct_prospects.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.ctprospects0thermal0year0001' name='ct_prospects.csv' table='[ct_prospects#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='prospect_rank' ordinal='0' />
+            <column datatype='string' name='label' ordinal='1' />
+            <column datatype='string' name='name' ordinal='2' />
+            <column datatype='string' name='town' ordinal='3' />
+            <column datatype='string' name='region' ordinal='4' />
+            <column datatype='integer' name='offers_hvac_service' ordinal='5' />
+            <column datatype='real' name='years_licensed' ordinal='6' />
+            <column datatype='real' name='region_homes_per_dealer' ordinal='7' />
+            <column datatype='real' name='fit_score' ordinal='8' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[prospect_rank]' value='[ct_prospects.csv].[prospect_rank]' />
+          <map key='[label]' value='[ct_prospects.csv].[label]' />
+          <map key='[name]' value='[ct_prospects.csv].[name]' />
+          <map key='[town]' value='[ct_prospects.csv].[town]' />
+          <map key='[region]' value='[ct_prospects.csv].[region]' />
+          <map key='[offers_hvac_service]' value='[ct_prospects.csv].[offers_hvac_service]' />
+          <map key='[years_licensed]' value='[ct_prospects.csv].[years_licensed]' />
+          <map key='[region_homes_per_dealer]' value='[ct_prospects.csv].[region_homes_per_dealer]' />
+          <map key='[fit_score]' value='[ct_prospects.csv].[fit_score]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Prospect Rank" datatype='integer' name='[prospect_rank]' role='measure' type='quantitative' />
+      <column caption="Dealer" datatype='string' name='[label]' role='dimension' type='nominal' />
+      <column caption="Name" datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption="Town" datatype='string' name='[town]' role='dimension' type='nominal' />
+      <column caption="Region" datatype='string' name='[region]' role='dimension' type='nominal' />
+      <column caption="Offers HVAC Service" datatype='integer' name='[offers_hvac_service]' role='measure' type='quantitative' />
+      <column caption="Years Licensed" datatype='real' name='[years_licensed]' role='measure' type='quantitative' />
+      <column caption="Region Homes per Dealer" datatype='real' name='[region_homes_per_dealer]' role='measure' type='quantitative' />
+      <column caption="Fit Score" datatype='real' name='[fit_score]' role='measure' type='quantitative' />
+      <column caption="Top 15" datatype='boolean' name='[Calculation_top_15]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="[prospect_rank] &lt;= 15" />
+      </column>
+      <column caption="Fit score label" datatype='string' name='[Calculation_fit_label]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="STR(ROUND([fit_score], 1))" />
+      </column>
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/ct_prospects.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81' table='[Extract].[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81]' type='table' />
+          </relation>
+          <cols>
+            <map key='[prospect_rank]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[prospect_rank]' />
+            <map key='[label]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[label]' />
+            <map key='[name]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[name]' />
+            <map key='[town]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[town]' />
+            <map key='[region]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[region]' />
+            <map key='[offers_hvac_service]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[offers_hvac_service]' />
+            <map key='[years_licensed]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[years_licensed]' />
+            <map key='[region_homes_per_dealer]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[region_homes_per_dealer]' />
+            <map key='[fit_score]' value='[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81].[fit_score]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='ct_prospects.csv' id='ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81'>
+            <properties context=''>
+              <relation connection='textscan.ctprospects0thermal0year0001' name='ct_prospects.csv' table='[ct_prospects#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='prospect_rank' ordinal='0' />
+            <column datatype='string' name='label' ordinal='1' />
+            <column datatype='string' name='name' ordinal='2' />
+            <column datatype='string' name='town' ordinal='3' />
+            <column datatype='string' name='region' ordinal='4' />
+            <column datatype='integer' name='offers_hvac_service' ordinal='5' />
+            <column datatype='real' name='years_licensed' ordinal='6' />
+            <column datatype='real' name='region_homes_per_dealer' ordinal='7' />
+            <column datatype='real' name='fit_score' ordinal='8' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81' table='[Extract].[ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
   </datasources>
   <mapsources>
     <mapsource name='Tableau' />
@@ -1496,6 +1683,242 @@
       </table>
       <simple-id uuid='{C752485B-B7C6-5FBF-A6D3-BB15E50FFC11}' />
     </worksheet>
+    <worksheet name="CT Region Density">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Connecticut regions" name='federated.ctregions0thermal0year000001' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ctregions0thermal0year000001'>
+            <column caption="Region" datatype='string' name='[region]' role='dimension' type='nominal' />
+            <column caption="Homes per Dealer" datatype='real' name='[homes_per_dealer]' role='measure' type='quantitative' />
+            <column caption="Dealers" datatype='integer' name='[dealers]' role='measure' type='quantitative' />
+            <column caption="% Full-Service" datatype='real' name='[pct_full_service]' role='measure' type='quantitative' />
+            <column caption="Spend per Dealer ($M)" datatype='real' name='[spend_per_dealer_musd]' role='measure' type='quantitative' />
+            <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[homes_per_dealer]' derivation='Sum' name='[sum:homes_per_dealer:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[dealers]' derivation='Sum' name='[sum:dealers:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[pct_full_service]' derivation='Sum' name='[sum:pct_full_service:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[spend_per_dealer_musd]' derivation='Sum' name='[sum:spend_per_dealer_musd:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <sort class='computed' column='[federated.ctregions0thermal0year000001].[none:region:nk]' direction='DESC' using='[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]' />
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]' max='2250.0' min='900.0' palette='NE Heating Ember Ramp' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.ctregions0thermal0year000001].[none:region:nk]' value='190' />
+            <format attr='color' value='#E8E6E1' />
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#FFC46B' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]' />
+              <text column='[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]' />
+              <tooltip column='[federated.ctregions0thermal0year000001].[sum:dealers:qk]' />
+              <tooltip column='[federated.ctregions0thermal0year000001].[sum:pct_full_service:qk]' />
+              <tooltip column='[federated.ctregions0thermal0year000001].[sum:spend_per_dealer_musd:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctregions0thermal0year000001].[none:region:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> oil and propane homes per dealer</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctregions0thermal0year000001].[sum:dealers:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> dealers, </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctregions0thermal0year000001].[sum:pct_full_service:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>% also do HVAC</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>$</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.ctregions0thermal0year000001].[sum:spend_per_dealer_musd:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>M of yearly heating spend per dealer</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='0.6' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.ctregions0thermal0year000001].[none:region:nk]</rows>
+        <cols>[federated.ctregions0thermal0year000001].[sum:homes_per_dealer:qk]</cols>
+      </table>
+      <simple-id uuid='{1A0BFFEC-6B8B-59D3-BDC5-F7B5748FC9AC}' />
+    </worksheet>
+    <worksheet name="CT Prospects">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Connecticut dealers" name='federated.ctprospects0thermal0year0001' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ctprospects0thermal0year0001'>
+            <column caption="Prospect Rank" datatype='integer' name='[prospect_rank]' role='measure' type='quantitative' />
+            <column caption="Dealer" datatype='string' name='[label]' role='dimension' type='nominal' />
+            <column caption="Name" datatype='string' name='[name]' role='dimension' type='nominal' />
+            <column caption="Town" datatype='string' name='[town]' role='dimension' type='nominal' />
+            <column caption="Region" datatype='string' name='[region]' role='dimension' type='nominal' />
+            <column caption="Offers HVAC Service" datatype='integer' name='[offers_hvac_service]' role='measure' type='quantitative' />
+            <column caption="Years Licensed" datatype='real' name='[years_licensed]' role='measure' type='quantitative' />
+            <column caption="Region Homes per Dealer" datatype='real' name='[region_homes_per_dealer]' role='measure' type='quantitative' />
+            <column caption="Fit Score" datatype='real' name='[fit_score]' role='measure' type='quantitative' />
+            <column caption="Top 15" datatype='boolean' name='[Calculation_top_15]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[prospect_rank] &lt;= 15" />
+            </column>
+            <column caption="Fit score label" datatype='string' name='[Calculation_fit_label]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="STR(ROUND([fit_score], 1))" />
+            </column>
+            <column-instance column='[label]' derivation='None' name='[none:label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[fit_score]' derivation='Sum' name='[sum:fit_score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[prospect_rank]' derivation='Sum' name='[sum:prospect_rank:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[offers_hvac_service]' derivation='Avg' name='[avg:offers_hvac_service:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[region]' derivation='Attribute' name='[attr:region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[years_licensed]' derivation='Sum' name='[sum:years_licensed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[region_homes_per_dealer]' derivation='Sum' name='[sum:region_homes_per_dealer:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_top_15]' derivation='None' name='[none:Calculation_top_15:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_fit_label]' derivation='Attribute' name='[attr:Calculation_fit_label:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.ctprospects0thermal0year0001].[none:Calculation_top_15:nk]'>
+          <groupfilter function='member' level='[none:Calculation_top_15:nk]' member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <sort class='computed' column='[federated.ctprospects0thermal0year0001].[none:label:nk]' direction='ASC' using='[federated.ctprospects0thermal0year0001].[sum:prospect_rank:qk]' />
+          <slices>
+            <column>[federated.ctprospects0thermal0year0001].[none:Calculation_top_15:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.ctprospects0thermal0year0001].[avg:offers_hvac_service:qk]' max='1.0' min='0.0' palette='NE Heating HVAC Codes' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.ctprospects0thermal0year0001].[sum:fit_score:qk]' field-type='quantitative' max='110' min='0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.ctprospects0thermal0year0001].[sum:fit_score:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.ctprospects0thermal0year0001].[none:label:nk]' value='290' />
+            <format attr='color' value='#E8E6E1' />
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.ctprospects0thermal0year0001].[avg:offers_hvac_service:qk]' />
+              <text column='[federated.ctprospects0thermal0year0001].[attr:Calculation_fit_label:nk]' />
+              <tooltip column='[federated.ctprospects0thermal0year0001].[attr:region:nk]' />
+              <tooltip column='[federated.ctprospects0thermal0year0001].[sum:years_licensed:qk]' />
+              <tooltip column='[federated.ctprospects0thermal0year0001].[sum:region_homes_per_dealer:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctprospects0thermal0year0001].[none:label:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>&lt;[federated.ctprospects0thermal0year0001].[attr:region:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Fit score </run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.ctprospects0thermal0year0001].[sum:fit_score:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Licensed </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctprospects0thermal0year0001].[sum:years_licensed:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> years. Region: </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.ctprospects0thermal0year0001].[sum:region_homes_per_dealer:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> homes per dealer</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='0.6' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.ctprospects0thermal0year0001].[none:label:nk]</rows>
+        <cols>[federated.ctprospects0thermal0year0001].[sum:fit_score:qk]</cols>
+      </table>
+      <simple-id uuid='{82A480B0-5A7A-5166-891E-7BB804A122B5}' />
+    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard name="The Thermal Year">
@@ -1868,6 +2291,209 @@
       </zones>
       <simple-id uuid='{5391028D-3695-527F-9CC3-1CE40EC844C7}' />
     </dashboard>
+    <dashboard name="Connecticut Dealer Prospects">
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#0B1220' />
+        </style-rule>
+      </style>
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='3' w='100000' x='0' y='0' param='vert' type-v2='layout-flow'>
+        <zone h='13000' id='4' w='100000' x='0' y='0' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>CONNECTICUT PILOT  ·  468 DEALERS, 9 PLANNING REGIONS</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Georgia' fontsize='30'>Who to call first</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='12'>Every licensed heating fuel dealer in Connecticut, matched to HVAC contractor licenses and to the oil and propane homes around them.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='14' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='5' w='100000' x='0' y='13000' param='horz' type-v2='layout-flow'>
+        <zone h='10000' id='6' w='25000' x='0' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>468</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>licensed heating fuel dealers in Connecticut</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='7' w='25000' x='25000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>20%</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>also licensed for HVAC: full-service</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='8' w='25000' x='50000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>2,206</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>homes per dealer in Western CT, the most under-served</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='9' w='25000' x='75000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>922</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>homes per dealer in Lower CT River Valley</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='64000' id='10' w='100000' x='0' y='23000' param='horz' type-v2='layout-flow'>
+        <zone h='64000' id='11' w='44000' x='0' y='23000' param='vert' type-v2='layout-flow'>
+        <zone h='5760' id='12' w='44000' x='0' y='23000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>HOMES PER DEALER</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Oil and propane homes per licensed dealer, by planning region</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='58240' id='13' w='44000' x='0' y='28760' name="CT Region Density" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='64000' id='14' w='56000' x='44000' y='23000' param='vert' type-v2='layout-flow'>
+        <zone h='5760' id='15' w='56000' x='44000' y='23000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>TOP 15 PROSPECTS</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Ranked by fit score, out of 100</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='58240' id='16' w='56000' x='44000' y='28760' name="CT Prospects" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='9000' id='17' w='100000' x='0' y='87000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>HOW DEALERS ARE SCORED</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>Fit score = 50% offers HVAC service + 30% how under-served its region is (homes per dealer) + 20% years licensed. </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Full-service dealers in crowded-out regions are the best fit for a dispatch, routing and service platform. </run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Also does HVAC   </run>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Fuel only</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='12' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='4000' id='18' w='100000' x='0' y='96000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='9'>Sources: Connecticut Department of Consumer Protection license registry (data.ct.gov), Census ACS 2020-24. Dealers are placed in planning regions by ZIP code.   Dhruv Khanna  ·  github.com/dhruvk1310-lang/northeast-heating-demand-map</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{2488BF59-8188-58D9-92B3-5545FB239EBE}' />
+    </dashboard>
   </dashboards>
   <windows source-height='30'>
     <window class='worksheet' name="Thermal Map">
@@ -1950,6 +2576,46 @@
       </cards>
       <simple-id uuid='{291415D0-2A22-5352-B71A-BD148AD03572}' />
     </window>
+    <window class='worksheet' name="CT Region Density">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{27568732-76C3-539A-9EF5-439F1726ED64}' />
+    </window>
+    <window class='worksheet' name="CT Prospects">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C37A311D-F542-5FF1-9491-B8A0CCABECB3}' />
+    </window>
     <window class='dashboard' maximized='true' name="The Thermal Year">
       <viewpoints>
         <viewpoint name="Seasonal Pulse" />
@@ -1965,6 +2631,14 @@
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{1FD6667E-A2B2-5BB8-9528-F8614C65943D}' />
+    </window>
+    <window class='dashboard' maximized='true' name="Connecticut Dealer Prospects">
+      <viewpoints>
+        <viewpoint name="CT Prospects" />
+        <viewpoint name="CT Region Density" />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{F94485B7-10C8-5114-8806-271D3442DD40}' />
     </window>
   </windows>
 </workbook>

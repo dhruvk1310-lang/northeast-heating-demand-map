@@ -1,0 +1,26 @@
+prospect_rank,name,town,region,hvac_service,years_licensed,region_homes_per_dealer,fit_score,rank_in_region
+1,Densmore Oil Inc,Stonington,Southeastern Connecticut,yes,22.1,1745.0,96.0,1
+2,Brunelli Energy Llc,Bozrah,Southeastern Connecticut,yes,19.0,1745.0,92.0,2
+3,Patterson Oil Company,Torrington,Northwest Hills,yes,21.1,1671.0,90.5,1
+4,Miller Fuel Llc,Burlington,Northwest Hills,yes,21.0,1671.0,90.3,2
+5,Devine Bros Inc,Norwalk,Western Connecticut,yes,,2206.0,90.0,1
+6,Hoffman Fuel Company,Danbury,Western Connecticut,yes,,2206.0,90.0,2
+7,Jennings Oil Co,Danbury,Western Connecticut,yes,,2206.0,90.0,3
+8,Leahy's Fuels Inc,Danbury,Western Connecticut,yes,,2206.0,90.0,4
+9,New England Oil Co Inc,Greenwich,Western Connecticut,yes,,2206.0,90.0,5
+10,Richard Shook,Danbury,Western Connecticut,yes,,2206.0,90.0,6
+11,Westmore Fuel Co Inc,Greenwich,Western Connecticut,yes,,2206.0,90.0,7
+12,Best Discount Oil,Pawcatuck,Southeastern Connecticut,yes,14.0,1745.0,87.8,3
+13,Best Energy,Pawcatuck,Southeastern Connecticut,yes,14.0,1745.0,87.8,4
+14,Benvenuti Oil,Waterford,Southeastern Connecticut,yes,,1745.0,86.3,5
+15,Mccarthy Heating Oil Service Inc,Quaker Hill,Southeastern Connecticut,yes,,1745.0,86.3,6
+16,Marandola Fuel Service,New Milford,Western Connecticut,yes,5.0,2206.0,84.3,8
+17,General Oil,East Hartford,Capitol,yes,22.0,1215.0,83.7,1
+18,Lindell Fuels Inc,Canaan,Northwest Hills,yes,,1671.0,82.5,3
+19,Sterling Oil Llc,Moosup,Northeastern Connecticut,yes,15.8,1575.0,82.0,1
+20,Ledgelight Propane,Groton,Southeastern Connecticut,yes,6.1,1745.0,81.8,7
+21,Bruce J Bemer,Glastonbury,Capitol,yes,20.0,1215.0,81.4,2
+22,Jasinski Fuel Service Llc,Harwinton,Northwest Hills,yes,10.8,1671.0,81.3,4
+23,Superior Energy,Vernon,Capitol,yes,19.1,1215.0,81.0,3
+24,Connecticut Valley Oil,Enfield,Capitol,yes,16.4,1215.0,78.9,4
+25,Suprena Oil,Enfield,Capitol,yes,16.4,1215.0,78.9,5

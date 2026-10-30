@@ -6,7 +6,9 @@ Raw downloads are cached in data/raw; delete a file there to fetch it again.
 """
 
 from src.config import INTERIM
-from src.extract import census_acs, census_tiger, eia_861m, eia_prices, eia_recs, eia_seds, noaa_degree_days
+from src.extract import (
+    census_acs, census_tiger, ct_dealers, eia_861m, eia_prices, eia_recs, eia_seds, noaa_degree_days,
+)
 from src.transform import ct_planning_regions
 
 STEPS = [
@@ -18,6 +20,7 @@ STEPS = [
     ("EIA SHOPP fuel prices", eia_prices.run),
     ("EIA SEDS residential consumption", eia_seds.run),
     ("EIA 861M residential electricity", eia_861m.run),
+    ("Connecticut heating fuel dealers", ct_dealers.run),
 ]
 
 

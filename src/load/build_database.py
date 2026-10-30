@@ -137,6 +137,12 @@ def facts() -> dict[str, pd.DataFrame]:
             "year_round_score_per_home", "year_round_rank_per_home", "quadrant_per_home"]
     out["fact_county_season"] = cs[cols]
 
+    dealers = pd.read_csv(INTERIM / "ct_dealers.csv", dtype={"zip5": str, "region_fips": str, "registration": str})
+    dealers = dealers.rename(columns={"region_fips": "county_fips"}).drop(columns="in_ct")
+    out["dim_dealer"] = dealers[["dealer_id", "registration", "name", "address", "town", "state", "zip5",
+                                 "county_fips", "region_source", "offers_hvac_service", "hvac_match",
+                                 "fuels_in_name", "license_issued", "years_licensed"]]
+
     seds = pd.read_csv(INTERIM / "eia_seds_residential.csv")
     seds["fuel_id"] = seds["fuel"].map(SEDS_FUEL)
     seds = seds.groupby(["state_abbr", "fuel_id", "year"], as_index=False)["gallons"].sum()

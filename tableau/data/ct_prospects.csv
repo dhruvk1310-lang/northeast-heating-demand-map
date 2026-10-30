@@ -1,0 +1,469 @@
+prospect_rank,label,name,town,region,offers_hvac_service,years_licensed,region_homes_per_dealer,fit_score
+1,"1. Densmore Oil, Stonington",Densmore Oil Inc,Stonington,Southeastern CT,1,22.1,1745.0,96.0
+2,"2. Brunelli Energy, Bozrah",Brunelli Energy Llc,Bozrah,Southeastern CT,1,19.0,1745.0,92.0
+3,"3. Patterson Oil, Torrington",Patterson Oil Company,Torrington,Northwest Hills,1,21.1,1671.0,90.5
+4,"4. Miller Fuel, Burlington",Miller Fuel Llc,Burlington,Northwest Hills,1,21.0,1671.0,90.3
+5,"5. Devine Bros, Norwalk",Devine Bros Inc,Norwalk,Western CT,1,,2206.0,90.0
+6,"6. Hoffman Fuel, Danbury",Hoffman Fuel Company,Danbury,Western CT,1,,2206.0,90.0
+7,"7. Jennings Oil, Danbury",Jennings Oil Co,Danbury,Western CT,1,,2206.0,90.0
+8,"8. Leahy's Fuels, Danbury",Leahy's Fuels Inc,Danbury,Western CT,1,,2206.0,90.0
+9,"9. New England Oil Co, Greenwich",New England Oil Co Inc,Greenwich,Western CT,1,,2206.0,90.0
+10,"10. Richard Shook, Danbury",Richard Shook,Danbury,Western CT,1,,2206.0,90.0
+11,"11. Westmore Fuel Co, Greenwich",Westmore Fuel Co Inc,Greenwich,Western CT,1,,2206.0,90.0
+12,"12. Best Discount Oil, Pawcatuck",Best Discount Oil,Pawcatuck,Southeastern CT,1,14.0,1745.0,87.8
+13,"13. Best Energy, Pawcatuck",Best Energy,Pawcatuck,Southeastern CT,1,14.0,1745.0,87.8
+14,"14. Benvenuti Oil, Waterford",Benvenuti Oil,Waterford,Southeastern CT,1,,1745.0,86.2
+15,"15. Mccarthy Heating Oil Service, Quaker Hill",Mccarthy Heating Oil Service Inc,Quaker Hill,Southeastern CT,1,,1745.0,86.2
+16,"16. Marandola Fuel Service, New Milford",Marandola Fuel Service,New Milford,Western CT,1,5.0,2206.0,84.3
+17,"17. General Oil, East Hartford",General Oil,East Hartford,Capitol,1,22.0,1215.0,83.7
+18,"18. Lindell Fuels, Canaan",Lindell Fuels Inc,Canaan,Northwest Hills,1,,1671.0,82.5
+19,"19. Sterling Oil, Moosup",Sterling Oil Llc,Moosup,Northeastern CT,1,15.8,1575.0,82.0
+20,"20. Ledgelight Propane, Groton",Ledgelight Propane,Groton,Southeastern CT,1,6.1,1745.0,81.8
+21,"21. Bruce J Bemer, Glastonbury",Bruce J Bemer,Glastonbury,Capitol,1,20.0,1215.0,81.4
+22,"22. Jasinski Fuel Service, Harwinton",Jasinski Fuel Service Llc,Harwinton,Northwest Hills,1,10.8,1671.0,81.3
+23,"23. Superior Energy, Vernon",Superior Energy,Vernon,Capitol,1,19.1,1215.0,81.0
+24,"24. Connecticut Valley Oil, Enfield",Connecticut Valley Oil,Enfield,Capitol,1,16.4,1215.0,78.9
+25,"25. Suprena Oil, Enfield",Suprena Oil,Enfield,Capitol,1,16.4,1215.0,78.9
+26,"26. T & S Oil, Moosup",T & S Oil Co,Moosup,Northeastern CT,1,,1575.0,78.8
+27,"27. Barney Barker Oil Co, Newington",Barney Barker Oil Co Inc,Newington,Capitol,1,16.3,1215.0,78.7
+28,"28. Eastern Fuel, Hamden",Eastern Fuel Corporation,Hamden,South Central CT,1,20.1,1170.0,78.4
+29,"29. Connecticut Propane & Petroleum, Marlborough",Connecticut Propane & Petroleum,Marlborough,Capitol,1,15.4,1215.0,78.0
+30,"30. Twin Oil, Wethersfield",Twin Oil,Wethersfield,Capitol,1,14.4,1215.0,76.8
+31,"31. Incredible Oil, Wallingford",Incredible Oil Llc,Wallingford,South Central CT,1,18.1,1170.0,76.5
+32,"32. Personal Energy Co, New Britain",Personal Energy Co Llc,New Britain,Capitol,1,12.9,1215.0,75.9
+33,"33. Leclaire Fuel Oil, Seymour",Leclaire Fuel Oil Llc,Seymour,Naugatuck Valley,1,21.0,987.0,75.3
+34,"34. H C Rohde Oil Company, Wethersfield",H C Rohde Oil Company Inc,Wethersfield,Capitol,1,,1215.0,75.0
+35,"35. Homestead Fuel, Ellington",Homestead Fuel Inc,Ellington,Capitol,1,,1215.0,75.0
+36,"36. Lemay Oil Co, East Hartford",Lemay Oil Co Inc,East Hartford,Capitol,1,,1215.0,75.0
+37,"37. Miller Oil, Enfield",Miller Oil Co,Enfield,Capitol,1,,1215.0,75.0
+38,"38. Mitchell Home Services, South Windsor",Mitchell Home Services,South Windsor,Capitol,1,,1215.0,75.0
+39,"39. Mull Brothers, Wethersfield",Mull Brothers Inc,Wethersfield,Capitol,1,,1215.0,75.0
+40,"40. Robert's Discount Fuel, Enfield",Robert's Discount Fuel,Enfield,Capitol,1,,1215.0,75.0
+41,"41. Starco Of New Britain, New Britain",Starco Of New Britain,New Britain,Capitol,1,,1215.0,75.0
+42,"42. Troiano Oil, Enfield",Troiano Oil Co,Enfield,Capitol,1,,1215.0,75.0
+43,"43. Viking Fuel Oil, West Hartford",Viking Fuel Oil Co,West Hartford,Capitol,1,,1215.0,75.0
+44,"44. Williams Fuel Oil Co, Stafford Springs",Williams Fuel Oil Co Llc,Stafford Springs,Capitol,1,,1215.0,75.0
+45,"45. Best Oil, Waterbury",Best Oil Inc,Waterbury,Naugatuck Valley,1,20.1,987.0,74.7
+46,"46. Wilson/norige Oil, Manchester",Wilson/norige Oil,Manchester,Capitol,1,9.4,1215.0,73.1
+47,"47. F F Hitchcock Oil Company, Cheshire",F F Hitchcock Oil Company Llc,Cheshire,Naugatuck Valley,1,18.1,987.0,72.8
+48,"48. Amodio & Sons Fuel Oil, West Haven",Amodio & Sons Fuel Oil Inc,West Haven,South Central CT,1,,1170.0,71.2
+49,"49. Blue Flame Oil, New Haven",Blue Flame Oil Co,New Haven,South Central CT,1,,1170.0,71.2
+50,"50. Delucia Fuel Oil Co, North Haven",Delucia Fuel Oil Co Llc,North Haven,South Central CT,1,,1170.0,71.2
+51,"51. East River Energy, Guilford",East River Energy,Guilford,South Central CT,1,,1170.0,71.2
+52,"52. J & E Oil, Hamden",J & E Oil Company,Hamden,South Central CT,1,,1170.0,71.2
+53,"53. J J Sullivan, Guilford",J J Sullivan Inc,Guilford,South Central CT,1,,1170.0,71.2
+54,"54. Longobardi Fuel Oil, New Haven",Longobardi Fuel Oil,New Haven,South Central CT,1,,1170.0,71.2
+55,"55. Petro Home Services, North Haven",Petro Home Services,North Haven,South Central CT,1,,1170.0,71.2
+56,"56. Roman Oil Heating And Cooling, Meriden",Roman Oil Heating And Cooling,Meriden,South Central CT,1,,1170.0,71.2
+57,"57. Tamaro Oil, Orange",Tamaro Oil Corporation,Orange,South Central CT,1,,1170.0,71.2
+58,"58. Brooks Oil Service, Plymouth",Brooks Oil Service Inc,Plymouth,Naugatuck Valley,1,15.2,987.0,70.3
+59,"59. Fuel & Service, Durham",Fuel & Service Llc,Durham,Lower CT River Valley,1,22.1,922.0,69.7
+60,"60. Admiral Propane Services, Willington",Admiral Propane Services Llc,Willington,Capitol,1,3.9,1215.0,68.4
+61,"61. Polar Energy, Monroe",Polar Energy,Monroe,Greater Bridgeport,1,17.4,980.0,68.4
+62,"62. Somers Oil Service, Broad Brook",Somers Oil Service,Broad Brook,Capitol,1,3.0,1215.0,67.7
+63,"63. Buddys Fuel, Oxford",Buddys Fuel Llc,Oxford,Naugatuck Valley,1,,987.0,67.5
+64,"64. Cousins Oil Co, Bristol",Cousins Oil Co Inc,Bristol,Naugatuck Valley,1,,987.0,67.5
+65,"65. Dependable Energy, Prospect",Dependable Energy,Prospect,Naugatuck Valley,1,,987.0,67.5
+66,"66. Plymouth Oil Service, Plymouth",Plymouth Oil Service,Plymouth,Naugatuck Valley,1,,987.0,67.5
+67,"67. Arrow Fuel, Stratford",Arrow Fuel,Stratford,Greater Bridgeport,1,,980.0,63.7
+68,"68. Levco Tech, Trumbull",Levco Tech Inc,Trumbull,Greater Bridgeport,1,,980.0,63.7
+69,"69. Parkway Oil Company, Stratford",Parkway Oil Company Inc,Stratford,Greater Bridgeport,1,,980.0,63.7
+70,"70. Ramos Fuel & Trucking, Bridgeport",Ramos Fuel & Trucking Llc,Bridgeport,Greater Bridgeport,1,,980.0,63.7
+71,"71. Standard Oil Of Connecticut, Bridgeport",Standard Oil Of Connecticut Inc,Bridgeport,Greater Bridgeport,1,,980.0,63.7
+72,"72. Family Oil, Stratford",Family Oil,Stratford,Greater Bridgeport,1,11.4,980.0,63.3
+73,"73. Leclaire Propane, Seymour",Leclaire Propane Llc,Seymour,Naugatuck Valley,1,6.1,987.0,63.1
+74,"74. East River Energy, Guilford",East River Energy Inc,Guilford,South Central CT,1,0.4,1170.0,61.8
+75,"75. East River Energy, Guilford",East River Energy Inc,Guilford,South Central CT,1,0.4,1170.0,61.8
+76,"76. Adamowski Heating And Cooling, Ansonia",Adamowski Heating And Cooling Llc,Ansonia,Naugatuck Valley,1,4.5,987.0,61.5
+77,"77. Instaoil, Meriden",Instaoil,Meriden,South Central CT,1,0.1,1170.0,61.3
+78,"78. Cromwell Energy, Cromwell",Cromwell Energy,Cromwell,Lower CT River Valley,1,,922.0,60.0
+79,"79. Dutch Oil Company, Moodus",Dutch Oil Company Inc,Moodus,Lower CT River Valley,1,,922.0,60.0
+80,"80. Maus & Son, Moodus",Maus & Son Inc,Moodus,Lower CT River Valley,1,,922.0,60.0
+81,"81. Paul Burdick Oil, Old Saybrook",Paul Burdick Oil Co,Old Saybrook,Lower CT River Valley,1,,922.0,60.0
+82,"82. Stielau Oil Co, Middletown",Stielau Oil Co Inc,Middletown,Lower CT River Valley,1,,922.0,60.0
+83,"83. Tankfarm, Bristol",Tankfarm,Bristol,Naugatuck Valley,1,2.4,987.0,59.9
+84,"84. Husky Energy & Propane, Woodbury",Husky Energy & Propane,Woodbury,Naugatuck Valley,1,2.1,987.0,59.5
+85,"85. Airwise Oil, Watertown",Airwise Oil,Watertown,Naugatuck Valley,1,1.9,987.0,59.2
+86,"86. Valley Heating Oil, Prospect",Valley Heating Oil,Prospect,Naugatuck Valley,1,1.1,987.0,58.7
+87,"87. Edgerton Fuels, Monroe",Edgerton Fuels Llc,Monroe,Greater Bridgeport,1,5.6,980.0,58.5
+88,"88. Rural Energy, Trumbull",Rural Energy Llc,Trumbull,Greater Bridgeport,1,5.1,980.0,58.4
+89,"89. Westbrook Oil, Westbrook",Westbrook Oil Llc,Westbrook,Lower CT River Valley,1,8.1,922.0,57.2
+90,"90. Premier Propane, Stratford",Premier Propane Llc,Stratford,Greater Bridgeport,1,3.6,980.0,56.9
+91,"91. Dutch Oil Company, Portland",Dutch Oil Company Inc,Portland,Lower CT River Valley,1,1.0,922.0,51.0
+92,"92. Cromwell Energy, Cromwell",Cromwell Energy,Cromwell,Lower CT River Valley,1,0.1,922.0,50.1
+93,"93. Casey Fuel, Ridgefield",Casey Fuel,Ridgefield,Western CT,0,22.1,2206.0,49.7
+94,"94. Sound Energy, Darien",Sound Energy Corp,Darien,Western CT,0,22.0,2206.0,48.7
+95,"95. Affordable Heating & Fuel, Stamford",Affordable Heating & Fuel Llc,Stamford,Western CT,0,20.1,2206.0,47.2
+96,"96. Greenwich Propane Co, Bethel",Greenwich Propane Co Inc,Bethel,Western CT,0,20.0,2206.0,46.4
+97,"97. New England Propane Co, Bethel",New England Propane Co Inc,Bethel,Western CT,0,20.0,2206.0,46.4
+98,"98. A & P Fuel, Danbury",A & P Fuel,Danbury,Western CT,0,19.7,2206.0,46.1
+99,"99. Elshaddai Oil, Stamford",Elshaddai Oil Company,Stamford,Western CT,0,18.5,2206.0,45.5
+100,"100. City Coal, New London",City Coal,New London,Southeastern CT,0,22.0,1745.0,45.0
+101,"101. Dahl, New London",Dahl,New London,Southeastern CT,0,22.0,1745.0,45.0
+102,"102. Ddlc Energy, New London",Ddlc Energy,New London,Southeastern CT,0,22.0,1745.0,45.0
+103,"103. Dollarwise Discount Oil, New London",Dollarwise Discount Oil,New London,Southeastern CT,0,22.0,1745.0,45.0
+104,"104. Lehigh Oil, New London",Lehigh Oil,New London,Southeastern CT,0,22.0,1745.0,45.0
+105,"105. Coastline Fuel, Norwalk",Coastline Fuel,Norwalk,Western CT,0,17.8,2206.0,44.8
+106,"106. Piro Petroleum, Norwalk",Piro Petroleum,Norwalk,Western CT,0,17.8,2206.0,44.8
+107,"107. Mystic Fuel, Norwich",Mystic Fuel Llc,Norwich,Southeastern CT,0,21.9,1745.0,44.7
+108,"108. Hometown Fuel, Newtown",Hometown Fuel,Newtown,Western CT,0,17.3,2206.0,44.6
+109,"109. Thermanet, Danbury",Thermanet,Danbury,Western CT,0,17.0,2206.0,44.4
+110,"110. Midknight Oil, North Stonington",Midknight Oil,North Stonington,Southeastern CT,0,20.7,1745.0,43.8
+111,"111. Casey Propane, Ridgefield",Casey Propane Llc,Ridgefield,Western CT,0,16.3,2206.0,43.7
+112,"112. Four Seasons Heating And Cooling, Norwalk",Four Seasons Heating And Cooling,Norwalk,Western CT,0,15.9,2206.0,43.4
+113,"113. Air Solutions Propane, Stamford",Air Solutions Propane Llc,Stamford,Western CT,0,15.5,2206.0,43.0
+114,"114. Spicer Advanced Gas, Groton",Spicer Advanced Gas,Groton,Southeastern CT,0,20.0,1745.0,42.7
+115,"115. Stamford Home Oil, Stamford",Stamford Home Oil Inc,Stamford,Western CT,0,15.1,2206.0,42.6
+116,"116. Advanced Heating Oil, Groton",Advanced Heating Oil,Groton,Southeastern CT,0,19.0,1745.0,42.0
+117,"117. Valley Oil - Willimantic, Willimantic",Valley Oil - Willimantic,Willimantic,Southeastern CT,0,18.0,1745.0,41.3
+118,"118. A P Summa Fuel Oil Group, Greenwich",A P Summa Fuel Oil Group Llc,Greenwich,Western CT,0,,2206.0,40.0
+119,"119. Abc Fuel Oil, Brookfield",Abc Fuel Oil Llc,Brookfield,Western CT,0,,2206.0,40.0
+120,"120. Buzaid-mutual, Danbury",Buzaid-mutual,Danbury,Western CT,0,,2206.0,40.0
+121,"121. Darien Fuel, Stamford",Darien Fuel,Stamford,Western CT,0,,2206.0,40.0
+122,"122. Federal Sunoco, Danbury",Federal Sunoco,Danbury,Western CT,0,,2206.0,40.0
+123,"123. Fiorilla Heating Oil, Bethel",Fiorilla Heating Oil Inc,Bethel,Western CT,0,,2206.0,40.0
+124,"124. L H Gault & Son, Westport",L H Gault & Son Inc,Westport,Western CT,0,,2206.0,40.0
+125,"125. Montanari Fuel Service, Ridgefield",Montanari Fuel Service,Ridgefield,Western CT,0,,2206.0,40.0
+126,"126. Reliable Oil & Heating Co, Stamford",Reliable Oil & Heating Co Inc,Stamford,Western CT,0,,2206.0,40.0
+127,"127. Richard T Layton Co Ltd, New Milford",Richard T Layton Co Ltd,New Milford,Western CT,0,,2206.0,40.0
+128,"128. Steve's Fuel Oil, Stamford",Steve's Fuel Oil Inc,Stamford,Western CT,0,,2206.0,40.0
+129,"129. Firehouse Fuels,, Burlington","Firehouse Fuels, Llc",Burlington,Northwest Hills,0,20.1,1671.0,39.7
+130,"130. Value Oil Co, North Franklin",Value Oil Co Llc,North Franklin,Southeastern CT,0,15.5,1745.0,39.3
+131,"131. Jennings Propane, Danbury",Jennings Propane Company,Danbury,Western CT,0,9.7,2206.0,38.2
+132,"132. Toro Fuel, Danbury",Toro Fuel Llc,Danbury,Western CT,0,9.6,2206.0,38.1
+133,"133. Asi Oil, Norwich",Asi Oil Llc,Norwich,Southeastern CT,0,14.1,1745.0,37.9
+134,"134. Pramer Fuel, Stamford",Pramer Fuel Inc,Stamford,Western CT,0,9.1,2206.0,37.7
+135,"135. Roman's 10-9 Transport, Stamford",Roman's 10-9 Transport Llc,Stamford,Western CT,0,7.7,2206.0,36.8
+136,"136. Sunshine Heating Oil, Groton",Sunshine Heating Oil,Groton,Southeastern CT,0,12.1,1745.0,36.7
+137,"137. Coastal Energy, Norwalk",Coastal Energy Llc,Norwalk,Western CT,0,7.1,2206.0,36.4
+138,"138. Broga & Son Fuel, Niantic",Broga & Son Fuel,Niantic,Southeastern CT,0,11.9,1745.0,36.3
+139,"139. Andersen Oil, Ledyard",Andersen Oil Co,Ledyard,Southeastern CT,0,,1745.0,36.3
+140,"140. Benders Oil Service, Lebanon",Benders Oil Service,Lebanon,Southeastern CT,0,,1745.0,36.3
+141,"141. Guy's, Niantic",Guy's Inc,Niantic,Southeastern CT,0,,1745.0,36.3
+142,"142. Ives Brothers, Willimantic",Ives Brothers Inc,Willimantic,Southeastern CT,0,,1745.0,36.3
+143,"143. Norwich Discount Oil, Norwich",Norwich Discount Oil Inc,Norwich,Southeastern CT,0,,1745.0,36.3
+144,"144. Potter's Oil Service, North Windham",Potter's Oil Service Inc,North Windham,Southeastern CT,0,,1745.0,36.3
+145,"145. Uncasville Oil, Uncasville",Uncasville Oil,Uncasville,Southeastern CT,0,,1745.0,36.3
+146,"146. Viking Fuel, Norwich",Viking Fuel,Norwich,Southeastern CT,0,,1745.0,36.3
+147,"147. Bc Heating & Cooling, Norwich",Bc Heating & Cooling Llc,Norwich,Southeastern CT,0,11.7,1745.0,36.0
+148,"148. Top Tier Energy Services, Ridgefield",Top Tier Energy Services Llc,Ridgefield,Western CT,0,6.3,2206.0,35.9
+149,"149. Superior Plus Energy Services, Winsted",Superior Plus Energy Services Inc,Winsted,Northwest Hills,0,15.1,1671.0,35.1
+150,"150. Citizen's Oil Co-op, West Hartford",Citizen's Oil Co-op Inc,West Hartford,Capitol,0,22.3,1215.0,34.9
+151,"151. Mcguires Oil, Preston",Mcguires Oil Llc,Preston,Southeastern CT,0,10.0,1745.0,34.6
+152,"152. Mohegan Oil, Groton",Mohegan Oil Co,Groton,Southeastern CT,0,9.2,1745.0,34.1
+153,"153. Automatic Comfort, East Hartford",Automatic Comfort,East Hartford,Capitol,0,22.0,1215.0,33.7
+154,"154. Automatic Tlc, East Hartford",Automatic Tlc,East Hartford,Capitol,0,22.0,1215.0,33.7
+155,"155. Dollar Wise, East Hartford",Dollar Wise,East Hartford,Capitol,0,22.0,1215.0,33.7
+156,"156. Tlc Oil, East Hartford",Tlc Oil,East Hartford,Capitol,0,22.0,1215.0,33.7
+157,"157. Danielson Oil, Danielson",Danielson Oil,Danielson,Northeastern CT,0,17.9,1575.0,33.7
+158,"158. Anytime Fuel Oil, New London",Anytime Fuel Oil,New London,Southeastern CT,0,8.2,1745.0,33.6
+159,"159. Groton Oil, New London",Groton Oil,New London,Southeastern CT,0,8.1,1745.0,33.5
+160,"160. State Line Oil, Granby",State Line Oil,Granby,Capitol,0,21.9,1215.0,33.5
+161,"161. Tony's Oil, Southington",Tony's Oil Co,Southington,Capitol,0,21.6,1215.0,33.3
+162,"162. Pinergy, Bloomfield",Pinergy,Bloomfield,Capitol,0,21.5,1215.0,33.2
+163,"163. So Low Oil, Canterbury",So Low Oil Llc,Canterbury,Northeastern CT,0,16.8,1575.0,33.0
+164,"164. On Demand Fuel Oil, Montville",On Demand Fuel Oil Llc,Montville,Southeastern CT,0,7.1,1745.0,32.6
+165,"165. Firemen's Fuel, Colebrook",Firemen's Fuel Llc,Colebrook,Northwest Hills,0,,1671.0,32.5
+166,"166. New England Lubricants, Burlington",New England Lubricants Inc,Burlington,Northwest Hills,0,,1671.0,32.5
+167,"167. Winsted Oil, Winsted",Winsted Oil Co,Winsted,Northwest Hills,0,,1671.0,32.5
+168,"168. Brodeurs, New London",Brodeurs,New London,Southeastern CT,0,7.0,1745.0,32.4
+169,"169. Elite Energy, Litchfield",Elite Energy Llc,Litchfield,Northwest Hills,0,11.6,1671.0,32.2
+170,"170. Queen Bee's Oil, Canterbury",Queen Bee's Oil Inc,Canterbury,Northeastern CT,0,16.0,1575.0,32.2
+171,"171. Rowayton Fuel & Oil Co, Norwalk",Rowayton Fuel & Oil Co Inc,Norwalk,Western CT,0,2.1,2206.0,32.0
+172,"172. Mayday Oil, North Franklin",Mayday Oil Llc,North Franklin,Southeastern CT,0,6.1,1745.0,31.8
+173,"173. All Gas & Equipment, Hartford",All Gas & Equipment Co,Hartford,Capitol,0,20.0,1215.0,31.4
+174,"174. Mockos Propane Gas, Stafford",Mockos Propane Gas,Stafford,Capitol,0,20.0,1215.0,31.4
+175,"175. State Line Propane, Granby",State Line Propane Llc,Granby,Capitol,0,20.0,1215.0,31.4
+176,"176. Mccormick & Bonner Transport, New Britain",Mccormick & Bonner Transport Llc,New Britain,Capitol,0,19.9,1215.0,31.2
+177,"177. Fortified Fuels, Westport",Fortified Fuels Llc,Westport,Western CT,0,1.1,2206.0,31.2
+178,"178. Family Propane, Torrington",Family Propane Llc,Torrington,Northwest Hills,0,10.2,1671.0,31.1
+179,"179. Quality Oil, Plantsville",Quality Oil Company,Plantsville,Capitol,0,19.5,1215.0,31.0
+180,"180. Chris' Fuel Solutions, Brookfield",Chris' Fuel Solutions,Brookfield,Western CT,0,1.0,2206.0,31.0
+181,"181. Grand Energy, Stamford",Grand Energy Llc,Stamford,Western CT,0,1.0,2206.0,31.0
+182,"182. Burden Fuel, Norwalk",Burden Fuel,Norwalk,Western CT,0,0.9,2206.0,30.8
+183,"183. Nutmeg Fuel, New Milford",Nutmeg Fuel,New Milford,Western CT,0,0.1,2206.0,30.1
+184,"184. Connecticut Refining, New Haven",Connecticut Refining Company,New Haven,South Central CT,0,22.0,1170.0,30.0
+185,"185. Ferrell Gas, Vernon",Ferrell Gas Co,Vernon,Capitol,0,17.7,1215.0,29.8
+186,"186. Warren Valley Enterprises,, Warren","Warren Valley Enterprises, Llc.",Warren,Northwest Hills,0,7.7,1671.0,29.3
+187,"187. Premier Energy, Collinsville",Premier Energy Llc,Collinsville,Capitol,0,16.7,1215.0,29.2
+188,"188. Nikko Oil, Canterbury",Nikko Oil Llc,Canterbury,Northeastern CT,0,12.0,1575.0,29.0
+189,"189. Hale Hill Farms Biofuels, Branford",Hale Hill Farms Biofuels,Branford,South Central CT,0,20.9,1170.0,28.9
+190,"190. Husky Discount Fuel, Manchester",Husky Discount Fuel,Manchester,Capitol,0,16.4,1215.0,28.9
+191,"191. Pomfret Fuel Service, Pomfret Center",Pomfret Fuel Service Llc,Pomfret Center,Northeastern CT,0,11.9,1575.0,28.8
+192,"192. Brooklyn Oil, Brooklyn",Brooklyn Oil Company,Brooklyn,Northeastern CT,0,,1575.0,28.7
+193,"193. Ed's Garage, Canterbury",Ed's Garage Inc,Canterbury,Northeastern CT,0,,1575.0,28.7
+194,"194. Higgins And Son Oil Service, Pomfret Center",Higgins And Son Oil Service Inc,Pomfret Center,Northeastern CT,0,,1575.0,28.7
+195,"195. Deitch Energy, Hartford",Deitch Energy,Hartford,Capitol,0,15.5,1215.0,28.0
+196,"196. Kasden Fuel, East Hartford",Kasden Fuel,East Hartford,Capitol,0,15.2,1215.0,27.8
+197,"197. Clintonville Oil, North Haven",Clintonville Oil,North Haven,South Central CT,0,20.0,1170.0,27.7
+198,"198. Depalma Oil, West Haven",Depalma Oil,West Haven,South Central CT,0,20.0,1170.0,27.7
+199,"199. Spicer Oil, Groton",Spicer Oil,Groton,Southeastern CT,0,1.4,1745.0,27.6
+200,"200. Greyt Oil, Burlington",Greyt Oil Llc,Burlington,Northwest Hills,0,5.8,1671.0,27.5
+201,"201. Gas Works Propane, Yalesville",Gas Works Propane,Yalesville,South Central CT,0,19.9,1170.0,27.5
+202,"202. Strileckis Oil Company, Watertown",Strileckis Oil Company Llc,Watertown,Naugatuck Valley,0,22.3,987.0,27.4
+203,"203. Superior Plus Energy Services, Winsted",Superior Plus Energy Services Inc,Winsted,Northwest Hills,0,5.7,1671.0,27.4
+204,"204. Red Door Oil, West Simsbury",Red Door Oil,West Simsbury,Capitol,0,14.9,1215.0,27.3
+205,"205. Superior Plus Energy Services, Winsted",Superior Plus Energy Services Inc,Winsted,Northwest Hills,0,5.5,1671.0,27.2
+206,"206. First Fuel Oil, North Haven",First Fuel Oil,North Haven,South Central CT,0,19.0,1170.0,27.0
+207,"207. Curley's Fuel, Windsor",Curley's Fuel,Windsor,Capitol,0,14.7,1215.0,26.9
+208,"208. Sisters Oil Service, Canton",Sisters Oil Service Llc,Canton,Capitol,0,14.7,1215.0,26.9
+209,"209. Skip's Discount Oil, West Suffield",Skip's Discount Oil,West Suffield,Capitol,0,14.7,1215.0,26.9
+210,"210. Ferguson Oil, Enfield",Ferguson Oil Llc,Enfield,Capitol,0,14.2,1215.0,26.8
+211,"211. Ginnetti Energy, East Haven",Ginnetti Energy,East Haven,South Central CT,0,18.0,1170.0,26.3
+212,"212. Fusco Bro, Windsor",Fusco Bro,Windsor,Capitol,0,13.8,1215.0,26.3
+213,"213. Curtiss Oil, Prospect",Curtiss Oil Llc,Prospect,Naugatuck Valley,0,22.0,987.0,26.2
+214,"214. A-1 Propane, Manchester",A-1 Propane Llc,Manchester,Capitol,0,13.7,1215.0,26.2
+215,"215. Diesel Direct, South Windsor",Diesel Direct Inc,South Windsor,Capitol,0,13.4,1215.0,26.1
+216,"216. Connecticut Energy Solutions, Meriden",Connecticut Energy Solutions Llc,Meriden,South Central CT,0,17.6,1170.0,25.9
+217,"217. Kenny's Oil, Southbury",Kenny's Oil Llc,Southbury,Naugatuck Valley,0,21.8,987.0,25.9
+218,"218. 1st. Choice Fuel, Woodstock",1st. Choice Fuel Llc,Woodstock,Northeastern CT,0,7.9,1575.0,25.8
+219,"219. Diversified Petroleum Service, Wolcott",Diversified Petroleum Service Llc,Wolcott,Naugatuck Valley,0,21.6,987.0,25.8
+220,"220. A & L Family Oil,, Meriden","A & L Family Oil, Llc",Meriden,South Central CT,0,17.2,1170.0,25.8
+221,"221. Compass Energy, Simsbury",Compass Energy Llc,Simsbury,Capitol,0,12.2,1215.0,25.5
+222,"222. Angel Fuel, Waterbury",Angel Fuel Llc,Waterbury,Naugatuck Valley,0,21.1,987.0,25.5
+223,"223. Energy Direct, Granby",Energy Direct,Granby,Capitol,0,12.0,1215.0,25.3
+224,"224. It Energy, Watertown",It Energy Llc,Watertown,Naugatuck Valley,0,21.0,987.0,25.3
+225,"225. A-1 Oil, Windsor Locks",A-1 Oil Co.,Windsor Locks,Capitol,0,,1215.0,25.0
+226,"226. Aaa Oil, Wethersfield",Aaa Oil Company,Wethersfield,Capitol,0,,1215.0,25.0
+227,"227. Affordable Fuel Co, Coventry",Affordable Fuel Co Llc,Coventry,Capitol,0,,1215.0,25.0
+228,"228. American Fuel Oil Co, Coventry",American Fuel Oil Co Inc,Coventry,Capitol,0,,1215.0,25.0
+229,"229. Andrews Oil Company & Gas Services,, South Windsor","Andrews Oil Company & Gas Services, Inc.",South Windsor,Capitol,0,,1215.0,25.0
+230,"230. Artic Oil Co Of Southington, Southington",Artic Oil Co Of Southington Inc,Southington,Capitol,0,,1215.0,25.0
+231,"231. Brothers Oil Co, East Hartford",Brothers Oil Co Inc,East Hartford,Capitol,0,,1215.0,25.0
+232,"232. City Oil Co, New Britain",City Oil Co Inc,New Britain,Capitol,0,,1215.0,25.0
+233,"233. Clear River Fuel Oil, East Hartford",Clear River Fuel Oil Llc,East Hartford,Capitol,0,,1215.0,25.0
+234,"234. Dick's Discount Oil, Enfield",Dick's Discount Oil,Enfield,Capitol,0,,1215.0,25.0
+235,"235. E-z Oil Company, Manchester",E-z Oil Company Inc,Manchester,Capitol,0,,1215.0,25.0
+236,"236. Festi's Oil Service, Stafford Springs",Festi's Oil Service Inc,Stafford Springs,Capitol,0,,1215.0,25.0
+237,"237. Fuelco Discount, Newington",Fuelco Discount,Newington,Capitol,0,,1215.0,25.0
+238,"238. Glastonbury Oil, Glastonbury",Glastonbury Oil Company,Glastonbury,Capitol,0,,1215.0,25.0
+239,"239. Krupa Oil, Suffield",Krupa Oil Co,Suffield,Capitol,0,,1215.0,25.0
+240,"240. Leets Oil, Mansfield",Leets Oil,Mansfield,Capitol,0,,1215.0,25.0
+241,"241. Minute Man Oil, Farmington",Minute Man Oil,Farmington,Capitol,0,,1215.0,25.0
+242,"242. Newgate Oil, West Hartford",Newgate Oil,West Hartford,Capitol,0,,1215.0,25.0
+243,"243. Newington Oil, Newington",Newington Oil,Newington,Capitol,0,,1215.0,25.0
+244,"244. P J Mirabelli Enterprises, Newington",P J Mirabelli Enterprises Inc,Newington,Capitol,0,,1215.0,25.0
+245,"245. Polar Oil, Newington",Polar Oil,Newington,Capitol,0,,1215.0,25.0
+246,"246. Pride Fuel Co, West Hartford",Pride Fuel Co Llc,West Hartford,Capitol,0,,1215.0,25.0
+247,"247. Rich's Oil Service, Enfield",Rich's Oil Service Inc,Enfield,Capitol,0,,1215.0,25.0
+248,"248. Simsbury Oil, Newington",Simsbury Oil,Newington,Capitol,0,,1215.0,25.0
+249,"249. Spring Brook Ice & Fuel, New Britain",Spring Brook Ice & Fuel,New Britain,Capitol,0,,1215.0,25.0
+250,"250. Springer Oil Ltd, Bloomfield",Springer Oil Ltd,Bloomfield,Capitol,0,,1215.0,25.0
+251,"251. Teddy's Oil & Energy, Manchester",Teddy's Oil & Energy Llc,Manchester,Capitol,0,,1215.0,25.0
+252,"252. Town Oil Co, Wethersfield",Town Oil Co Inc,Wethersfield,Capitol,0,,1215.0,25.0
+253,"253. Trinks Brothers Oil, Manchester",Trinks Brothers Oil Llc,Manchester,Capitol,0,,1215.0,25.0
+254,"254. Val-u Oil, Enfield",Val-u Oil,Enfield,Capitol,0,,1215.0,25.0
+255,"255. Warren J Gottier Fuel Co, Rockville",Warren J Gottier Fuel Co Inc,Rockville,Capitol,0,,1215.0,25.0
+256,"256. Wat Holding, Windsor Locks",Wat Holding Llc,Windsor Locks,Capitol,0,,1215.0,25.0
+257,"257. West Side Oil, West Suffield",West Side Oil Co.,West Suffield,Capitol,0,,1215.0,25.0
+258,"258. Windsor Locks Oil, Windsor Locks",Windsor Locks Oil,Windsor Locks,Capitol,0,,1215.0,25.0
+259,"259. Wyman Oil, Manchester",Wyman Oil Company,Manchester,Capitol,0,,1215.0,25.0
+260,"260. Yankee Oil, Mansfield Center",Yankee Oil Inc,Mansfield Center,Capitol,0,,1215.0,25.0
+261,"261. Ashley's Energy, East Haven",Ashley's Energy Llc,East Haven,South Central CT,0,16.1,1170.0,24.8
+262,"262. Aspen Heating & Cooling, East Haven",Aspen Heating & Cooling Llc,East Haven,South Central CT,0,16.1,1170.0,24.8
+263,"263. Complete Energy, Enfield",Complete Energy Inc,Enfield,Capitol,0,11.7,1215.0,24.8
+264,"264. Pioneer Gas & Appliance Co, Beacon Falls",Pioneer Gas & Appliance Co Inc,Beacon Falls,Naugatuck Valley,0,20.1,987.0,24.7
+265,"265. G & G Oil, Southington",G & G Oil Company,Southington,Capitol,0,11.3,1215.0,24.5
+266,"266. Town & Country Discount Oil & Fuel, Voluntown",Town & Country Discount Oil & Fuel Llc,Voluntown,Northeastern CT,0,6.1,1575.0,24.3
+267,"267. Mission Fuels, Harwinton",Mission Fuels Llc,Harwinton,Northwest Hills,0,2.0,1671.0,24.3
+268,"268. Promise Propane, Newington",Promise Propane Llc,Newington,Capitol,0,11.1,1215.0,24.3
+269,"269. Laplaca Oil And Propane, Goshen",Laplaca Oil And Propane,Goshen,Northwest Hills,0,1.9,1671.0,24.2
+270,"270. Taylor Energy, Broad Brook",Taylor Energy,Broad Brook,Capitol,0,11.0,1215.0,24.1
+271,"271. Paraco Gas Of Ct, Waterbury",Paraco Gas Of Ct,Waterbury,Naugatuck Valley,0,20.0,987.0,23.9
+272,"272. Select Oil, Thomaston",Select Oil,Thomaston,Naugatuck Valley,0,20.0,987.0,23.9
+273,"273. Sanoco, Brooklyn",Sanoco,Brooklyn,Northeastern CT,0,6.0,1575.0,23.9
+274,"274. Uncas Gas, Danielson",Uncas Gas,Danielson,Northeastern CT,0,6.0,1575.0,23.9
+275,"275. Uncas Gas, Danielson",Uncas Gas,Danielson,Northeastern CT,0,6.0,1575.0,23.9
+276,"276. Uncas Gas, Danielson",Uncas Gas,Danielson,Northeastern CT,0,6.0,1575.0,23.9
+277,"277. Uncas Gas, Danielson",Uncas Gas,Danielson,Northeastern CT,0,6.0,1575.0,23.9
+278,"278. Tudor Energy, Burlington",Tudor Energy Llc,Burlington,Northwest Hills,0,1.4,1671.0,23.8
+279,"279. Bahres Heating Oil, Canton",Bahres Heating Oil Llc,Canton,Capitol,0,10.3,1215.0,23.6
+280,"280. Rocky's Fuel, New Haven",Rocky's Fuel,New Haven,South Central CT,0,14.9,1170.0,23.6
+281,"281. Amber Oil, Broad Brook",Amber Oil Inc,Broad Brook,Capitol,0,10.1,1215.0,23.4
+282,"282. Forbes Premium Fuel, East Haven",Forbes Premium Fuel,East Haven,South Central CT,0,14.8,1170.0,23.4
+283,"283. Mckinley Oil, Cheshire",Mckinley Oil,Cheshire,Naugatuck Valley,0,18.4,987.0,23.0
+284,"284. Anytime Oil, Middlebury",Anytime Oil Llc,Middlebury,Naugatuck Valley,0,18.3,987.0,22.9
+285,"285. Handford Oil, Bloomfield",Handford Oil,Bloomfield,Capitol,0,9.2,1215.0,22.9
+286,"286. Martino's Fuel, West Haven",Martino's Fuel,West Haven,South Central CT,0,14.0,1170.0,22.8
+287,"287. Partners Fuel, Shelton",Partners Fuel,Shelton,Naugatuck Valley,0,18.0,987.0,22.6
+288,"288. Prime Propane, Manchester",Prime Propane,Manchester,Capitol,0,9.0,1215.0,22.5
+289,"289. Cod Oil.com, North Haven",Cod Oil.com,North Haven,South Central CT,0,13.3,1170.0,22.3
+290,"290. Jordan's Fuel, New Haven",Jordan's Fuel,New Haven,South Central CT,0,13.2,1170.0,22.2
+291,"291. Southern Connecticut Ice And Oil, Bridgeport",Southern Connecticut Ice And Oil Llc,Bridgeport,Greater Bridgeport,0,21.9,980.0,22.2
+292,"292. Eazy Oil, Plantsville",Eazy Oil Llc,Plantsville,Capitol,0,7.8,1215.0,22.0
+293,"293. Petro Commercial Services, North Haven",Petro Commercial Services,North Haven,South Central CT,0,12.4,1170.0,21.9
+294,"294. Bloomfield Fuel Oil, East Hartford",Bloomfield Fuel Oil,East Hartford,Capitol,0,7.7,1215.0,21.8
+295,"295. Sippin Energy Products, Monroe",Sippin Energy Products,Monroe,Greater Bridgeport,0,21.0,980.0,21.5
+296,"296. Federal Oil, Ansonia",Federal Oil Llc,Ansonia,Naugatuck Valley,0,16.4,987.0,21.4
+297,"297. A Best Buy Premium Fuel & Trucking, Branford",A Best Buy Premium Fuel & Trucking Llc,Branford,South Central CT,0,,1170.0,21.2
+298,"298. A Gambardella Heating & A/c, Branford",A Gambardella Heating & A/c,Branford,South Central CT,0,,1170.0,21.2
+299,"299. Annie's Fuel, Meriden",Annie's Fuel,Meriden,South Central CT,0,,1170.0,21.2
+300,"300. Cents-able Oil, New Haven",Cents-able Oil,New Haven,South Central CT,0,,1170.0,21.2
+301,"301. F H Mott Fuel, Hamden",F H Mott Fuel Llc,Hamden,South Central CT,0,,1170.0,21.2
+302,"302. F Perrelli & Sons Fuel, East Haven",F Perrelli & Sons Fuel Inc,East Haven,South Central CT,0,,1170.0,21.2
+303,"303. G J Giacco, Meriden",G J Giacco Inc,Meriden,South Central CT,0,,1170.0,21.2
+304,"304. Grant Brothers Fuel Oil, Meriden",Grant Brothers Fuel Oil Inc,Meriden,South Central CT,0,,1170.0,21.2
+305,"305. Low Cost Oil Company, Hamden",Low Cost Oil Company Llc,Hamden,South Central CT,0,,1170.0,21.2
+306,"306. Meriden Oil, Meriden",Meriden Oil Co,Meriden,South Central CT,0,,1170.0,21.2
+307,"307. Miller's Fuel Oil, East Haven",Miller's Fuel Oil Inc,East Haven,South Central CT,0,,1170.0,21.2
+308,"308. Mim's Oil Company, Meriden",Mim's Oil Company Llc,Meriden,South Central CT,0,,1170.0,21.2
+309,"309. Port Service, New Haven",Port Service Inc,New Haven,South Central CT,0,,1170.0,21.2
+310,"310. Ryan Oil, Hamden",Ryan Oil Co,Hamden,South Central CT,0,,1170.0,21.2
+311,"311. Suburban Oil Co, Northford",Suburban Oil Co Llc,Northford,South Central CT,0,,1170.0,21.2
+312,"312. Tracey Energy Services, New Haven",Tracey Energy Services Llc,New Haven,South Central CT,0,,1170.0,21.2
+313,"313. Tuxis-ohr's Fuel, Meriden",Tuxis-ohr's Fuel Inc,Meriden,South Central CT,0,,1170.0,21.2
+314,"314. C N M Heating Cooling & Piping, Storrs Mansfield",C N M Heating Cooling & Piping Llc,Storrs Mansfield,Capitol,0,7.0,1215.0,21.2
+315,"315. Durso & Son Home Heating Oil, Madison",Durso & Son Home Heating Oil Llc,Madison,South Central CT,0,11.8,1170.0,21.2
+316,"316. Top Tier Fuel, Windsor Locks",Top Tier Fuel Llc,Windsor Locks,Capitol,0,6.9,1215.0,21.1
+317,"317. Baribault Propane, Oakville",Baribault Propane,Oakville,Naugatuck Valley,0,16.1,987.0,21.0
+318,"318. B & H Oil, Waterbury",B & H Oil,Waterbury,Naugatuck Valley,0,15.7,987.0,20.7
+319,"319. Bridgeworks Fuel, Plainville",Bridgeworks Fuel Llc,Plainville,Capitol,0,6.1,1215.0,20.6
+320,"320. Hurricane Energy Heating & Cooling, North Branford",Hurricane Energy Heating & Cooling Llc,North Branford,South Central CT,0,11.1,1170.0,20.5
+321,"321. Merrill Oil, Woodbridge",Merrill Oil Llc,Woodbridge,South Central CT,0,10.9,1170.0,20.1
+322,"322. Purplefuels, Branford",Purplefuels Llc,Branford,South Central CT,0,10.9,1170.0,20.1
+323,"323. Victory Fuel, Bethlehem",Victory Fuel Llc,Bethlehem,Naugatuck Valley,0,15.1,987.0,20.1
+324,"324. Phillips Oil, Prospect",Phillips Oil Llc,Prospect,Naugatuck Valley,0,15.0,987.0,20.0
+325,"325. Ben's Fuel, Bridgeport",Ben's Fuel,Bridgeport,Greater Bridgeport,0,19.9,980.0,20.0
+326,"326. J & D Oil, Thomaston",J & D Oil,Thomaston,Naugatuck Valley,0,14.9,987.0,19.8
+327,"327. Mercury Energy Distributors, Waterbury",Mercury Energy Distributors Inc,Waterbury,Naugatuck Valley,0,14.8,987.0,19.6
+328,"328. Madison Oil, Guilford",Madison Oil,Guilford,South Central CT,0,10.0,1170.0,19.6
+329,"329. American Fuel - Division Of Kerigan's Fuel, Bridgeport",American Fuel - Division Of Kerigan's Fuel Inc,Bridgeport,Greater Bridgeport,0,18.8,980.0,19.3
+330,"330. Dime Oil Company, Waterbury",Dime Oil Company Llc,Waterbury,Naugatuck Valley,0,14.4,987.0,19.3
+331,"331. Shaffer Beacon Mechanical, Granby",Shaffer Beacon Mechanical Llc,Granby,Capitol,0,5.0,1215.0,19.3
+332,"332. Ym Industries, Bolton",Ym Industries Inc,Bolton,Capitol,0,5.0,1215.0,19.3
+333,"333. Ym Industries, Bolton",Ym Industries Inc,Bolton,Capitol,0,5.0,1215.0,19.3
+334,"334. Kms Oil Company, Shelton",Kms Oil Company Llc,Shelton,Naugatuck Valley,0,13.8,987.0,18.8
+335,"335. Heating Oil Partners Lp, Killingworth",Heating Oil Partners Lp,Killingworth,Lower CT River Valley,0,22.0,922.0,18.7
+336,"336. Saybrook Oil, Portland",Saybrook Oil,Portland,Lower CT River Valley,0,22.0,922.0,18.7
+337,"337. Valley Oil, Portland",Valley Oil,Portland,Lower CT River Valley,0,22.0,922.0,18.7
+338,"338. Bethany Fuel, Bethany",Bethany Fuel Llc,Bethany,South Central CT,0,8.2,1170.0,18.6
+339,"339. Just Clean Fuel, Westbrook",Just Clean Fuel Llc,Westbrook,Lower CT River Valley,0,21.9,922.0,18.5
+340,"340. Litchfield County Fuel Oils, Waterbury",Litchfield County Fuel Oils Llc,Waterbury,Naugatuck Valley,0,12.9,987.0,18.4
+341,"341. Armstrong Home Heating Oil, Terryville",Armstrong Home Heating Oil Llc,Terryville,Naugatuck Valley,0,12.8,987.0,18.2
+342,"342. Thurston Energy, Naugatuck",Thurston Energy,Naugatuck,Naugatuck Valley,0,12.8,987.0,18.2
+343,"343. T & S Home Heating, Portland",T & S Home Heating,Portland,Lower CT River Valley,0,21.3,922.0,18.1
+344,"344. Pricerite Oil, Watertown",Pricerite Oil Llc,Watertown,Naugatuck Valley,0,12.2,987.0,18.0
+345,"345. J Services, Bridgeport",J Services Llc,Bridgeport,Greater Bridgeport,0,16.8,980.0,18.0
+346,"346. Fillerup, Meriden",Fillerup Inc,Meriden,South Central CT,0,7.6,1170.0,18.0
+347,"347. Clock Town Energy, Thomaston",Clock Town Energy Llc,Thomaston,Naugatuck Valley,0,12.0,987.0,17.8
+348,"348. M&m Fuel Oils, Guilford",M&m Fuel Oils,Guilford,South Central CT,0,7.1,1170.0,17.6
+349,"349. J J Vinci Oil, Middletown",J J Vinci Oil Co,Middletown,Lower CT River Valley,0,20.9,922.0,17.6
+350,"350. Brainard's Heating Oil, Shelton",Brainard's Heating Oil Llc,Shelton,Naugatuck Valley,0,11.9,987.0,17.6
+351,"351. River Valley Oil Service, Middletown",River Valley Oil Service,Middletown,Lower CT River Valley,0,20.5,922.0,17.5
+352,"352. Baribault Oil, Oakville",Baribault Oil,Oakville,Naugatuck Valley,0,,987.0,17.5
+353,"353. Barrett Family Oil, Thomaston",Barrett Family Oil Co,Thomaston,Naugatuck Valley,0,,987.0,17.5
+354,"354. Berkshire Oil, Bristol",Berkshire Oil Inc,Bristol,Naugatuck Valley,0,,987.0,17.5
+355,"355. Brass City, Waterbury",Brass City,Waterbury,Naugatuck Valley,0,,987.0,17.5
+356,"356. Dal Fuel Oil Co, Naugatuck",Dal Fuel Oil Co Llc,Naugatuck,Naugatuck Valley,0,,987.0,17.5
+357,"357. Eagle Oil, Bethlehem",Eagle Oil Co,Bethlehem,Naugatuck Valley,0,,987.0,17.5
+358,"358. Frank C Vierra, Waterbury",Frank C Vierra,Waterbury,Naugatuck Valley,0,,987.0,17.5
+359,"359. Hillcrest Fuel, Ansonia",Hillcrest Fuel Inc,Ansonia,Naugatuck Valley,0,,987.0,17.5
+360,"360. J Thurston, Waterbury",J Thurston,Waterbury,Naugatuck Valley,0,,987.0,17.5
+361,"361. Mann, Ansonia",Mann Inc,Ansonia,Naugatuck Valley,0,,987.0,17.5
+362,"362. Nelson Oil, Thomaston",Nelson Oil,Thomaston,Naugatuck Valley,0,,987.0,17.5
+363,"363. South Britain Oil, Southbury",South Britain Oil Llc,Southbury,Naugatuck Valley,0,,987.0,17.5
+364,"364. Thomaston Oil, Thomaston",Thomaston Oil,Thomaston,Naugatuck Valley,0,,987.0,17.5
+365,"365. Burn Oil, Marlborough",Burn Oil Llc,Marlborough,Capitol,0,2.7,1215.0,17.5
+366,"366. Omni Energy, Watertown",Omni Energy Llc,Watertown,Naugatuck Valley,0,11.8,987.0,17.4
+367,"367. Affordable Fuels, East Haven",Affordable Fuels Llc,East Haven,South Central CT,0,6.5,1170.0,17.3
+368,"368. L V Fuel Co, South Glastonbury",L V Fuel Co Llc,South Glastonbury,Capitol,0,2.3,1215.0,17.2
+369,"369. Wilson-norige Oil, Broad Brook",Wilson-norige Oil Company,Broad Brook,Capitol,0,2.3,1215.0,17.2
+370,"370. Oil Man, Wolcott",Oil Man,Wolcott,Naugatuck Valley,0,11.4,987.0,17.1
+371,"371. Primary Energy, Hebron",Primary Energy Llc,Hebron,Capitol,0,2.0,1215.0,16.8
+372,"372. Penny Oil Energy Distributors, Waterbury",Penny Oil Energy Distributors Llc,Waterbury,Naugatuck Valley,0,11.1,987.0,16.8
+373,"373. Power Fuels Propane, Bristol",Power Fuels Propane Llc,Bristol,Naugatuck Valley,0,11.1,987.0,16.8
+374,"374. Seymour Oil And Propane, Seymour",Seymour Oil And Propane,Seymour,Naugatuck Valley,0,11.0,987.0,16.6
+375,"375. Quality Propane, Clinton",Quality Propane Inc,Clinton,Lower CT River Valley,0,20.0,922.0,16.4
+376,"376. Boss Oil Co, Thomaston",Boss Oil Co Llc,Thomaston,Naugatuck Valley,0,10.4,987.0,16.2
+377,"377. B & B Petroleum, Portland",B & B Petroleum Inc,Portland,Lower CT River Valley,0,19.8,922.0,16.2
+378,"378. Trio Energy, Naugatuck",Trio Energy Llc,Naugatuck,Naugatuck Valley,0,10.1,987.0,15.9
+379,"379. S + S Oil, East Hartford",S + S Oil Co,East Hartford,Capitol,0,0.9,1215.0,15.8
+380,"380. United Fuel Oil, Durham",United Fuel Oil,Durham,Lower CT River Valley,0,19.0,922.0,15.7
+381,"381. Wilson-norige Oil, Broad Brook",Wilson-norige Oil Company,Broad Brook,Capitol,0,0.7,1215.0,15.7
+382,"382. Edpo, Stafford Springs",Edpo Llc,Stafford Springs,Capitol,0,0.6,1215.0,15.6
+383,"383. Mercury Engergy, Waterbury",Mercury Engergy,Waterbury,Naugatuck Valley,0,9.6,987.0,15.6
+384,"384. American Oil & Heating, Middlefield",American Oil & Heating,Middlefield,Lower CT River Valley,0,18.8,922.0,15.6
+385,"385. Blackhawk Oil, Bristol",Blackhawk Oil,Bristol,Naugatuck Valley,0,9.3,987.0,15.5
+386,"386. Beacon Oil, Granby",Beacon Oil Llc,Granby,Capitol,0,0.3,1215.0,15.4
+387,"387. Real Heating Oil, Southington",Real Heating Oil Llc,Southington,Capitol,0,0.2,1215.0,15.3
+388,"388. Tower Klebe Energy, Plainville",Tower Klebe Energy,Plainville,Capitol,0,0.0,1215.0,15.0
+389,"389. Dollarwise Discount Oil, Waterbury",Dollarwise Discount Oil,Waterbury,Naugatuck Valley,0,9.0,987.0,15.0
+390,"390. Gaski Energy, Bristol",Gaski Energy Llc,Bristol,Naugatuck Valley,0,9.0,987.0,15.0
+391,"391. Daniels Propane, Portland",Daniels Propane,Portland,Lower CT River Valley,0,17.9,922.0,15.0
+392,"392. Alpine Heating & Cooling, North Haven",Alpine Heating & Cooling,North Haven,South Central CT,0,4.4,1170.0,14.9
+393,"393. Davis Oil, North Haven",Davis Oil,North Haven,South Central CT,0,4.4,1170.0,14.9
+394,"394. James Heating, North Haven",James Heating,North Haven,South Central CT,0,4.4,1170.0,14.9
+395,"395. Krall Energy, North Haven",Krall Energy,North Haven,South Central CT,0,4.4,1170.0,14.9
+396,"396. Only Oil, North Haven",Only Oil,North Haven,South Central CT,0,4.4,1170.0,14.9
+397,"397. Vadney Fuel, North Haven",Vadney Fuel,North Haven,South Central CT,0,4.4,1170.0,14.9
+398,"398. Annie's Oil, Prospect",Annie's Oil Llc,Prospect,Naugatuck Valley,0,8.0,987.0,14.6
+399,"399. Best Price Oil, Waterbury",Best Price Oil,Waterbury,Naugatuck Valley,0,8.0,987.0,14.6
+400,"400. Dollar Wise, Portland",Dollar Wise,Portland,Lower CT River Valley,0,17.1,922.0,14.4
+401,"401. Dutch Propane, Moodus",Dutch Propane Llc,Moodus,Lower CT River Valley,0,16.6,922.0,14.1
+402,"402. Buchta Oil Service, Guilford",Buchta Oil Service,Guilford,South Central CT,0,3.0,1170.0,14.0
+403,"403. Heating Oil Delivery, Orange",Heating Oil Delivery Llc,Orange,South Central CT,0,3.0,1170.0,14.0
+404,"404. Family Discount Heating Oil, Wolcott",Family Discount Heating Oil,Wolcott,Naugatuck Valley,0,7.1,987.0,13.9
+405,"405. Hi Ho Petroleum, Bridgeport",Hi Ho Petroleum,Bridgeport,Greater Bridgeport,0,,980.0,13.8
+406,"406. Joe's Fuel Co, Bridgeport",Joe's Fuel Co Inc,Bridgeport,Greater Bridgeport,0,,980.0,13.8
+407,"407. Kaufman Fuel, Bridgeport",Kaufman Fuel,Bridgeport,Greater Bridgeport,0,,980.0,13.8
+408,"408. Kerigan's Fuel, Bridgeport",Kerigan's Fuel Inc,Bridgeport,Greater Bridgeport,0,,980.0,13.8
+409,"409. Santa Fuel, Bridgeport",Santa Fuel Inc,Bridgeport,Greater Bridgeport,0,,980.0,13.8
+410,"410. Swanson Fuel, Monroe",Swanson Fuel Inc,Monroe,Greater Bridgeport,0,,980.0,13.8
+411,"411. Martin Heating Oil, Wolcott",Martin Heating Oil Llc,Wolcott,Naugatuck Valley,0,7.0,987.0,13.7
+412,"412. Knight Fuel Oil, Bridgeport",Knight Fuel Oil Inc,Bridgeport,Greater Bridgeport,0,11.8,980.0,13.7
+413,"413. Quinoco Energy, Bristol",Quinoco Energy,Bristol,Naugatuck Valley,0,6.5,987.0,13.5
+414,"414. Onlineoil.com, Middletown",Onlineoil.com,Middletown,Lower CT River Valley,0,16.0,922.0,13.4
+415,"415. Residential Fuel Systems, Stratford",Residential Fuel Systems Llc,Stratford,Greater Bridgeport,0,10.9,980.0,12.6
+416,"416. Easy Oil, Cheshire",Easy Oil Llc,Cheshire,Naugatuck Valley,0,6.0,987.0,12.6
+417,"417. Gary Franco Propane, Oxford",Gary Franco Propane Llc,Oxford,Naugatuck Valley,0,6.0,987.0,12.6
+418,"418. Brazos Oil, Portland",Brazos Oil Llc,Portland,Lower CT River Valley,0,15.1,922.0,12.6
+419,"419. Westconn Energy, Seymour",Westconn Energy Llc,Seymour,Naugatuck Valley,0,5.9,987.0,12.5
+420,"420. Belica Fuel Oil, Southbury",Belica Fuel Oil Llc,Southbury,Naugatuck Valley,0,5.2,987.0,12.2
+421,"421. Addies Oil, Middletown",Addies Oil Llc,Middletown,Lower CT River Valley,0,14.8,922.0,12.1
+422,"422. Right Energy, Prospect",Right Energy Inc,Prospect,Naugatuck Valley,0,5.0,987.0,11.8
+423,"423. Oxford Propane, Shelton",Oxford Propane,Shelton,Naugatuck Valley,0,4.9,987.0,11.7
+424,"424. Didato's Oil Service, Middletown",Didato's Oil Service,Middletown,Lower CT River Valley,0,13.9,922.0,11.4
+425,"425. Dollarwise Discount Oil, Bridgeport",Dollarwise Discount Oil,Bridgeport,Greater Bridgeport,0,9.0,980.0,11.2
+426,"426. Scott Energy Of Ct, Moodus",Scott Energy Of Ct Llc,Moodus,Lower CT River Valley,0,13.7,922.0,11.2
+427,"427. Fjb Oil, Wolcott",Fjb Oil Llc,Wolcott,Naugatuck Valley,0,4.1,987.0,11.0
+428,"428. Oil Dogs, Cheshire",Oil Dogs Llc,Cheshire,Naugatuck Valley,0,4.1,987.0,11.0
+429,"429. Valiant Energy Solutions, Waterbury",Valiant Energy Solutions,Waterbury,Naugatuck Valley,0,3.7,987.0,10.8
+430,"430. Bystrek's Oil Company, Middlefield",Bystrek's Oil Company Llc,Middlefield,Lower CT River Valley,0,,922.0,10.0
+431,"431. C. Shefcyk & Sons, Portland",C. Shefcyk & Sons,Portland,Lower CT River Valley,0,,922.0,10.0
+432,"432. Daniels Oil, Portland",Daniels Oil Co,Portland,Lower CT River Valley,0,,922.0,10.0
+433,"433. Dimauro Oil Co, Portland",Dimauro Oil Co Llc,Portland,Lower CT River Valley,0,,922.0,10.0
+434,"434. Foley Furnace, Chester",Foley Furnace Inc,Chester,Lower CT River Valley,0,,922.0,10.0
+435,"435. John Zanardi Oil Co, Chester",John Zanardi Oil Co Inc,Chester,Lower CT River Valley,0,,922.0,10.0
+436,"436. Long Hill Oil, Clinton",Long Hill Oil,Clinton,Lower CT River Valley,0,,922.0,10.0
+437,"437. Pennywise Oil Company, Westbrook",Pennywise Oil Company Inc,Westbrook,Lower CT River Valley,0,,922.0,10.0
+438,"438. Sound Petroleum Ii, Clinton",Sound Petroleum Ii Inc,Clinton,Lower CT River Valley,0,,922.0,10.0
+439,"439. Taylor Oil Northeast, Portland",Taylor Oil Northeast Inc,Portland,Lower CT River Valley,0,,922.0,10.0
+440,"440. Wilcox Fuel, Westbrook",Wilcox Fuel Inc,Westbrook,Lower CT River Valley,0,,922.0,10.0
+441,"441. East Coast Fuels, Bristol",East Coast Fuels Llc,Bristol,Naugatuck Valley,0,2.7,987.0,10.0
+442,"442. Omni Propane, Watertown",Omni Propane Llc,Watertown,Naugatuck Valley,0,2.5,987.0,9.9
+443,"443. Massimo Fuel, Waterbury",Massimo Fuel Llc,Waterbury,Naugatuck Valley,0,2.1,987.0,9.5
+444,"444. Bd Energy, Ansonia",Bd Energy,Ansonia,Naugatuck Valley,0,2.0,987.0,9.3
+445,"445. Bd Energy, Ansonia",Bd Energy,Ansonia,Naugatuck Valley,0,2.0,987.0,9.3
+446,"446. J&a Oil Delivery, Naugatuck",J&a Oil Delivery Llc,Naugatuck,Naugatuck Valley,0,1.7,987.0,9.1
+447,"447. Patriot Discount Oil, Middletown",Patriot Discount Oil Llc,Middletown,Lower CT River Valley,0,10.9,922.0,8.9
+448,"448. River Valley Propane, Middletown",River Valley Propane Inc,Middletown,Lower CT River Valley,0,10.4,922.0,8.7
+449,"449. Cuzzi Oil, Bridgeport",Cuzzi Oil Llc,Bridgeport,Greater Bridgeport,0,5.7,980.0,8.6
+450,"450. Bag Oil, Waterbury",Bag Oil Llc,Waterbury,Naugatuck Valley,0,0.9,987.0,8.3
+451,"451. Dragon Fuel, Stratford",Dragon Fuel Llc,Stratford,Greater Bridgeport,0,4.7,980.0,7.8
+452,"452. Kingston Oil, Wolcott",Kingston Oil Llc,Wolcott,Naugatuck Valley,0,0.2,987.0,7.8
+453,"453. Reliable Energy Of Colchester, Portland",Reliable Energy Of Colchester Llc,Portland,Lower CT River Valley,0,9.1,922.0,7.7
+454,"454. Prime Oil, Wolcott",Prime Oil,Wolcott,Naugatuck Valley,0,0.1,987.0,7.6
+455,"455. Heatly, Bridgeport",Heatly,Bridgeport,Greater Bridgeport,0,3.6,980.0,6.9
+456,"456. Recharge Fuel, Stratford",Recharge Fuel Llc,Stratford,Greater Bridgeport,0,3.1,980.0,6.8
+457,"457. Wilcox Oil Online, Westbrook",Wilcox Oil Online,Westbrook,Lower CT River Valley,0,7.4,922.0,6.6
+458,"458. New Canaan Oil, Bridgeport",New Canaan Oil Co,Bridgeport,Greater Bridgeport,0,3.0,980.0,6.5
+459,"459. Servco Oil, Bridgeport",Servco Oil Inc,Bridgeport,Greater Bridgeport,0,3.0,980.0,6.5
+460,"460. Village Oil, Bridgeport",Village Oil,Bridgeport,Greater Bridgeport,0,2.8,980.0,6.4
+461,"461. Branchville Oil, Bridgeport",Branchville Oil,Bridgeport,Greater Bridgeport,0,2.7,980.0,6.2
+462,"462. Peter H Mortensen Vinci Co (the), Middletown",Peter H Mortensen Vinci Co (the),Middletown,Lower CT River Valley,0,6.1,922.0,5.6
+463,"463. Apple Oil, Bridgeport",Apple Oil,Bridgeport,Greater Bridgeport,0,1.5,980.0,5.2
+464,"464. Groeper Oil, Middletown",Groeper Oil,Middletown,Lower CT River Valley,0,4.9,922.0,4.2
+465,"465. Mirabito Energy Products, Portland",Mirabito Energy Products,Portland,Lower CT River Valley,0,4.1,922.0,3.5
+466,"466. Market Oil, Moodus",Market Oil,Moodus,Lower CT River Valley,0,3.4,922.0,3.1
+467,"467. Connecticut Oil Recycling Services, Middletown",Connecticut Oil Recycling Services Llc,Middletown,Lower CT River Valley,0,1.6,922.0,1.5
+468,"468. F And F Fuel, East Hampton",F And F Fuel Llc,East Hampton,Lower CT River Valley,0,1.1,922.0,1.2
