@@ -2,11 +2,11 @@
 
 **Where and when does the Northeast need heating fuel and AC service, and which fuel dealers serve that demand?**
 
-An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in three interactive Tableau dashboards.
+An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in four interactive Tableau dashboards.
 
 > **Status:** Complete. Phases 1 to 7 map the market; Phase 8 adds delivery logistics for one real dealer. The full write-up is in [`docs/findings.md`](docs/findings.md).
 >
-> **Live dashboards:** [The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) · [Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs) · [Who to Call First (CT dealers)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
+> **Live dashboards:** [The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) · [Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs) · [Who to Call First (CT dealers)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects) · [The Delivery Desk](https://public.tableau.com/views/northeast_thermal_year/TheDeliveryDesk)
 
 ---
 
@@ -34,6 +34,10 @@ More detail, plus how much to trust each number, is in [`docs/findings.md`](docs
 **[Who to Call First](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects):** all 468 Connecticut dealers, ranked.
 
 [![Who to Call First dashboard](tableau/screenshots/ConnecticutDealerProspects.png)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
+
+**[The Delivery Desk](https://public.tableau.com/views/northeast_thermal_year/TheDeliveryDesk):** one real dealer's winter, routed by hand vs. optimized.
+
+[![The Delivery Desk dashboard](tableau/screenshots/TheDeliveryDesk.png)](https://public.tableau.com/views/northeast_thermal_year/TheDeliveryDesk)
 
 ---
 
@@ -317,7 +321,7 @@ Each analysis is a saved query in `sql/analysis/`. The most useful results also 
 
 ## Tableau Dashboards
 
-Three dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. **[Open them on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear).** The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
+Four dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. **[Open them on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear).** The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
 
 ### The Thermal Year
 - County map colored by **thermal load**: each county's heating gallons per home minus its cooling demand per home, from +1 (all heating) to -1 (all cooling)
