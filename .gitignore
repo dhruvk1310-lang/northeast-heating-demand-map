@@ -25,3 +25,4 @@ data/interim/*
 # Tableau extracts (rebuilt by src.load.build_tableau_extracts)
 tableau/extracts/
 hyperd*.log
+*.twbr

@@ -4,7 +4,9 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Data, demand model, SQL database, and Tableau dashboards complete. Connecticut dealer layer next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
+> **Status:** Data, demand model, SQL database, and Tableau dashboards complete. Connecticut dealer layer next.
+>
+> **Live dashboards:** [The Thermal Year on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 
 ---
 
@@ -286,7 +288,7 @@ Each analysis is a saved query in `sql/analysis/`. The most useful results also 
 
 ## Tableau Dashboards
 
-Two dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
+Two dashboards in a dark "ember and ice" theme: ember for heating load, ice for cooling. **[Open them on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear).** The workbook is [`tableau/northeast_thermal_year.twb`](tableau/northeast_thermal_year.twb).
 
 ### The Thermal Year
 - County map colored by **thermal load**: each county's heating gallons per home minus its cooling demand per home, from +1 (all heating) to -1 (all cooling)
@@ -406,7 +408,7 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 - [x] Seasonal demand map with month slider ("The Thermal Year")
 - [x] Market overview (headline tiles and seasonal pulse, on the same dashboard)
 - [x] Year-round opportunity scatter ("Where the Year-Round Money Is")
-- [ ] Publish to Tableau Public
+- [x] [Publish to Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
 
 **Phase 6: Dealer layer (Connecticut)**
 - [ ] Collect and verify CT dealer list
