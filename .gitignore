@@ -21,3 +21,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/interim/*
 !data/interim/.gitkeep
+
+# Tableau extracts (rebuilt by src.load.build_tableau_extracts)
+tableau/extracts/
+hyperd*.log

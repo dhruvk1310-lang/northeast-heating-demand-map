@@ -1,0 +1,21 @@
+heating_season,kpi_order,kpi_value,kpi_label
+2021-22,1,$15.1B,heating oil + propane spend
+2021-22,2,3.0B gal,of heating oil
+2021-22,3,1.0B gal,of propane
+2021-22,4,Jan,peak month for fuel demand
+2022-23,1,$16.5B,heating oil + propane spend
+2022-23,2,2.9B gal,of heating oil
+2022-23,3,0.9B gal,of propane
+2022-23,4,Dec,peak month for fuel demand
+2023-24,1,$14.4B,heating oil + propane spend
+2023-24,2,2.8B gal,of heating oil
+2023-24,3,0.9B gal,of propane
+2023-24,4,Jan,peak month for fuel demand
+2024-25,1,$14.3B,heating oil + propane spend
+2024-25,2,3.0B gal,of heating oil
+2024-25,3,1.0B gal,of propane
+2024-25,4,Jan,peak month for fuel demand
+2025-26,1,$16.8B,heating oil + propane spend
+2025-26,2,3.2B gal,of heating oil
+2025-26,3,1.0B gal,of propane
+2025-26,4,Jan,peak month for fuel demand

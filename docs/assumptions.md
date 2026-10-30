@@ -42,6 +42,12 @@
 - **Standard deviation** is computed as sqrt(avg(x²) - avg(x)²), because SQLite has no `STDDEV` function.
 - **Density groups** in query 6 split the 218 counties into four equal groups by homes per square mile of land.
 
+## Tableau
+
+- **Thermal load** (the map's color) = heating gallons per home, scaled to 0-1, minus cooling index per home, scaled to 0-1, for each county and month. Each part is divided by its 99th percentile across all county-months and capped at 1, so a few extreme counties do not wash out the color scale. +1 means all heating load, -1 all cooling load.
+- **The dashboards show the 2025-26 season.** All five seasons are in the data files; the season is set in `build_tableau_workbook.py`.
+- **Headline numbers** on The Thermal Year are written into the dashboard as text when the workbook is built, from `tableau/data/kpis.csv`.
+
 ## Scoring Weights
 
 - Year-round score = 0.6 x heating spend percentile + 0.4 x cooling index percentile, computed per heating season across all 218 counties.

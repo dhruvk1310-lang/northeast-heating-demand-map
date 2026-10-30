@@ -1,0 +1,1970 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook original-version='18.1' source-build='2025.3.1 (20253.25.1210.1815)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SpatialFileLayer />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+    <color-palette name='Thermal Ice to Ember' type='ordered-diverging'>
+      <color>#bfe9ff</color>
+      <color>#5fb4e8</color>
+      <color>#24618f</color>
+      <color>#16233a</color>
+      <color>#7a3416</color>
+      <color>#e0662b</color>
+      <color>#ffc46b</color>
+    </color-palette>
+    <color-palette name='NE Heating Quadrant Codes' type='ordered-sequential'>
+      <color>#3a4659</color>
+      <color>#5fb4e8</color>
+      <color>#e0662b</color>
+      <color>#f2c14e</color>
+    </color-palette>
+    <color-palette name='NE Heating Pulse Codes' type='ordered-sequential'>
+      <color>#24618f</color>
+      <color>#bfe9ff</color>
+      <color>#7a3416</color>
+      <color>#ffc46b</color>
+    </color-palette>
+  </preferences>
+  <style>
+    <style-rule element='all'>
+      <format attr='font-family' value='Tableau Book' />
+    </style-rule>
+    <style-rule element='parameter-ctrl-title'>
+      <format attr='color' value='#E8E6E1' />
+      <format attr='font-family' value='Tableau Semibold' />
+    </style-rule>
+    <style-rule element='parameter-ctrl'>
+      <format attr='color' value='#0B1220' />
+    </style-rule>
+    <style-rule element='legend-title'>
+      <format attr='color' value='#E8E6E1' />
+      <format attr='font-family' value='Tableau Semibold' />
+    </style-rule>
+    <style-rule element='legend'>
+      <format attr='color' value='#8B95A7' />
+      <format attr='background-color' value='#111A2E' />
+    </style-rule>
+  </style>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Month' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;January 2026&quot;'>
+        <calculation class='tableau' formula='&quot;January 2026&quot;' />
+        <members>
+          <member value='&quot;July 2025&quot;' />
+          <member value='&quot;August 2025&quot;' />
+          <member value='&quot;September 2025&quot;' />
+          <member value='&quot;October 2025&quot;' />
+          <member value='&quot;November 2025&quot;' />
+          <member value='&quot;December 2025&quot;' />
+          <member value='&quot;January 2026&quot;' />
+          <member value='&quot;February 2026&quot;' />
+          <member value='&quot;March 2026&quot;' />
+          <member value='&quot;April 2026&quot;' />
+          <member value='&quot;May 2026&quot;' />
+          <member value='&quot;June 2026&quot;' />
+        </members>
+      </column>
+      <column caption='Rank counties by' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Total&quot;'>
+        <calculation class='tableau' formula='&quot;Total&quot;' />
+        <members>
+          <member value='&quot;Total&quot;' />
+          <member value='&quot;Per home&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='counties.geojson+ (Multiple Connections)' inline='true' name='federated.1d875mm13w789317ga6xj1ro064z' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='counties' name='ogrdirect.07iyutn0xopdty193u2vs1u3aj8q'>
+            <connection class='ogrdirect' directory='/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data' filename='counties.geojson' password='' server='' tablename='' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='county_month' name='textscan.1uwef270ayolez1baa1x60vkujw3'>
+            <connection class='textscan' directory='/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data' filename='county_month.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='ogrdirect.07iyutn0xopdty193u2vs1u3aj8q' name='counties.geojson' table='[counties.geojson]' type='table'>
+            <columns>
+              <column datatype='string' name='county_key' ordinal='0' />
+              <column datatype='string' name='county_name' ordinal='1' />
+              <column datatype='string' name='state_abbr' ordinal='2' />
+              <column datatype='spatial' name='Geometry' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1uwef270ayolez1baa1x60vkujw3' name='county_month.csv' table='[county_month#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='county_key' ordinal='0' />
+              <column datatype='string' name='county_name' ordinal='1' />
+              <column datatype='string' name='state_abbr' ordinal='2' />
+              <column datatype='date' name='month_date' ordinal='3' />
+              <column datatype='string' name='heating_season' ordinal='4' />
+              <column datatype='string' name='month_name' ordinal='5' />
+              <column datatype='integer' name='total_homes' ordinal='6' />
+              <column datatype='integer' name='oil_homes' ordinal='7' />
+              <column datatype='integer' name='propane_homes' ordinal='8' />
+              <column datatype='real' name='oil_gallons' ordinal='9' />
+              <column datatype='real' name='propane_gallons' ordinal='10' />
+              <column datatype='real' name='heating_gallons' ordinal='11' />
+              <column datatype='real' name='heating_spend' ordinal='12' />
+              <column datatype='real' name='hdd' ordinal='13' />
+              <column datatype='real' name='cdd' ordinal='14' />
+              <column datatype='real' name='cooling_index' ordinal='15' />
+              <column datatype='real' name='heating_gal_per_home' ordinal='16' />
+              <column datatype='real' name='cooling_per_home' ordinal='17' />
+              <column datatype='real' name='thermal_load' ordinal='18' />
+              <column datatype='string' name='month_label' ordinal='19' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Geometry]' value='[counties.geojson].[Geometry]' />
+          <map key='[cdd]' value='[county_month.csv].[cdd]' />
+          <map key='[cooling_index]' value='[county_month.csv].[cooling_index]' />
+          <map key='[cooling_per_home]' value='[county_month.csv].[cooling_per_home]' />
+          <map key='[county_key (county_month.csv)]' value='[county_month.csv].[county_key]' />
+          <map key='[county_key]' value='[counties.geojson].[county_key]' />
+          <map key='[county_name (county_month.csv)]' value='[county_month.csv].[county_name]' />
+          <map key='[county_name]' value='[counties.geojson].[county_name]' />
+          <map key='[hdd]' value='[county_month.csv].[hdd]' />
+          <map key='[heating_gal_per_home]' value='[county_month.csv].[heating_gal_per_home]' />
+          <map key='[heating_gallons]' value='[county_month.csv].[heating_gallons]' />
+          <map key='[heating_season]' value='[county_month.csv].[heating_season]' />
+          <map key='[heating_spend]' value='[county_month.csv].[heating_spend]' />
+          <map key='[month_date]' value='[county_month.csv].[month_date]' />
+          <map key='[month_name]' value='[county_month.csv].[month_name]' />
+          <map key='[oil_gallons]' value='[county_month.csv].[oil_gallons]' />
+          <map key='[oil_homes]' value='[county_month.csv].[oil_homes]' />
+          <map key='[propane_gallons]' value='[county_month.csv].[propane_gallons]' />
+          <map key='[propane_homes]' value='[county_month.csv].[propane_homes]' />
+          <map key='[state_abbr (county_month.csv)]' value='[county_month.csv].[state_abbr]' />
+          <map key='[state_abbr]' value='[counties.geojson].[state_abbr]' />
+          <map key='[thermal_load]' value='[county_month.csv].[thermal_load]' />
+          <map key='[month_label]' value='[county_month.csv].[month_label]' />
+          <map key='[total_homes]' value='[county_month.csv].[total_homes]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>county_key</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[county_key]</local-name>
+            <parent-name>[counties.geojson]</parent-name>
+            <remote-alias>county_key</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[counties.geojson_44F0576E2B404900983994B8D103D788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>county_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[county_name]</local-name>
+            <parent-name>[counties.geojson]</parent-name>
+            <remote-alias>county_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[counties.geojson_44F0576E2B404900983994B8D103D788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>state_abbr</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[state_abbr]</local-name>
+            <parent-name>[counties.geojson]</parent-name>
+            <remote-alias>state_abbr</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[counties.geojson_44F0576E2B404900983994B8D103D788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[counties.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[counties.geojson_44F0576E2B404900983994B8D103D788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>county_key</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[county_key (county_month.csv)]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>county_key</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>county_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[county_name (county_month.csv)]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>county_name</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>state_abbr</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[state_abbr (county_month.csv)]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>state_abbr</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>month_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[month_date]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>month_date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heating_season</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[heating_season]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>heating_season</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>month_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[month_name]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>month_name</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_homes</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_homes]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>total_homes</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>oil_homes</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[oil_homes]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>oil_homes</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>propane_homes</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[propane_homes]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>propane_homes</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>oil_gallons</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[oil_gallons]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>oil_gallons</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>propane_gallons</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[propane_gallons]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>propane_gallons</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heating_gallons</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[heating_gallons]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>heating_gallons</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heating_spend</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[heating_spend]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>heating_spend</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hdd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hdd]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>hdd</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cdd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cdd]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>cdd</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cooling_index</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cooling_index]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>cooling_index</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heating_gal_per_home</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[heating_gal_per_home]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>heating_gal_per_home</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cooling_per_home</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cooling_per_home]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>cooling_per_home</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>thermal_load</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[thermal_load]</local-name>
+            <parent-name>[county_month.csv]</parent-name>
+            <remote-alias>thermal_load</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Selected month" datatype='boolean' name='[Calculation_selected_month]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="[month_label] = [Parameters].[Parameter 1]" />
+      </column>
+      <column caption="County" datatype='string' name='[Calculation_county_label]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="REPLACE(REPLACE([county_name], ' Planning Region', ''), ' County', '') + ', ' + [state_abbr]" />
+      </column>
+      <column caption='counties.geojson' datatype='table' name='[__tableau_internal_object_id__].[counties.geojson_44F0576E2B404900983994B8D103D788]' role='measure' type='quantitative' />
+      <column caption='county_month.csv' datatype='table' name='[__tableau_internal_object_id__].[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]' role='measure' type='quantitative' />
+      <column caption='Cdd' datatype='real' name='[cdd]' role='measure' type='quantitative' />
+      <column caption='Cooling Index' datatype='real' name='[cooling_index]' role='measure' type='quantitative' />
+      <column caption='Cooling Per Home' datatype='real' name='[cooling_per_home]' role='measure' type='quantitative' />
+      <column caption='County Key (County Month.Csv)' datatype='string' name='[county_key (county_month.csv)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='County Key' datatype='string' name='[county_key]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='County Name (County Month.Csv)' datatype='string' name='[county_name (county_month.csv)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='County Name' datatype='string' name='[county_name]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='Hdd' datatype='real' name='[hdd]' role='measure' type='quantitative' />
+      <column caption='Heating Gal Per Home' datatype='real' name='[heating_gal_per_home]' role='measure' type='quantitative' />
+      <column caption='Heating Gallons' datatype='real' name='[heating_gallons]' role='measure' type='quantitative' />
+      <column caption='Heating Season' datatype='string' name='[heating_season]' role='dimension' type='nominal' />
+      <column caption='Heating Spend' datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+      <column caption='Month Date' datatype='date' name='[month_date]' role='dimension' type='ordinal' />
+      <column caption='Month Name' datatype='string' name='[month_name]' role='dimension' type='nominal' />
+      <column caption='Oil Gallons' datatype='real' name='[oil_gallons]' role='measure' type='quantitative' />
+      <column caption='Oil Homes' datatype='integer' name='[oil_homes]' role='measure' type='quantitative' />
+      <column caption='Propane Gallons' datatype='real' name='[propane_gallons]' role='measure' type='quantitative' />
+      <column caption='Propane Homes' datatype='integer' name='[propane_homes]' role='measure' type='quantitative' />
+      <column caption='State Abbr (County Month.Csv)' datatype='string' name='[state_abbr (county_month.csv)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='State Abbr' datatype='string' name='[state_abbr]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Month Label' datatype='string' name='[month_label]' role='dimension' type='nominal' />
+      <column caption='Thermal Load' datatype='real' name='[thermal_load]' role='measure' type='quantitative' />
+      <column caption='Total Homes' datatype='integer' name='[total_homes]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/map.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='counties.geojson_44F0576E2B404900983994B8D103D788' table='[Extract].[counties.geojson_44F0576E2B404900983994B8D103D788]' type='table' />
+            <relation name='county_month.csv_AF07728901FA4E3CA9F2997ED2222331' table='[Extract].[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]' type='table' />
+          </relation>
+          <cols>
+            <map key='[Geometry]' value='[counties.geojson_44F0576E2B404900983994B8D103D788].[Geometry]' />
+            <map key='[cdd]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[cdd]' />
+            <map key='[cooling_index]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[cooling_index]' />
+            <map key='[cooling_per_home]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[cooling_per_home]' />
+            <map key='[county_key (county_month.csv)]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[county_key]' />
+            <map key='[county_key]' value='[counties.geojson_44F0576E2B404900983994B8D103D788].[county_key]' />
+            <map key='[county_name (county_month.csv)]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[county_name]' />
+            <map key='[county_name]' value='[counties.geojson_44F0576E2B404900983994B8D103D788].[county_name]' />
+            <map key='[hdd]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[hdd]' />
+            <map key='[heating_gal_per_home]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[heating_gal_per_home]' />
+            <map key='[heating_gallons]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[heating_gallons]' />
+            <map key='[heating_season]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[heating_season]' />
+            <map key='[heating_spend]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[heating_spend]' />
+            <map key='[month_date]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[month_date]' />
+            <map key='[month_name]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[month_name]' />
+            <map key='[oil_gallons]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[oil_gallons]' />
+            <map key='[oil_homes]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[oil_homes]' />
+            <map key='[propane_gallons]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[propane_gallons]' />
+            <map key='[propane_homes]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[propane_homes]' />
+            <map key='[state_abbr (county_month.csv)]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[state_abbr]' />
+            <map key='[state_abbr]' value='[counties.geojson_44F0576E2B404900983994B8D103D788].[state_abbr]' />
+            <map key='[thermal_load]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[thermal_load]' />
+            <map key='[month_label]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[month_label]' />
+            <map key='[total_homes]' value='[county_month.csv_AF07728901FA4E3CA9F2997ED2222331].[total_homes]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='counties.geojson' id='counties.geojson_44F0576E2B404900983994B8D103D788'>
+            <properties context=''>
+              <relation connection='ogrdirect.07iyutn0xopdty193u2vs1u3aj8q' name='counties.geojson' table='[counties.geojson]' type='table'>
+                <columns>
+                  <column datatype='string' name='county_key' ordinal='0' />
+                  <column datatype='string' name='county_name' ordinal='1' />
+                  <column datatype='string' name='state_abbr' ordinal='2' />
+                  <column datatype='spatial' name='Geometry' ordinal='3' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='counties.geojson_44F0576E2B404900983994B8D103D788' table='[Extract].[counties.geojson_44F0576E2B404900983994B8D103D788]' type='table' />
+            </properties>
+          </object>
+          <object caption='county_month.csv' id='county_month.csv_AF07728901FA4E3CA9F2997ED2222331'>
+            <properties context=''>
+              <relation connection='textscan.1uwef270ayolez1baa1x60vkujw3' name='county_month.csv' table='[county_month#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='county_key' ordinal='0' />
+                  <column datatype='string' name='county_name' ordinal='1' />
+                  <column datatype='string' name='state_abbr' ordinal='2' />
+                  <column datatype='date' name='month_date' ordinal='3' />
+                  <column datatype='string' name='heating_season' ordinal='4' />
+                  <column datatype='string' name='month_name' ordinal='5' />
+                  <column datatype='integer' name='total_homes' ordinal='6' />
+                  <column datatype='integer' name='oil_homes' ordinal='7' />
+                  <column datatype='integer' name='propane_homes' ordinal='8' />
+                  <column datatype='real' name='oil_gallons' ordinal='9' />
+                  <column datatype='real' name='propane_gallons' ordinal='10' />
+                  <column datatype='real' name='heating_gallons' ordinal='11' />
+                  <column datatype='real' name='heating_spend' ordinal='12' />
+                  <column datatype='real' name='hdd' ordinal='13' />
+                  <column datatype='real' name='cdd' ordinal='14' />
+                  <column datatype='real' name='cooling_index' ordinal='15' />
+                  <column datatype='real' name='heating_gal_per_home' ordinal='16' />
+                  <column datatype='real' name='cooling_per_home' ordinal='17' />
+                  <column datatype='real' name='thermal_load' ordinal='18' />
+                  <column datatype='string' name='month_label' ordinal='19' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='county_month.csv_AF07728901FA4E3CA9F2997ED2222331' table='[Extract].[county_month.csv_AF07728901FA4E3CA9F2997ED2222331]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[county_key]' />
+              <expression op='[county_key (county_month.csv)]' />
+            </expression>
+            <first-end-point object-id='counties.geojson_44F0576E2B404900983994B8D103D788' />
+            <second-end-point object-id='county_month.csv_AF07728901FA4E3CA9F2997ED2222331' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+
+    <datasource caption="Seasonal pulse" inline='true' name='federated.pulse0thermal0year0000000001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Seasonal pulse" name='textscan.pulse0thermal0year0000000001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='seasonal_pulse.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.pulse0thermal0year0000000001' name='seasonal_pulse.csv' table='[seasonal_pulse#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='heating_season' ordinal='0' />
+            <column datatype='date' name='month_date' ordinal='1' />
+            <column datatype='integer' name='month_order' ordinal='2' />
+            <column datatype='string' name='month_abbr' ordinal='3' />
+            <column datatype='string' name='kind' ordinal='4' />
+            <column datatype='real' name='share' ordinal='5' />
+            <column datatype='real' name='heating_gallons' ordinal='6' />
+            <column datatype='real' name='heating_spend' ordinal='7' />
+            <column datatype='real' name='cooling_index' ordinal='8' />
+            <column datatype='string' name='month_label' ordinal='9' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[heating_season]' value='[seasonal_pulse.csv].[heating_season]' />
+          <map key='[month_date]' value='[seasonal_pulse.csv].[month_date]' />
+          <map key='[month_order]' value='[seasonal_pulse.csv].[month_order]' />
+          <map key='[month_abbr]' value='[seasonal_pulse.csv].[month_abbr]' />
+          <map key='[kind]' value='[seasonal_pulse.csv].[kind]' />
+          <map key='[share]' value='[seasonal_pulse.csv].[share]' />
+          <map key='[heating_gallons]' value='[seasonal_pulse.csv].[heating_gallons]' />
+          <map key='[heating_spend]' value='[seasonal_pulse.csv].[heating_spend]' />
+          <map key='[cooling_index]' value='[seasonal_pulse.csv].[cooling_index]' />
+          <map key='[month_label]' value='[seasonal_pulse.csv].[month_label]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Heating Season" datatype='string' name='[heating_season]' role='dimension' type='nominal' />
+      <column caption="Month Date" datatype='date' name='[month_date]' role='dimension' type='ordinal' />
+      <column caption="Month Order" datatype='integer' name='[month_order]' role='dimension' type='ordinal' />
+      <column caption="Month" datatype='string' name='[month_abbr]' role='dimension' type='nominal' />
+      <column caption="Kind" datatype='string' name='[kind]' role='dimension' type='nominal' />
+      <column caption="Share of Season" datatype='real' name='[share]' role='measure' type='quantitative' />
+      <column caption="Heating Gallons" datatype='real' name='[heating_gallons]' role='measure' type='quantitative' />
+      <column caption="Heating Spend" datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+      <column caption="Cooling Index" datatype='real' name='[cooling_index]' role='measure' type='quantitative' />
+      <column caption="Month Label" datatype='string' name='[month_label]' role='dimension' type='nominal' />
+      <column caption="Bar color code" datatype='integer' name='[Calculation_bar_code]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="IF [kind] = 'Cooling' AND [month_label] = [Parameters].[Parameter 1] THEN 2 ELSEIF [kind] = 'Cooling' THEN 1 ELSEIF [month_label] = [Parameters].[Parameter 1] THEN 4 ELSE 3 END" />
+      </column>
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/seasonal_pulse.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51' table='[Extract].[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51]' type='table' />
+          </relation>
+          <cols>
+            <map key='[heating_season]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[heating_season]' />
+            <map key='[month_date]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[month_date]' />
+            <map key='[month_order]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[month_order]' />
+            <map key='[month_abbr]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[month_abbr]' />
+            <map key='[kind]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[kind]' />
+            <map key='[share]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[share]' />
+            <map key='[heating_gallons]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[heating_gallons]' />
+            <map key='[heating_spend]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[heating_spend]' />
+            <map key='[cooling_index]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[cooling_index]' />
+            <map key='[month_label]' value='[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51].[month_label]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='seasonal_pulse.csv' id='seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51'>
+            <properties context=''>
+              <relation connection='textscan.pulse0thermal0year0000000001' name='seasonal_pulse.csv' table='[seasonal_pulse#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='heating_season' ordinal='0' />
+            <column datatype='date' name='month_date' ordinal='1' />
+            <column datatype='integer' name='month_order' ordinal='2' />
+            <column datatype='string' name='month_abbr' ordinal='3' />
+            <column datatype='string' name='kind' ordinal='4' />
+            <column datatype='real' name='share' ordinal='5' />
+            <column datatype='real' name='heating_gallons' ordinal='6' />
+            <column datatype='real' name='heating_spend' ordinal='7' />
+            <column datatype='real' name='cooling_index' ordinal='8' />
+            <column datatype='string' name='month_label' ordinal='9' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51' table='[Extract].[seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="County scores" inline='true' name='federated.scores0thermal0year00000001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="County scores" name='textscan.scores0thermal0year00000001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='county_scores.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.scores0thermal0year00000001' name='county_scores.csv' table='[county_scores#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='county_key' ordinal='0' />
+            <column datatype='string' name='county_name' ordinal='1' />
+            <column datatype='string' name='state_abbr' ordinal='2' />
+            <column datatype='string' name='heating_season' ordinal='3' />
+            <column datatype='integer' name='total_occupied' ordinal='4' />
+            <column datatype='integer' name='oil_homes' ordinal='5' />
+            <column datatype='integer' name='propane_homes' ordinal='6' />
+            <column datatype='real' name='oil_propane_share' ordinal='7' />
+            <column datatype='real' name='heating_spend' ordinal='8' />
+            <column datatype='real' name='cooling_index' ordinal='9' />
+            <column datatype='string' name='basis' ordinal='10' />
+            <column datatype='real' name='heating_pct' ordinal='11' />
+            <column datatype='real' name='cooling_pct' ordinal='12' />
+            <column datatype='real' name='year_round_score' ordinal='13' />
+            <column datatype='integer' name='year_round_rank' ordinal='14' />
+            <column datatype='string' name='quadrant' ordinal='15' />
+            <column datatype='string' name='label' ordinal='16' />
+            <column datatype='real' name='heating_spend_per_home' ordinal='17' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[county_key]' value='[county_scores.csv].[county_key]' />
+          <map key='[county_name]' value='[county_scores.csv].[county_name]' />
+          <map key='[state_abbr]' value='[county_scores.csv].[state_abbr]' />
+          <map key='[heating_season]' value='[county_scores.csv].[heating_season]' />
+          <map key='[total_occupied]' value='[county_scores.csv].[total_occupied]' />
+          <map key='[oil_homes]' value='[county_scores.csv].[oil_homes]' />
+          <map key='[propane_homes]' value='[county_scores.csv].[propane_homes]' />
+          <map key='[oil_propane_share]' value='[county_scores.csv].[oil_propane_share]' />
+          <map key='[heating_spend]' value='[county_scores.csv].[heating_spend]' />
+          <map key='[cooling_index]' value='[county_scores.csv].[cooling_index]' />
+          <map key='[basis]' value='[county_scores.csv].[basis]' />
+          <map key='[heating_pct]' value='[county_scores.csv].[heating_pct]' />
+          <map key='[cooling_pct]' value='[county_scores.csv].[cooling_pct]' />
+          <map key='[year_round_score]' value='[county_scores.csv].[year_round_score]' />
+          <map key='[year_round_rank]' value='[county_scores.csv].[year_round_rank]' />
+          <map key='[quadrant]' value='[county_scores.csv].[quadrant]' />
+          <map key='[label]' value='[county_scores.csv].[label]' />
+          <map key='[heating_spend_per_home]' value='[county_scores.csv].[heating_spend_per_home]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="County Key" datatype='string' name='[county_key]' role='dimension' type='nominal' />
+      <column caption="County Name" datatype='string' name='[county_name]' role='dimension' type='nominal' />
+      <column caption="State" datatype='string' name='[state_abbr]' role='dimension' type='nominal' />
+      <column caption="Heating Season" datatype='string' name='[heating_season]' role='dimension' type='nominal' />
+      <column caption="Homes" datatype='integer' name='[total_occupied]' role='measure' type='quantitative' />
+      <column caption="Oil Homes" datatype='integer' name='[oil_homes]' role='measure' type='quantitative' />
+      <column caption="Propane Homes" datatype='integer' name='[propane_homes]' role='measure' type='quantitative' />
+      <column caption="Oil + Propane Share" datatype='real' name='[oil_propane_share]' role='measure' type='quantitative' />
+      <column caption="Heating Spend" datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+      <column caption="Cooling Index" datatype='real' name='[cooling_index]' role='measure' type='quantitative' />
+      <column caption="Basis" datatype='string' name='[basis]' role='dimension' type='nominal' />
+      <column caption="Heating Percentile" datatype='real' name='[heating_pct]' role='measure' type='quantitative' />
+      <column caption="Cooling Percentile" datatype='real' name='[cooling_pct]' role='measure' type='quantitative' />
+      <column caption="Year-Round Score" datatype='real' name='[year_round_score]' role='measure' type='quantitative' />
+      <column caption="Year-Round Rank" datatype='integer' name='[year_round_rank]' role='measure' type='quantitative' />
+      <column caption="Quadrant" datatype='string' name='[quadrant]' role='dimension' type='nominal' />
+      <column caption="Label" datatype='string' name='[label]' role='dimension' type='nominal' />
+      <column caption="Heating Spend per Home" datatype='real' name='[heating_spend_per_home]' role='measure' type='quantitative' />
+      <column caption="Basis matches" datatype='boolean' name='[Calculation_basis_match]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="[basis] = [Parameters].[Parameter 2]" />
+      </column>
+      <column caption="Top 12" datatype='boolean' name='[Calculation_top_12]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="[year_round_rank] &lt;= 12" />
+      </column>
+      <column caption="Quadrant color code" datatype='integer' name='[Calculation_quadrant_code]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="CASE [quadrant] WHEN 'Low demand' THEN 1 WHEN 'Summer only' THEN 2 WHEN 'Winter only' THEN 3 ELSE 4 END" />
+      </column>
+      <column caption="Score (0-100)" datatype='string' name='[Calculation_score_100]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="STR(INT(ROUND([year_round_score] * 100, 0)))" />
+      </column>
+      <column caption="County" datatype='string' name='[Calculation_county_label]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula="REPLACE(REPLACE([county_name], ' Planning Region', ''), ' County', '') + ', ' + [state_abbr]" />
+      </column>
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/county_scores.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75' table='[Extract].[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75]' type='table' />
+          </relation>
+          <cols>
+            <map key='[county_key]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[county_key]' />
+            <map key='[county_name]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[county_name]' />
+            <map key='[state_abbr]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[state_abbr]' />
+            <map key='[heating_season]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[heating_season]' />
+            <map key='[total_occupied]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[total_occupied]' />
+            <map key='[oil_homes]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[oil_homes]' />
+            <map key='[propane_homes]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[propane_homes]' />
+            <map key='[oil_propane_share]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[oil_propane_share]' />
+            <map key='[heating_spend]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[heating_spend]' />
+            <map key='[cooling_index]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[cooling_index]' />
+            <map key='[basis]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[basis]' />
+            <map key='[heating_pct]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[heating_pct]' />
+            <map key='[cooling_pct]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[cooling_pct]' />
+            <map key='[year_round_score]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[year_round_score]' />
+            <map key='[year_round_rank]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[year_round_rank]' />
+            <map key='[quadrant]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[quadrant]' />
+            <map key='[label]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[label]' />
+            <map key='[heating_spend_per_home]' value='[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75].[heating_spend_per_home]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='county_scores.csv' id='county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75'>
+            <properties context=''>
+              <relation connection='textscan.scores0thermal0year00000001' name='county_scores.csv' table='[county_scores#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='county_key' ordinal='0' />
+            <column datatype='string' name='county_name' ordinal='1' />
+            <column datatype='string' name='state_abbr' ordinal='2' />
+            <column datatype='string' name='heating_season' ordinal='3' />
+            <column datatype='integer' name='total_occupied' ordinal='4' />
+            <column datatype='integer' name='oil_homes' ordinal='5' />
+            <column datatype='integer' name='propane_homes' ordinal='6' />
+            <column datatype='real' name='oil_propane_share' ordinal='7' />
+            <column datatype='real' name='heating_spend' ordinal='8' />
+            <column datatype='real' name='cooling_index' ordinal='9' />
+            <column datatype='string' name='basis' ordinal='10' />
+            <column datatype='real' name='heating_pct' ordinal='11' />
+            <column datatype='real' name='cooling_pct' ordinal='12' />
+            <column datatype='real' name='year_round_score' ordinal='13' />
+            <column datatype='integer' name='year_round_rank' ordinal='14' />
+            <column datatype='string' name='quadrant' ordinal='15' />
+            <column datatype='string' name='label' ordinal='16' />
+            <column datatype='real' name='heating_spend_per_home' ordinal='17' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75' table='[Extract].[county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name="Thermal Map">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="counties.geojson+ (Multiple Connections)" name='federated.1d875mm13w789317ga6xj1ro064z' />
+            <datasource name='Parameters' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Month' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;January 2026&quot;'>
+              <calculation class='tableau' formula='&quot;January 2026&quot;' />
+              <members>
+                <member value='&quot;July 2025&quot;' />
+                <member value='&quot;August 2025&quot;' />
+                <member value='&quot;September 2025&quot;' />
+                <member value='&quot;October 2025&quot;' />
+                <member value='&quot;November 2025&quot;' />
+                <member value='&quot;December 2025&quot;' />
+                <member value='&quot;January 2026&quot;' />
+                <member value='&quot;February 2026&quot;' />
+                <member value='&quot;March 2026&quot;' />
+                <member value='&quot;April 2026&quot;' />
+                <member value='&quot;May 2026&quot;' />
+                <member value='&quot;June 2026&quot;' />
+              </members>
+            </column>
+            <column caption='Rank counties by' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Total&quot;'>
+              <calculation class='tableau' formula='&quot;Total&quot;' />
+              <members>
+                <member value='&quot;Total&quot;' />
+                <member value='&quot;Per home&quot;' />
+              </members>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1d875mm13w789317ga6xj1ro064z'>
+            <column caption="Geometry" datatype='spatial' name='[Geometry]' role='measure' type='nominal' />
+            <column caption="County Key" datatype='string' name='[county_key]' role='dimension' type='nominal' />
+            <column caption="Thermal Load" datatype='real' name='[thermal_load]' role='measure' type='quantitative' />
+            <column caption="Heating Gallons" datatype='real' name='[heating_gallons]' role='measure' type='quantitative' />
+            <column caption="Heating Spend" datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+            <column caption="Cooling Index" datatype='real' name='[cooling_index]' role='measure' type='quantitative' />
+            <column caption="Heating Gal Per Home" datatype='real' name='[heating_gal_per_home]' role='measure' type='quantitative' />
+            <column caption="Hdd" datatype='real' name='[hdd]' role='measure' type='quantitative' />
+            <column caption="Cdd" datatype='real' name='[cdd]' role='measure' type='quantitative' />
+            <column caption="County Name" datatype='string' name='[county_name]' role='dimension' type='nominal' />
+            <column caption="State Abbr" datatype='string' name='[state_abbr]' role='dimension' type='nominal' />
+            <column caption="Month Date" datatype='date' name='[month_date]' role='dimension' type='ordinal' />
+            <column caption="Month Label" datatype='string' name='[month_label]' role='dimension' type='nominal' />
+            <column caption="Selected month" datatype='boolean' name='[Calculation_selected_month]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[month_label] = [Parameters].[Parameter 1]" />
+            </column>
+            <column caption="County" datatype='string' name='[Calculation_county_label]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="REPLACE(REPLACE([county_name], ' Planning Region', ''), ' County', '') + ', ' + [state_abbr]" />
+            </column>
+            <column-instance column='[Geometry]' derivation='Collect' name='[clct:Geometry:nk]' pivot='key' type='nominal' />
+            <column-instance column='[county_key]' derivation='None' name='[none:county_key:nk]' pivot='key' type='nominal' />
+            <column-instance column='[thermal_load]' derivation='Avg' name='[avg:thermal_load:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heating_gallons]' derivation='Sum' name='[sum:heating_gallons:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heating_spend]' derivation='Sum' name='[sum:heating_spend:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cooling_index]' derivation='Sum' name='[sum:cooling_index:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heating_gal_per_home]' derivation='Sum' name='[sum:heating_gal_per_home:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[hdd]' derivation='Sum' name='[sum:hdd:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cdd]' derivation='Sum' name='[sum:cdd:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_county_label]' derivation='Attribute' name='[attr:Calculation_county_label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_selected_month]' derivation='None' name='[none:Calculation_selected_month:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.1d875mm13w789317ga6xj1ro064z].[none:Calculation_selected_month:nk]'>
+          <groupfilter function='member' level='[none:Calculation_selected_month:nk]' member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <slices>
+            <column>[federated.1d875mm13w789317ga6xj1ro064z].[none:Calculation_selected_month:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' center='0.0' field='[federated.1d875mm13w789317ga6xj1ro064z].[avg:thermal_load:qk]' max='1.0' min='-1.0' palette='Thermal Ice to Ember' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1d875mm13w789317ga6xj1ro064z].[avg:thermal_load:qk]' />
+              <lod column='[federated.1d875mm13w789317ga6xj1ro064z].[clct:Geometry:nk]' />
+              <lod column='[federated.1d875mm13w789317ga6xj1ro064z].[none:county_key:nk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[attr:Calculation_county_label:nk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_gal_per_home:qk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_gallons:qk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_spend:qk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[sum:hdd:qk]' />
+              <tooltip column='[federated.1d875mm13w789317ga6xj1ro064z].[sum:cdd:qk]' />
+              <geometry column='[federated.1d875mm13w789317ga6xj1ro064z].[clct:Geometry:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[attr:Calculation_county_label:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_gal_per_home:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> heating gallons per home this month</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_gallons:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> gallons in total, $</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[sum:heating_spend:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[sum:hdd:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> heating degree days, </run>
+              <run fontcolor='#5FB4E8' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[sum:cdd:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> cooling degree days</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Thermal load </run>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.1d875mm13w789317ga6xj1ro064z].[avg:thermal_load:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>  (+1 all heating, -1 all cooling)</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1d875mm13w789317ga6xj1ro064z].[Latitude (generated)]</rows>
+        <cols>[federated.1d875mm13w789317ga6xj1ro064z].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{7D3E5251-CF03-5277-94CD-E1A15DBFEC1F}' />
+    </worksheet>
+    <worksheet name="Seasonal Pulse">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Seasonal pulse" name='federated.pulse0thermal0year0000000001' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Month' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;January 2026&quot;'>
+              <calculation class='tableau' formula='&quot;January 2026&quot;' />
+              <members>
+                <member value='&quot;July 2025&quot;' />
+                <member value='&quot;August 2025&quot;' />
+                <member value='&quot;September 2025&quot;' />
+                <member value='&quot;October 2025&quot;' />
+                <member value='&quot;November 2025&quot;' />
+                <member value='&quot;December 2025&quot;' />
+                <member value='&quot;January 2026&quot;' />
+                <member value='&quot;February 2026&quot;' />
+                <member value='&quot;March 2026&quot;' />
+                <member value='&quot;April 2026&quot;' />
+                <member value='&quot;May 2026&quot;' />
+                <member value='&quot;June 2026&quot;' />
+              </members>
+            </column>
+            <column caption='Rank counties by' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Total&quot;'>
+              <calculation class='tableau' formula='&quot;Total&quot;' />
+              <members>
+                <member value='&quot;Total&quot;' />
+                <member value='&quot;Per home&quot;' />
+              </members>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.pulse0thermal0year0000000001'>
+            <column caption="Heating Season" datatype='string' name='[heating_season]' role='dimension' type='nominal' />
+            <column caption="Month" datatype='string' name='[month_abbr]' role='dimension' type='nominal' />
+            <column caption="Month Order" datatype='integer' name='[month_order]' role='dimension' type='ordinal' />
+            <column caption="Share of Season" datatype='real' name='[share]' role='measure' type='quantitative' />
+            <column caption="Kind" datatype='string' name='[kind]' role='dimension' type='nominal' />
+            <column caption="Month Date" datatype='date' name='[month_date]' role='dimension' type='ordinal' />
+            <column caption="Month Label" datatype='string' name='[month_label]' role='dimension' type='nominal' />
+            <column caption="Bar color code" datatype='integer' name='[Calculation_bar_code]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula="IF [kind] = 'Cooling' AND [month_label] = [Parameters].[Parameter 1] THEN 2 ELSEIF [kind] = 'Cooling' THEN 1 ELSEIF [month_label] = [Parameters].[Parameter 1] THEN 4 ELSE 3 END" />
+            </column>
+            <column-instance column='[heating_season]' derivation='None' name='[none:heating_season:nk]' pivot='key' type='nominal' />
+            <column-instance column='[month_abbr]' derivation='None' name='[none:month_abbr:nk]' pivot='key' type='nominal' />
+            <column-instance column='[share]' derivation='Sum' name='[sum:share:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[kind]' derivation='None' name='[none:kind:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_bar_code]' derivation='Avg' name='[avg:Calculation_bar_code:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.pulse0thermal0year0000000001].[none:heating_season:nk]'>
+          <groupfilter function='member' level='[none:heating_season:nk]' member='"2025-26"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <sort class='manual' column='[federated.pulse0thermal0year0000000001].[none:month_abbr:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Jul&quot;</bucket>
+              <bucket>&quot;Aug&quot;</bucket>
+              <bucket>&quot;Sep&quot;</bucket>
+              <bucket>&quot;Oct&quot;</bucket>
+              <bucket>&quot;Nov&quot;</bucket>
+              <bucket>&quot;Dec&quot;</bucket>
+              <bucket>&quot;Jan&quot;</bucket>
+              <bucket>&quot;Feb&quot;</bucket>
+              <bucket>&quot;Mar&quot;</bucket>
+              <bucket>&quot;Apr&quot;</bucket>
+              <bucket>&quot;May&quot;</bucket>
+              <bucket>&quot;Jun&quot;</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.pulse0thermal0year0000000001].[none:heating_season:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.pulse0thermal0year0000000001].[avg:Calculation_bar_code:qk]' max='4.0' min='1.0' palette='NE Heating Pulse Codes' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.pulse0thermal0year0000000001].[sum:share:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-family' value='Tableau Book' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-family' value='Tableau Book' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.pulse0thermal0year0000000001].[avg:Calculation_bar_code:qk]' />
+              <lod column='[federated.pulse0thermal0year0000000001].[none:kind:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.pulse0thermal0year0000000001].[none:month_abbr:nk]&gt; </run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>&lt;[federated.pulse0thermal0year0000000001].[none:kind:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.pulse0thermal0year0000000001].[sum:share:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> of the season's total</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.75' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.pulse0thermal0year0000000001].[sum:share:qk]</rows>
+        <cols>[federated.pulse0thermal0year0000000001].[none:month_abbr:nk]</cols>
+      </table>
+      <simple-id uuid='{963B39D5-0BEE-56EF-9D3A-8F4118618EF8}' />
+    </worksheet>
+    <worksheet name="Year-Round Scatter">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="County scores" name='federated.scores0thermal0year00000001' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Month' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;January 2026&quot;'>
+              <calculation class='tableau' formula='&quot;January 2026&quot;' />
+              <members>
+                <member value='&quot;July 2025&quot;' />
+                <member value='&quot;August 2025&quot;' />
+                <member value='&quot;September 2025&quot;' />
+                <member value='&quot;October 2025&quot;' />
+                <member value='&quot;November 2025&quot;' />
+                <member value='&quot;December 2025&quot;' />
+                <member value='&quot;January 2026&quot;' />
+                <member value='&quot;February 2026&quot;' />
+                <member value='&quot;March 2026&quot;' />
+                <member value='&quot;April 2026&quot;' />
+                <member value='&quot;May 2026&quot;' />
+                <member value='&quot;June 2026&quot;' />
+              </members>
+            </column>
+            <column caption='Rank counties by' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Total&quot;'>
+              <calculation class='tableau' formula='&quot;Total&quot;' />
+              <members>
+                <member value='&quot;Total&quot;' />
+                <member value='&quot;Per home&quot;' />
+              </members>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.scores0thermal0year00000001'>
+            <column caption="County Key" datatype='string' name='[county_key]' role='dimension' type='nominal' />
+            <column caption="Heating Percentile" datatype='real' name='[heating_pct]' role='measure' type='quantitative' />
+            <column caption="Cooling Percentile" datatype='real' name='[cooling_pct]' role='measure' type='quantitative' />
+            <column caption="Year-Round Score" datatype='real' name='[year_round_score]' role='measure' type='quantitative' />
+            <column caption="Homes" datatype='integer' name='[total_occupied]' role='measure' type='quantitative' />
+            <column caption="Heating Spend" datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+            <column caption="Oil + Propane Share" datatype='real' name='[oil_propane_share]' role='measure' type='quantitative' />
+            <column caption="Quadrant" datatype='string' name='[quadrant]' role='dimension' type='nominal' />
+            <column caption="Label" datatype='string' name='[label]' role='dimension' type='nominal' />
+            <column caption="Basis matches" datatype='boolean' name='[Calculation_basis_match]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[basis] = [Parameters].[Parameter 2]" />
+            </column>
+            <column caption="Top 12" datatype='boolean' name='[Calculation_top_12]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[year_round_rank] &lt;= 12" />
+            </column>
+            <column caption="Quadrant color code" datatype='integer' name='[Calculation_quadrant_code]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula="CASE [quadrant] WHEN 'Low demand' THEN 1 WHEN 'Summer only' THEN 2 WHEN 'Winter only' THEN 3 ELSE 4 END" />
+            </column>
+            <column caption="Score (0-100)" datatype='string' name='[Calculation_score_100]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="STR(INT(ROUND([year_round_score] * 100, 0)))" />
+            </column>
+            <column caption="County" datatype='string' name='[Calculation_county_label]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="REPLACE(REPLACE([county_name], ' Planning Region', ''), ' County', '') + ', ' + [state_abbr]" />
+            </column>
+            <column caption="Basis" datatype='string' name='[basis]' role='dimension' type='nominal' />
+            <column caption="Year-Round Rank" datatype='integer' name='[year_round_rank]' role='measure' type='quantitative' />
+            <column caption="County Name" datatype='string' name='[county_name]' role='dimension' type='nominal' />
+            <column caption="State" datatype='string' name='[state_abbr]' role='dimension' type='nominal' />
+            <column-instance column='[county_key]' derivation='None' name='[none:county_key:nk]' pivot='key' type='nominal' />
+            <column-instance column='[heating_pct]' derivation='Sum' name='[sum:heating_pct:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cooling_pct]' derivation='Sum' name='[sum:cooling_pct:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[year_round_score]' derivation='Sum' name='[sum:year_round_score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_occupied]' derivation='Sum' name='[sum:total_occupied:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heating_spend]' derivation='Sum' name='[sum:heating_spend:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[oil_propane_share]' derivation='Sum' name='[sum:oil_propane_share:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[quadrant]' derivation='Attribute' name='[attr:quadrant:nk]' pivot='key' type='nominal' />
+            <column-instance column='[quadrant]' derivation='None' name='[none:quadrant:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_quadrant_code]' derivation='Avg' name='[avg:Calculation_quadrant_code:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_score_100]' derivation='Attribute' name='[attr:Calculation_score_100:nk]' pivot='key' type='nominal' />
+            <column-instance column='[label]' derivation='Attribute' name='[attr:label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_county_label]' derivation='Attribute' name='[attr:Calculation_county_label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_basis_match]' derivation='None' name='[none:Calculation_basis_match:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.scores0thermal0year00000001].[none:Calculation_basis_match:nk]'>
+          <groupfilter function='member' level='[none:Calculation_basis_match:nk]' member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <slices>
+            <column>[federated.scores0thermal0year00000001].[none:Calculation_basis_match:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.scores0thermal0year00000001].[avg:Calculation_quadrant_code:qk]' max='4.0' min='1.0' palette='NE Heating Quadrant Codes' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='tick-color' value='#3A4659' />
+            <format attr='title' class='0' field='[federated.scores0thermal0year00000001].[sum:heating_pct:qk]' scope='cols' value='Winter heating spend, percentile  →' />
+            <format attr='title' class='0' field='[federated.scores0thermal0year00000001].[sum:cooling_pct:qk]' scope='rows' value='Summer cooling, percentile  →' />
+            <encoding attr='space' class='0' field='[federated.scores0thermal0year00000001].[sum:heating_pct:qk]' field-type='quantitative' max='1.02' min='-0.02' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.scores0thermal0year00000001].[sum:cooling_pct:qk]' field-type='quantitative' max='1.02' min='-0.02' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-color' value='#3A4659' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#E8E6E1' />
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.scores0thermal0year00000001].[avg:Calculation_quadrant_code:qk]' />
+              <size column='[federated.scores0thermal0year00000001].[sum:total_occupied:qk]' />
+              <lod column='[federated.scores0thermal0year00000001].[none:county_key:nk]' />
+              <text column='[federated.scores0thermal0year00000001].[attr:label:nk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[attr:Calculation_county_label:nk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[sum:year_round_score:qk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[sum:heating_spend:qk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[sum:oil_propane_share:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[attr:Calculation_county_label:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[attr:quadrant:nk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>  score </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:year_round_score:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Heating spend: $</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:heating_spend:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Homes on oil or propane: </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:oil_propane_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#0B1220' />
+                <format attr='mark-transparency' value='220' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.scores0thermal0year00000001].[sum:cooling_pct:qk]</rows>
+        <cols>[federated.scores0thermal0year00000001].[sum:heating_pct:qk]</cols>
+      </table>
+      <simple-id uuid='{BE15DC13-2AC2-536F-84EB-9A06EAC7EEFE}' />
+    </worksheet>
+    <worksheet name="Top Markets">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="County scores" name='federated.scores0thermal0year00000001' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Month' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;January 2026&quot;'>
+              <calculation class='tableau' formula='&quot;January 2026&quot;' />
+              <members>
+                <member value='&quot;July 2025&quot;' />
+                <member value='&quot;August 2025&quot;' />
+                <member value='&quot;September 2025&quot;' />
+                <member value='&quot;October 2025&quot;' />
+                <member value='&quot;November 2025&quot;' />
+                <member value='&quot;December 2025&quot;' />
+                <member value='&quot;January 2026&quot;' />
+                <member value='&quot;February 2026&quot;' />
+                <member value='&quot;March 2026&quot;' />
+                <member value='&quot;April 2026&quot;' />
+                <member value='&quot;May 2026&quot;' />
+                <member value='&quot;June 2026&quot;' />
+              </members>
+            </column>
+            <column caption='Rank counties by' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Total&quot;'>
+              <calculation class='tableau' formula='&quot;Total&quot;' />
+              <members>
+                <member value='&quot;Total&quot;' />
+                <member value='&quot;Per home&quot;' />
+              </members>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.scores0thermal0year00000001'>
+            <column caption="County Key" datatype='string' name='[county_key]' role='dimension' type='nominal' />
+            <column caption="Heating Percentile" datatype='real' name='[heating_pct]' role='measure' type='quantitative' />
+            <column caption="Cooling Percentile" datatype='real' name='[cooling_pct]' role='measure' type='quantitative' />
+            <column caption="Year-Round Score" datatype='real' name='[year_round_score]' role='measure' type='quantitative' />
+            <column caption="Homes" datatype='integer' name='[total_occupied]' role='measure' type='quantitative' />
+            <column caption="Heating Spend" datatype='real' name='[heating_spend]' role='measure' type='quantitative' />
+            <column caption="Oil + Propane Share" datatype='real' name='[oil_propane_share]' role='measure' type='quantitative' />
+            <column caption="Quadrant" datatype='string' name='[quadrant]' role='dimension' type='nominal' />
+            <column caption="Label" datatype='string' name='[label]' role='dimension' type='nominal' />
+            <column caption="Basis matches" datatype='boolean' name='[Calculation_basis_match]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[basis] = [Parameters].[Parameter 2]" />
+            </column>
+            <column caption="Top 12" datatype='boolean' name='[Calculation_top_12]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="[year_round_rank] &lt;= 12" />
+            </column>
+            <column caption="Quadrant color code" datatype='integer' name='[Calculation_quadrant_code]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula="CASE [quadrant] WHEN 'Low demand' THEN 1 WHEN 'Summer only' THEN 2 WHEN 'Winter only' THEN 3 ELSE 4 END" />
+            </column>
+            <column caption="Score (0-100)" datatype='string' name='[Calculation_score_100]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="STR(INT(ROUND([year_round_score] * 100, 0)))" />
+            </column>
+            <column caption="County" datatype='string' name='[Calculation_county_label]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula="REPLACE(REPLACE([county_name], ' Planning Region', ''), ' County', '') + ', ' + [state_abbr]" />
+            </column>
+            <column caption="Basis" datatype='string' name='[basis]' role='dimension' type='nominal' />
+            <column caption="Year-Round Rank" datatype='integer' name='[year_round_rank]' role='measure' type='quantitative' />
+            <column caption="County Name" datatype='string' name='[county_name]' role='dimension' type='nominal' />
+            <column caption="State" datatype='string' name='[state_abbr]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_county_label]' derivation='None' name='[none:Calculation_county_label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_county_label]' derivation='Attribute' name='[attr:Calculation_county_label:nk]' pivot='key' type='nominal' />
+            <column-instance column='[year_round_score]' derivation='Sum' name='[sum:year_round_score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heating_spend]' derivation='Sum' name='[sum:heating_spend:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[oil_propane_share]' derivation='Sum' name='[sum:oil_propane_share:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[quadrant]' derivation='Attribute' name='[attr:quadrant:nk]' pivot='key' type='nominal' />
+            <column-instance column='[quadrant]' derivation='None' name='[none:quadrant:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_quadrant_code]' derivation='Avg' name='[avg:Calculation_quadrant_code:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_score_100]' derivation='Attribute' name='[attr:Calculation_score_100:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_basis_match]' derivation='None' name='[none:Calculation_basis_match:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_top_12]' derivation='None' name='[none:Calculation_top_12:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.scores0thermal0year00000001].[none:Calculation_basis_match:nk]'>
+          <groupfilter function='member' level='[none:Calculation_basis_match:nk]' member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+        <filter class='categorical' column='[federated.scores0thermal0year00000001].[none:Calculation_top_12:nk]'>
+          <groupfilter function='member' level='[none:Calculation_top_12:nk]' member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <sort class='computed' column='[federated.scores0thermal0year00000001].[none:Calculation_county_label:nk]' direction='DESC' using='[federated.scores0thermal0year00000001].[sum:year_round_score:qk]' />
+          <slices>
+            <column>[federated.scores0thermal0year00000001].[none:Calculation_basis_match:nk]</column>
+            <column>[federated.scores0thermal0year00000001].[none:Calculation_top_12:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.scores0thermal0year00000001].[avg:Calculation_quadrant_code:qk]' max='4.0' min='1.0' palette='NE Heating Quadrant Codes' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.scores0thermal0year00000001].[sum:year_round_score:qk]' scope='cols' value='false' />
+            <encoding attr='space' class='0' field='[federated.scores0thermal0year00000001].[sum:year_round_score:qk]' field-type='quantitative' max='1.1' min='0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='color' value='#E8E6E1' />
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.scores0thermal0year00000001].[avg:Calculation_quadrant_code:qk]' />
+              <text column='[federated.scores0thermal0year00000001].[attr:Calculation_score_100:nk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[sum:heating_spend:qk]' />
+              <tooltip column='[federated.scores0thermal0year00000001].[sum:oil_propane_share:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[attr:Calculation_county_label:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[attr:quadrant:nk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>  score </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:year_round_score:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Heating spend: $</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:heating_spend:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Homes on oil or propane: </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.scores0thermal0year00000001].[sum:oil_propane_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='0.6' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.scores0thermal0year00000001].[none:Calculation_county_label:nk]</rows>
+        <cols>[federated.scores0thermal0year00000001].[sum:year_round_score:qk]</cols>
+      </table>
+      <simple-id uuid='{C752485B-B7C6-5FBF-A6D3-BB15E50FFC11}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="The Thermal Year">
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#0B1220' />
+        </style-rule>
+      </style>
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='3' w='100000' x='0' y='0' param='vert' type-v2='layout-flow'>
+        <zone h='13000' id='4' w='100000' x='0' y='0' param='horz' type-v2='layout-flow'>
+        <zone h='13000' id='5' w='70000' x='0' y='0' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>NORTHEAST HEATING &amp; COOLING DEMAND  ·  2025-26 SEASON</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Georgia' fontsize='30'>The Thermal Year</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='12'>Where the Northeast burns heating oil and propane, and where it runs the AC, county by county.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='14' />
+          </zone-style>
+        </zone>
+        <zone h='13000' id='6' w='30000' x='70000' y='0' mode='slider' param='[Parameters].[Parameter 1]' type-v2='paramctrl'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='18' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='9000' id='7' w='100000' x='0' y='13000' param='horz' type-v2='layout-flow'>
+        <zone h='9000' id='8' w='25000' x='0' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>$16.8B</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>heating oil + propane spend</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='9000' id='9' w='25000' x='25000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>3.2B gal</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>of heating oil</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='9000' id='10' w='25000' x='50000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>1.0B gal</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>of propane</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='9000' id='11' w='25000' x='75000' y='13000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>Jan</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>peak month for fuel demand</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='50000' id='12' w='100000' x='0' y='22000' param='horz' type-v2='layout-flow'>
+        <zone h='50000' id='13' w='74000' x='0' y='22000' name="Thermal Map" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='2' />
+          </zone-style>
+        </zone>
+        <zone h='50000' id='14' w='26000' x='74000' y='22000' param='vert' type-v2='layout-flow'>
+        <zone h='9000' id='15' w='26000' x='74000' y='22000' name="Thermal Map" pane-specification-id='0' param='[federated.1d875mm13w789317ga6xj1ro064z].[avg:thermal_load:qk]' type-v2='color'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='41000' id='16' w='26000' x='74000' y='31000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>HOW TO READ IT</run>
+              <run>Æ&#10;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Semibold' fontsize='13'>Thermal load</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>Each county's heating gallons per home, minus its cooling demand per home, that month. +1 is all heating, -1 is all cooling.</run>
+              <run>Æ&#10;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='12'>Ember counties</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>Burn the most oil and propane: the winter delivery market.</run>
+              <run>Æ&#10;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#5FB4E8' fontname='Tableau Semibold' fontsize='12'>Ice counties</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>Need the most AC: summer service work for full-service dealers.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='14' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='3000' id='17' w='100000' x='0' y='72000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>SEASONAL PULSE</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>   Each month's share of the season's heating (up) and cooling (down). The bright bar is the month on the map.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='4' />
+          </zone-style>
+        </zone>
+        <zone h='21000' id='18' w='100000' x='0' y='75000' name="Seasonal Pulse" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='4000' id='19' w='100000' x='0' y='96000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='9'>Sources: Census ACS 2020-24, NOAA nClimDiv, EIA RECS 2020, SHOPP and SEDS. Modeled estimates, not metered gallons.   Dhruv Khanna  ·  github.com/dhruvk1310-lang/northeast-heating-demand-map</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{440BAB33-DB9E-5342-8258-8A5834174552}' />
+    </dashboard>
+    <dashboard name="Where the Year-Round Money Is">
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#0B1220' />
+        </style-rule>
+      </style>
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='3' w='100000' x='0' y='0' param='vert' type-v2='layout-flow'>
+        <zone h='15000' id='4' w='100000' x='0' y='0' param='horz' type-v2='layout-flow'>
+        <zone h='15000' id='5' w='72000' x='0' y='0' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>WHERE THE YEAR-ROUND MONEY IS  ·  218 COUNTIES</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Georgia' fontsize='30'>Size vs. intensity</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='12'>Full-service dealers sell fuel in winter and AC service in summer. Rank counties by total market or per home: the winners change almost completely.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='14' />
+          </zone-style>
+        </zone>
+        <zone h='15000' id='6' w='28000' x='72000' y='0' param='[Parameters].[Parameter 2]' type-v2='paramctrl'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='18' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='80000' id='7' w='100000' x='0' y='15000' param='horz' type-v2='layout-flow'>
+        <zone h='80000' id='8' w='60000' x='0' y='15000' name="Year-Round Scatter" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='80000' id='9' w='40000' x='60000' y='15000' param='vert' type-v2='layout-flow'>
+        <zone h='6400' id='10' w='40000' x='60000' y='15000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>TOP 12 MARKETS</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Year-round score = 60% heating spend percentile + 40% cooling percentile</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='40000' id='11' w='40000' x='60000' y='21400' name="Top Markets" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='12800' id='12' w='40000' x='60000' y='61400' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>QUADRANT</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#F2C14E' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Year-round   </run>
+              <run fontcolor='#E0662B' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Winter only   </run>
+              <run fontcolor='#5FB4E8' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Summer only   </run>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='13'>■ </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book' fontsize='11'>Low demand</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Split at the 50th percentile on each axis. Bubble size = homes.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='12' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='20800' id='13' w='40000' x='60000' y='74200' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>WHAT IT SHOWS</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>By total, </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Semibold' fontsize='11'>the big New York City and Boston counties</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'> lead: both heating and cooling grow with the number of homes.</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>Per home, </run>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='11'>oil-heavy towns outside the cities</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'> with warm summers lead, like Sussex NJ, Northeastern Connecticut and Putnam NY: the best fit for a full-service dealer.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='12' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='5000' id='14' w='100000' x='0' y='95000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='9'>Sources: Census ACS 2020-24, NOAA nClimDiv, EIA RECS 2020, SHOPP and SEDS. Modeled estimates, not metered gallons.   Dhruv Khanna  ·  github.com/dhruvk1310-lang/northeast-heating-demand-map</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{5391028D-3695-527F-9CC3-1CE40EC844C7}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name="Thermal Map">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{00CA8898-CE0C-51AB-B9F3-CC72DDCF2775}' />
+    </window>
+    <window class='worksheet' name="Seasonal Pulse">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D2213EE7-ECC9-5464-A8CE-DB6B240691B6}' />
+    </window>
+    <window class='worksheet' name="Year-Round Scatter">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{715B486C-C3D5-5039-A809-11B002C1FC87}' />
+    </window>
+    <window class='worksheet' name="Top Markets">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{291415D0-2A22-5352-B71A-BD148AD03572}' />
+    </window>
+    <window class='dashboard' maximized='true' name="The Thermal Year">
+      <viewpoints>
+        <viewpoint name="Seasonal Pulse" />
+        <viewpoint name="Thermal Map" />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{D7A36B46-8979-5A5D-9696-A9E1EA06A716}' />
+    </window>
+    <window class='dashboard' maximized='true' name="Where the Year-Round Money Is">
+      <viewpoints>
+        <viewpoint name="Top Markets" />
+        <viewpoint name="Year-Round Scatter" />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{1FD6667E-A2B2-5BB8-9528-F8614C65943D}' />
+    </window>
+  </windows>
+</workbook>

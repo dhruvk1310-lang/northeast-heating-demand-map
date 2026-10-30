@@ -8,3 +8,4 @@ python-dotenv
 jupyter
 xlrd
 openpyxl
+tableauhyperapi
