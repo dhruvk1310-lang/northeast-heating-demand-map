@@ -46,6 +46,15 @@
       <color>#e0662b</color>
       <color>#ffc46b</color>
     </color-palette>
+    <color-palette name='NE Heating Method Codes' type='ordered-sequential'>
+      <color>#3a4659</color>
+      <color>#ffc46b</color>
+    </color-palette>
+    <color-palette name='NE Heating Truck Ramp' type='ordered-sequential'>
+      <color>#e0662b</color>
+      <color>#ffc46b</color>
+      <color>#5fb4e8</color>
+    </color-palette>
   </preferences>
   <style>
     <style-rule element='all'>
@@ -1028,6 +1037,267 @@
         </objects>
       </object-graph>
     </datasource>
+    <datasource caption="Delivery season" inline='true' name='federated.deliverydaily0thermal00001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Delivery season" name='textscan.deliverydaily0thermal00001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='delivery_daily.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.deliverydaily0thermal00001' name='delivery_daily.csv' table='[delivery_daily#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='date' name='date' ordinal='0' />
+            <column datatype='real' name='hdd' ordinal='1' />
+            <column datatype='real' name='temp_mean_f' ordinal='2' />
+            <column datatype='integer' name='deliveries' ordinal='3' />
+            <column datatype='integer' name='runouts' ordinal='4' />
+            <column datatype='integer' name='below_10pct' ordinal='5' />
+            <column datatype='real' name='gallons' ordinal='6' />
+            <column datatype='real' name='trucks_opt' ordinal='7' />
+            <column datatype='real' name='miles_opt' ordinal='8' />
+            <column datatype='real' name='hours_opt' ordinal='9' />
+            <column datatype='real' name='trucks_hand' ordinal='10' />
+            <column datatype='real' name='miles_hand' ordinal='11' />
+            <column datatype='real' name='hours_hand' ordinal='12' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[date]' value='[delivery_daily.csv].[date]' />
+          <map key='[hdd]' value='[delivery_daily.csv].[hdd]' />
+          <map key='[temp_mean_f]' value='[delivery_daily.csv].[temp_mean_f]' />
+          <map key='[deliveries]' value='[delivery_daily.csv].[deliveries]' />
+          <map key='[runouts]' value='[delivery_daily.csv].[runouts]' />
+          <map key='[below_10pct]' value='[delivery_daily.csv].[below_10pct]' />
+          <map key='[gallons]' value='[delivery_daily.csv].[gallons]' />
+          <map key='[trucks_opt]' value='[delivery_daily.csv].[trucks_opt]' />
+          <map key='[miles_opt]' value='[delivery_daily.csv].[miles_opt]' />
+          <map key='[hours_opt]' value='[delivery_daily.csv].[hours_opt]' />
+          <map key='[trucks_hand]' value='[delivery_daily.csv].[trucks_hand]' />
+          <map key='[miles_hand]' value='[delivery_daily.csv].[miles_hand]' />
+          <map key='[hours_hand]' value='[delivery_daily.csv].[hours_hand]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Date" datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption="Heating Degree Days" datatype='real' name='[hdd]' role='measure' type='quantitative' />
+      <column caption="Mean Temperature (F)" datatype='real' name='[temp_mean_f]' role='measure' type='quantitative' />
+      <column caption="Deliveries" datatype='integer' name='[deliveries]' role='measure' type='quantitative' />
+      <column caption="Run-outs" datatype='integer' name='[runouts]' role='measure' type='quantitative' />
+      <column caption="Tanks Below 10%" datatype='integer' name='[below_10pct]' role='measure' type='quantitative' />
+      <column caption="Gallons" datatype='real' name='[gallons]' role='measure' type='quantitative' />
+      <column caption="Trucks (Optimized)" datatype='real' name='[trucks_opt]' role='measure' type='quantitative' />
+      <column caption="Miles (Optimized)" datatype='real' name='[miles_opt]' role='measure' type='quantitative' />
+      <column caption="Driver Hours (Optimized)" datatype='real' name='[hours_opt]' role='measure' type='quantitative' />
+      <column caption="Trucks (Hand)" datatype='real' name='[trucks_hand]' role='measure' type='quantitative' />
+      <column caption="Miles (Hand)" datatype='real' name='[miles_hand]' role='measure' type='quantitative' />
+      <column caption="Driver Hours (Hand)" datatype='real' name='[hours_hand]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/delivery_daily.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41' table='[Extract].[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41]' type='table' />
+          </relation>
+          <cols>
+            <map key='[date]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[date]' />
+            <map key='[hdd]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[hdd]' />
+            <map key='[temp_mean_f]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[temp_mean_f]' />
+            <map key='[deliveries]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[deliveries]' />
+            <map key='[runouts]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[runouts]' />
+            <map key='[below_10pct]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[below_10pct]' />
+            <map key='[gallons]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[gallons]' />
+            <map key='[trucks_opt]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[trucks_opt]' />
+            <map key='[miles_opt]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[miles_opt]' />
+            <map key='[hours_opt]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[hours_opt]' />
+            <map key='[trucks_hand]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[trucks_hand]' />
+            <map key='[miles_hand]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[miles_hand]' />
+            <map key='[hours_hand]' value='[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41].[hours_hand]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='delivery_daily.csv' id='delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41'>
+            <properties context=''>
+              <relation connection='textscan.deliverydaily0thermal00001' name='delivery_daily.csv' table='[delivery_daily#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='date' name='date' ordinal='0' />
+            <column datatype='real' name='hdd' ordinal='1' />
+            <column datatype='real' name='temp_mean_f' ordinal='2' />
+            <column datatype='integer' name='deliveries' ordinal='3' />
+            <column datatype='integer' name='runouts' ordinal='4' />
+            <column datatype='integer' name='below_10pct' ordinal='5' />
+            <column datatype='real' name='gallons' ordinal='6' />
+            <column datatype='real' name='trucks_opt' ordinal='7' />
+            <column datatype='real' name='miles_opt' ordinal='8' />
+            <column datatype='real' name='hours_opt' ordinal='9' />
+            <column datatype='real' name='trucks_hand' ordinal='10' />
+            <column datatype='real' name='miles_hand' ordinal='11' />
+            <column datatype='real' name='hours_hand' ordinal='12' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41' table='[Extract].[delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Delivery routes" inline='true' name='federated.deliveryroutes0thermal0001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Delivery routes" name='textscan.deliveryroutes0thermal0001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='delivery_routes.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.deliveryroutes0thermal0001' name='delivery_routes.csv' table='[delivery_routes#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='date' ordinal='0' />
+            <column datatype='string' name='method' ordinal='1' />
+            <column datatype='integer' name='truck' ordinal='2' />
+            <column datatype='integer' name='stop_seq' ordinal='3' />
+            <column datatype='integer' name='node' ordinal='4' />
+            <column datatype='real' name='latitude' ordinal='5' />
+            <column datatype='real' name='longitude' ordinal='6' />
+            <column datatype='integer' name='gallons' ordinal='7' />
+            <column datatype='integer' name='method_code' ordinal='8' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[date]' value='[delivery_routes.csv].[date]' />
+          <map key='[method]' value='[delivery_routes.csv].[method]' />
+          <map key='[truck]' value='[delivery_routes.csv].[truck]' />
+          <map key='[stop_seq]' value='[delivery_routes.csv].[stop_seq]' />
+          <map key='[node]' value='[delivery_routes.csv].[node]' />
+          <map key='[latitude]' value='[delivery_routes.csv].[latitude]' />
+          <map key='[longitude]' value='[delivery_routes.csv].[longitude]' />
+          <map key='[gallons]' value='[delivery_routes.csv].[gallons]' />
+          <map key='[method_code]' value='[delivery_routes.csv].[method_code]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Date" datatype='string' name='[date]' role='dimension' type='nominal' />
+      <column caption="Method" datatype='string' name='[method]' role='dimension' type='nominal' />
+      <column caption="Truck" datatype='integer' name='[truck]' role='dimension' type='ordinal' />
+      <column caption="Stop" datatype='integer' name='[stop_seq]' role='dimension' type='ordinal' />
+      <column caption="Node" datatype='integer' name='[node]' role='dimension' type='ordinal' />
+      <column caption="Latitude" datatype='real' name='[latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption="Longitude" datatype='real' name='[longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption="Gallons" datatype='integer' name='[gallons]' role='measure' type='quantitative' />
+      <column caption="Method Code" datatype='integer' name='[method_code]' role='measure' type='quantitative' />
+      <column caption="Truck color" datatype='integer' name='[Calculation_truck_color]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="[truck]" />
+      </column>
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/delivery_routes.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91' table='[Extract].[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91]' type='table' />
+          </relation>
+          <cols>
+            <map key='[date]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[date]' />
+            <map key='[method]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[method]' />
+            <map key='[truck]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[truck]' />
+            <map key='[stop_seq]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[stop_seq]' />
+            <map key='[node]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[node]' />
+            <map key='[latitude]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[latitude]' />
+            <map key='[longitude]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[longitude]' />
+            <map key='[gallons]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[gallons]' />
+            <map key='[method_code]' value='[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91].[method_code]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='delivery_routes.csv' id='delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91'>
+            <properties context=''>
+              <relation connection='textscan.deliveryroutes0thermal0001' name='delivery_routes.csv' table='[delivery_routes#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='date' ordinal='0' />
+            <column datatype='string' name='method' ordinal='1' />
+            <column datatype='integer' name='truck' ordinal='2' />
+            <column datatype='integer' name='stop_seq' ordinal='3' />
+            <column datatype='integer' name='node' ordinal='4' />
+            <column datatype='real' name='latitude' ordinal='5' />
+            <column datatype='real' name='longitude' ordinal='6' />
+            <column datatype='integer' name='gallons' ordinal='7' />
+            <column datatype='integer' name='method_code' ordinal='8' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91' table='[Extract].[delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Delivery miles by month" inline='true' name='federated.deliverymonthly0thermal001' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Delivery miles by month" name='textscan.deliverymonthly0thermal001'>
+            <connection class='textscan' directory="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/data" filename='delivery_monthly.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.deliverymonthly0thermal001' name='delivery_monthly.csv' table='[delivery_monthly#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='month_order' ordinal='0' />
+            <column datatype='string' name='month' ordinal='1' />
+            <column datatype='string' name='method' ordinal='2' />
+            <column datatype='integer' name='method_code' ordinal='3' />
+            <column datatype='real' name='miles' ordinal='4' />
+          </columns>
+        </relation>
+        <cols>
+          <map key='[month_order]' value='[delivery_monthly.csv].[month_order]' />
+          <map key='[month]' value='[delivery_monthly.csv].[month]' />
+          <map key='[method]' value='[delivery_monthly.csv].[method]' />
+          <map key='[method_code]' value='[delivery_monthly.csv].[method_code]' />
+          <map key='[miles]' value='[delivery_monthly.csv].[miles]' />
+        </cols>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Month Order" datatype='integer' name='[month_order]' role='dimension' type='ordinal' />
+      <column caption="Month" datatype='string' name='[month]' role='dimension' type='nominal' />
+      <column caption="Method" datatype='string' name='[method]' role='dimension' type='nominal' />
+      <column caption="Method Code" datatype='integer' name='[method_code]' role='measure' type='quantitative' />
+      <column caption="Truck Miles" datatype='real' name='[miles]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname="/Users/dhruv/Projects/northeast-heating-demand-map/tableau/extracts/delivery_monthly.hyper" default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/28/2026 09:00:00 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21' table='[Extract].[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21]' type='table' />
+          </relation>
+          <cols>
+            <map key='[month_order]' value='[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21].[month_order]' />
+            <map key='[month]' value='[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21].[month]' />
+            <map key='[method]' value='[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21].[method]' />
+            <map key='[method_code]' value='[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21].[method_code]' />
+            <map key='[miles]' value='[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21].[miles]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='delivery_monthly.csv' id='delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21'>
+            <properties context=''>
+              <relation connection='textscan.deliverymonthly0thermal001' name='delivery_monthly.csv' table='[delivery_monthly#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='month_order' ordinal='0' />
+            <column datatype='string' name='month' ordinal='1' />
+            <column datatype='string' name='method' ordinal='2' />
+            <column datatype='integer' name='method_code' ordinal='3' />
+            <column datatype='real' name='miles' ordinal='4' />
+          </columns>
+        </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21' table='[Extract].[delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
   </datasources>
   <mapsources>
     <mapsource name='Tableau' />
@@ -1919,6 +2189,440 @@
       </table>
       <simple-id uuid='{82A480B0-5A7A-5166-891E-7BB804A122B5}' />
     </worksheet>
+    <worksheet name="Routes Hand">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Delivery routes" name='federated.deliveryroutes0thermal0001' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.deliveryroutes0thermal0001'>
+            <column caption="Date" datatype='string' name='[date]' role='dimension' type='nominal' />
+            <column caption="Method" datatype='string' name='[method]' role='dimension' type='nominal' />
+            <column caption="Truck" datatype='integer' name='[truck]' role='dimension' type='ordinal' />
+            <column caption="Stop" datatype='integer' name='[stop_seq]' role='dimension' type='ordinal' />
+            <column caption="Node" datatype='integer' name='[node]' role='dimension' type='ordinal' />
+            <column caption="Latitude" datatype='real' name='[latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column caption="Longitude" datatype='real' name='[longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column caption="Gallons" datatype='integer' name='[gallons]' role='measure' type='quantitative' />
+            <column caption="Method Code" datatype='integer' name='[method_code]' role='measure' type='quantitative' />
+            <column caption="Truck color" datatype='integer' name='[Calculation_truck_color]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula="[truck]" />
+            </column>
+            <column-instance column='[longitude]' derivation='Avg' name='[avg:longitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[latitude]' derivation='Avg' name='[avg:latitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[truck]' derivation='None' name='[none:truck:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[stop_seq]' derivation='None' name='[none:stop_seq:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[method]' derivation='None' name='[none:method:nk]' pivot='key' type='nominal' />
+            <column-instance column='[gallons]' derivation='Sum' name='[sum:gallons:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_truck_color]' derivation='Avg' name='[avg:Calculation_truck_color:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.deliveryroutes0thermal0001].[none:method:nk]'>
+          <groupfilter function='member' level='[none:method:nk]' member='"hand-sequenced"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <slices>
+            <column>[federated.deliveryroutes0thermal0001].[none:method:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.deliveryroutes0thermal0001].[avg:Calculation_truck_color:qk]' max='3.0' min='1.0' palette='NE Heating Truck Ramp' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.deliveryroutes0thermal0001].[avg:Calculation_truck_color:qk]' />
+              <lod column='[federated.deliveryroutes0thermal0001].[none:truck:ok]' />
+              <path column='[federated.deliveryroutes0thermal0001].[none:stop_seq:ok]' />
+              <tooltip column='[federated.deliveryroutes0thermal0001].[sum:gallons:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Truck </run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[none:truck:ok]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>, stop </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[none:stop_seq:ok]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[sum:gallons:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> gallons</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.deliveryroutes0thermal0001].[avg:latitude:qk]</rows>
+        <cols>[federated.deliveryroutes0thermal0001].[avg:longitude:qk]</cols>
+      </table>
+      <simple-id uuid='{451C4BFB-B0BD-5E56-8D75-8920FAF92542}' />
+    </worksheet>
+    <worksheet name="Routes Optimized">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Delivery routes" name='federated.deliveryroutes0thermal0001' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.deliveryroutes0thermal0001'>
+            <column caption="Date" datatype='string' name='[date]' role='dimension' type='nominal' />
+            <column caption="Method" datatype='string' name='[method]' role='dimension' type='nominal' />
+            <column caption="Truck" datatype='integer' name='[truck]' role='dimension' type='ordinal' />
+            <column caption="Stop" datatype='integer' name='[stop_seq]' role='dimension' type='ordinal' />
+            <column caption="Node" datatype='integer' name='[node]' role='dimension' type='ordinal' />
+            <column caption="Latitude" datatype='real' name='[latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column caption="Longitude" datatype='real' name='[longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column caption="Gallons" datatype='integer' name='[gallons]' role='measure' type='quantitative' />
+            <column caption="Method Code" datatype='integer' name='[method_code]' role='measure' type='quantitative' />
+            <column caption="Truck color" datatype='integer' name='[Calculation_truck_color]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula="[truck]" />
+            </column>
+            <column-instance column='[longitude]' derivation='Avg' name='[avg:longitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[latitude]' derivation='Avg' name='[avg:latitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[truck]' derivation='None' name='[none:truck:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[stop_seq]' derivation='None' name='[none:stop_seq:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[method]' derivation='None' name='[none:method:nk]' pivot='key' type='nominal' />
+            <column-instance column='[gallons]' derivation='Sum' name='[sum:gallons:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_truck_color]' derivation='Avg' name='[avg:Calculation_truck_color:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+        <filter class='categorical' column='[federated.deliveryroutes0thermal0001].[none:method:nk]'>
+          <groupfilter function='member' level='[none:method:nk]' member='"optimized"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        </filter>
+          <slices>
+            <column>[federated.deliveryroutes0thermal0001].[none:method:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.deliveryroutes0thermal0001].[avg:Calculation_truck_color:qk]' max='3.0' min='1.0' palette='NE Heating Truck Ramp' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.deliveryroutes0thermal0001].[avg:Calculation_truck_color:qk]' />
+              <lod column='[federated.deliveryroutes0thermal0001].[none:truck:ok]' />
+              <path column='[federated.deliveryroutes0thermal0001].[none:stop_seq:ok]' />
+              <tooltip column='[federated.deliveryroutes0thermal0001].[sum:gallons:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>Truck </run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[none:truck:ok]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>, stop </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[none:stop_seq:ok]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliveryroutes0thermal0001].[sum:gallons:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> gallons</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.deliveryroutes0thermal0001].[avg:latitude:qk]</rows>
+        <cols>[federated.deliveryroutes0thermal0001].[avg:longitude:qk]</cols>
+      </table>
+      <simple-id uuid='{4EB3BB2B-536C-5654-8612-004F80C7FC86}' />
+    </worksheet>
+    <worksheet name="Monthly Miles">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Delivery miles by month" name='federated.deliverymonthly0thermal001' />
+          </datasources>
+          <datasource-dependencies datasource='federated.deliverymonthly0thermal001'>
+            <column caption="Month Order" datatype='integer' name='[month_order]' role='dimension' type='ordinal' />
+            <column caption="Month" datatype='string' name='[month]' role='dimension' type='nominal' />
+            <column caption="Method" datatype='string' name='[method]' role='dimension' type='nominal' />
+            <column caption="Method Code" datatype='integer' name='[method_code]' role='measure' type='quantitative' />
+            <column caption="Truck Miles" datatype='real' name='[miles]' role='measure' type='quantitative' />
+            <column-instance column='[month]' derivation='None' name='[none:month:nk]' pivot='key' type='nominal' />
+            <column-instance column='[method]' derivation='None' name='[none:method:nk]' pivot='key' type='nominal' />
+            <column-instance column='[miles]' derivation='Sum' name='[sum:miles:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[method_code]' derivation='Avg' name='[avg:method_code:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <sort class='manual' column='[federated.deliverymonthly0thermal001].[none:month:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Oct&quot;</bucket>
+              <bucket>&quot;Nov&quot;</bucket>
+              <bucket>&quot;Dec&quot;</bucket>
+              <bucket>&quot;Jan&quot;</bucket>
+              <bucket>&quot;Feb&quot;</bucket>
+              <bucket>&quot;Mar&quot;</bucket>
+              <bucket>&quot;Apr&quot;</bucket>
+              <bucket>&quot;May&quot;</bucket>
+              <bucket>&quot;Jul&quot;</bucket>
+              <bucket>&quot;Aug&quot;</bucket>
+              <bucket>&quot;Sep&quot;</bucket>
+              <bucket>&quot;Jun&quot;</bucket>
+            </dictionary>
+          </sort>
+        <filter class='categorical' column='[federated.deliverymonthly0thermal001].[none:month:nk]'>
+          <groupfilter function='union' user:op='manual' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Oct&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Nov&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Dec&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Jan&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Feb&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Mar&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;Apr&quot;' />
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;May&quot;' />
+          </groupfilter>
+        </filter>
+          <slices>
+            <column>[federated.deliverymonthly0thermal001].[none:month:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.deliverymonthly0thermal001].[avg:method_code:qk]' max='2.0' min='1.0' palette='NE Heating Method Codes' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.deliverymonthly0thermal001].[sum:miles:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='font-size' value='8' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.deliverymonthly0thermal001].[avg:method_code:qk]' />
+              <text column='[federated.deliverymonthly0thermal001].[sum:miles:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliverymonthly0thermal001].[none:month:nk]&gt; </run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'>&lt;[federated.deliverymonthly0thermal001].[none:method:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliverymonthly0thermal001].[sum:miles:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> truck miles</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.deliverymonthly0thermal001].[sum:miles:qk]</rows>
+        <cols>([federated.deliverymonthly0thermal001].[none:month:nk] / [federated.deliverymonthly0thermal001].[none:method:nk])</cols>
+      </table>
+      <simple-id uuid='{B75B4359-338E-5326-8995-DB3BDB45256E}' />
+    </worksheet>
+    <worksheet name="Daily Deliveries">
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Delivery season" name='federated.deliverydaily0thermal00001' />
+          </datasources>
+          <datasource-dependencies datasource='federated.deliverydaily0thermal00001'>
+            <column caption="Date" datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption="Heating Degree Days" datatype='real' name='[hdd]' role='measure' type='quantitative' />
+            <column caption="Mean Temperature (F)" datatype='real' name='[temp_mean_f]' role='measure' type='quantitative' />
+            <column caption="Deliveries" datatype='integer' name='[deliveries]' role='measure' type='quantitative' />
+            <column caption="Run-outs" datatype='integer' name='[runouts]' role='measure' type='quantitative' />
+            <column caption="Tanks Below 10%" datatype='integer' name='[below_10pct]' role='measure' type='quantitative' />
+            <column caption="Gallons" datatype='real' name='[gallons]' role='measure' type='quantitative' />
+            <column caption="Trucks (Optimized)" datatype='real' name='[trucks_opt]' role='measure' type='quantitative' />
+            <column caption="Miles (Optimized)" datatype='real' name='[miles_opt]' role='measure' type='quantitative' />
+            <column caption="Driver Hours (Optimized)" datatype='real' name='[hours_opt]' role='measure' type='quantitative' />
+            <column caption="Trucks (Hand)" datatype='real' name='[trucks_hand]' role='measure' type='quantitative' />
+            <column caption="Miles (Hand)" datatype='real' name='[miles_hand]' role='measure' type='quantitative' />
+            <column caption="Driver Hours (Hand)" datatype='real' name='[hours_hand]' role='measure' type='quantitative' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[deliveries]' derivation='Sum' name='[sum:deliveries:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[hdd]' derivation='Sum' name='[sum:hdd:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[gallons]' derivation='Sum' name='[sum:gallons:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[trucks_opt]' derivation='Sum' name='[sum:trucks_opt:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[temp_mean_f]' derivation='Sum' name='[sum:temp_mean_f:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Book' />
+            <format attr='color' value='#8B95A7' />
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#0B1220' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.deliverydaily0thermal00001].[sum:hdd:qk]' max='58.0' min='0.0' palette='NE Heating Ember Ramp' type='interpolated' />
+          </style-rule>
+          <style-rule element='axis'>
+            <format attr='color' value='#8B95A7' />
+            <format attr='title' class='0' field='[federated.deliverydaily0thermal00001].[sum:deliveries:qk]' scope='rows' value='Deliveries' />
+            <format attr='display' class='0' field='[federated.deliverydaily0thermal00001].[none:date:qk]' scope='cols' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.deliverydaily0thermal00001].[sum:hdd:qk]' />
+              <tooltip column='[federated.deliverydaily0thermal00001].[sum:gallons:qk]' />
+              <tooltip column='[federated.deliverydaily0thermal00001].[sum:temp_mean_f:qk]' />
+              <tooltip column='[federated.deliverydaily0thermal00001].[sum:trucks_opt:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+              <run bold='true' fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliverydaily0thermal00001].[none:date:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#FFC46B' fontname='Tableau Book'>&lt;[federated.deliverydaily0thermal00001].[sum:deliveries:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> deliveries, </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliverydaily0thermal00001].[sum:gallons:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> gallons</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#5FB4E8' fontname='Tableau Book'>&lt;[federated.deliverydaily0thermal00001].[sum:temp_mean_f:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> F average, </run>
+              <run fontcolor='#E8E6E1' fontname='Tableau Book'>&lt;[federated.deliverydaily0thermal00001].[sum:trucks_opt:qk]&gt;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book'> trucks needed</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.deliverydaily0thermal00001].[sum:deliveries:qk]</rows>
+        <cols>[federated.deliverydaily0thermal00001].[none:date:qk]</cols>
+      </table>
+      <simple-id uuid='{E85BF42A-C38D-5CA4-AB11-C14691C1C4A3}' />
+    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard name="The Thermal Year">
@@ -2494,6 +3198,239 @@
       </zones>
       <simple-id uuid='{2488BF59-8188-58D9-92B3-5545FB239EBE}' />
     </dashboard>
+    <dashboard name="The Delivery Desk">
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#0B1220' />
+        </style-rule>
+      </style>
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='3' w='100000' x='0' y='0' param='vert' type-v2='layout-flow'>
+        <zone h='12000' id='4' w='100000' x='0' y='0' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>DELIVERY LOGISTICS  ·  DENSMORE OIL, STONINGTON CT  ·  2025-26</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#E8E6E1' fontname='Georgia' fontsize='30'>The Delivery Desk</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='12'>K-factor auto-delivery for one real dealer, with real weather and road distances. Same deliveries, routed two ways.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='14' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='5' w='100000' x='0' y='12000' param='horz' type-v2='layout-flow'>
+        <zone h='10000' id='6' w='25000' x='0' y='12000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>1,048</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>modeled oil accounts within 20 miles</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='7' w='25000' x='25000' y='12000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>4,493</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>auto-deliveries, 773K gallons in 2025-26</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='8' w='25000' x='50000' y='12000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>34%</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>fewer truck miles: 40,751 by hand vs. 26,909 optimized</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+        <zone h='10000' id='9' w='25000' x='75000' y='12000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#FFC46B' fontname='Tableau Semibold' fontsize='26'>2 trucks</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='11'>enough all winter with zero run-outs. With 1 truck, tanks start running dry Jan 4.</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='10' />
+            <format attr='background-color' value='#111A2E' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='46000' id='10' w='100000' x='0' y='22000' param='horz' type-v2='layout-flow'>
+        <zone h='46000' id='11' w='34000' x='0' y='22000' param='vert' type-v2='layout-flow'>
+        <zone h='5520' id='12' w='34000' x='0' y='22000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>BY HAND  ·  2026-02-08</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>2 trucks, 256 miles: zone by zone, in list order</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='40480' id='13' w='34000' x='0' y='27520' name="Routes Hand" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='2' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='46000' id='14' w='34000' x='34000' y='22000' param='vert' type-v2='layout-flow'>
+        <zone h='5520' id='15' w='34000' x='34000' y='22000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>OPTIMIZED  ·  2026-02-08</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>2 trucks, 163 miles: OR-Tools vehicle routing</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='40480' id='16' w='34000' x='34000' y='27520' name="Routes Optimized" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='2' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='46000' id='17' w='32000' x='68000' y='22000' param='vert' type-v2='layout-flow'>
+        <zone h='5520' id='18' w='32000' x='68000' y='22000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>TRUCK MILES BY MONTH</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Hand (slate) vs. optimized (gold), Oct to May</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='40480' id='19' w='32000' x='68000' y='27520' name="Monthly Miles" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+        <zone h='4000' id='20' w='100000' x='0' y='68000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#E0662B' fontname='Tableau Semibold' fontsize='10'>THE SEASON</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#8B95A7' fontname='Tableau Book' fontsize='10'>Deliveries per day, July to June, colored by how cold the day was</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='24000' id='21' w='100000' x='0' y='72000' name="Daily Deliveries" show-title='false'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='6' />
+          </zone-style>
+        </zone>
+        <zone h='4000' id='22' w='100000' x='0' y='96000' type-v2='text'>
+            <formatted-text>
+              <run fontcolor='#3A4659' fontname='Tableau Book' fontsize='9'>Sources: CT license registry, Census ACS block groups, Open-Meteo daily weather, OSRM road distances, EIA RECS usage. Customers are modeled from public data (Huff market share); real tank data would plug in directly. Maps draw straight lines between stops; miles are real road miles.   Dhruv Khanna</run>
+            </formatted-text>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='0' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{2511198D-F716-5DE6-B949-CA4DB1C46101}' />
+    </dashboard>
   </dashboards>
   <windows source-height='30'>
     <window class='worksheet' name="Thermal Map">
@@ -2616,6 +3553,86 @@
       </cards>
       <simple-id uuid='{C37A311D-F542-5FF1-9491-B8A0CCABECB3}' />
     </window>
+    <window class='worksheet' name="Routes Hand">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{EAD934D2-A77D-5D14-ABB2-51B412F15E27}' />
+    </window>
+    <window class='worksheet' name="Routes Optimized">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{64FF6840-72BF-557A-9CEA-B53295B2E002}' />
+    </window>
+    <window class='worksheet' name="Monthly Miles">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A48C4F8F-F83C-5C4B-8F39-696938D6C7AF}' />
+    </window>
+    <window class='worksheet' name="Daily Deliveries">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8894F83D-A991-5E20-A549-55FFBBDCFC6E}' />
+    </window>
     <window class='dashboard' maximized='true' name="The Thermal Year">
       <viewpoints>
         <viewpoint name="Seasonal Pulse" />
@@ -2639,6 +3656,16 @@
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{F94485B7-10C8-5114-8806-271D3442DD40}' />
+    </window>
+    <window class='dashboard' maximized='true' name="The Delivery Desk">
+      <viewpoints>
+        <viewpoint name="Daily Deliveries" />
+        <viewpoint name="Monthly Miles" />
+        <viewpoint name="Routes Hand" />
+        <viewpoint name="Routes Optimized" />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{82B5512E-FF64-5211-82CF-2CC9C63BA722}' />
     </window>
   </windows>
 </workbook>

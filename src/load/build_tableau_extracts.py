@@ -27,13 +27,18 @@ EXTRACTS = ROOT / "tableau" / "extracts"
 OBJECTS = {
     "ct_regions": "ct_regions.csv_3A5C7E9B1D3F5A7C9E1B3D5F7A9C1E31",
     "ct_prospects": "ct_prospects.csv_8B0D2F4A6C8E0B2D4F6A8C0E2B4D6F81",
+    "delivery_daily": "delivery_daily.csv_4C6E8A0B2D4F6A8C0E2B4D6F8A0C2E41",
+    "delivery_routes": "delivery_routes.csv_9D1F3A5C7E9B1D3F5A7C9E1B3D5F7A91",
+    "delivery_monthly": "delivery_monthly.csv_2E4A6C8E0B2D4F6A8C0E2B4D6F8A0C21",
     "counties": "counties.geojson_44F0576E2B404900983994B8D103D788",
     "county_month": "county_month.csv_AF07728901FA4E3CA9F2997ED2222331",
     "seasonal_pulse": "seasonal_pulse.csv_5B1E0C7A9D2F4E6B8C3A1D0E9F7B6A51",
     "county_scores": "county_scores.csv_7E9A1C3B5D7F9B1D3F5A7C9E1B3D5F75",
 }
 HYPER_FILES = {"map": "map.hyper", "pulse": "seasonal_pulse.hyper", "scores": "county_scores.hyper",
-               "ct_regions": "ct_regions.hyper", "ct_prospects": "ct_prospects.hyper"}
+               "ct_regions": "ct_regions.hyper", "ct_prospects": "ct_prospects.hyper",
+               "delivery_daily": "delivery_daily.hyper", "delivery_routes": "delivery_routes.hyper",
+               "delivery_monthly": "delivery_monthly.hyper"}
 
 SQL_TYPES = {
     "string": SqlType.text(),
@@ -128,7 +133,9 @@ def main() -> None:
     cm, cm_types = load("county_month", ["month_date"])
     build("map", [("county_month", cm, cm_types)], with_counties=True)
     for name, key, dates in [("pulse", "seasonal_pulse", ["month_date"]), ("scores", "county_scores", []),
-                             ("ct_regions", "ct_regions", []), ("ct_prospects", "ct_prospects", [])]:
+                             ("ct_regions", "ct_regions", []), ("ct_prospects", "ct_prospects", []),
+                             ("delivery_daily", "delivery_daily", ["date"]), ("delivery_routes", "delivery_routes", []),
+                             ("delivery_monthly", "delivery_monthly", [])]:
         df, types = load(key, dates)
         build(name, [(key, df, types)])
 

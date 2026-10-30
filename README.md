@@ -4,7 +4,7 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in three interactive Tableau dashboards.
 
-> **Status:** Complete. All seven phases are done. The full write-up is in [`docs/findings.md`](docs/findings.md).
+> **Status:** Complete. Phases 1 to 7 map the market; Phase 8 adds delivery logistics for one real dealer. The full write-up is in [`docs/findings.md`](docs/findings.md).
 >
 > **Live dashboards:** [The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) · [Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs) · [Who to Call First (CT dealers)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
 
@@ -17,6 +17,7 @@ An end-to-end analytics project that estimates month-by-month heating oil, propa
 3. **Weather moves gallons, price moves dollars.** In 2022-23 oil hit $4.79 a gallon, so spend went up 9% even though people burned 4% fewer gallons.
 4. **Big counties win on size, oil towns win per home.** By total market, the NYC and Boston counties lead. Per home, it's oil-heavy places with warm summers, like Sussex NJ and Northeastern Connecticut.
 5. **Connecticut's dealers are spread unevenly.** Western CT has 2,206 oil and propane homes per dealer. The Lower CT River Valley has 922. Only 1 in 5 dealers also does HVAC.
+6. **Better routes cut a dealer's truck miles by a third.** For Densmore Oil in Stonington, the same 4,493 winter deliveries take 26,909 truck miles routed with OR-Tools vs. 40,751 sequenced zone by zone. 2 trucks cover the whole winter with zero run-outs; 1 truck and tanks start running dry January 4.
 
 More detail, plus how much to trust each number, is in [`docs/findings.md`](docs/findings.md).
 
@@ -49,11 +50,12 @@ More detail, plus how much to trust each number, is in [`docs/findings.md`](docs
 9. [Database Design](#database-design)
 10. [SQL Analysis Plan](#sql-analysis-plan)
 11. [Tableau Dashboards](#tableau-dashboards)
-12. [Repository Structure](#repository-structure)
-13. [Running the Pipeline](#running-the-pipeline)
-14. [Limitations](#limitations)
-15. [Roadmap](#roadmap)
-16. [Author](#author)
+12. [Delivery Logistics (Phase 8)](#delivery-logistics-phase-8)
+13. [Repository Structure](#repository-structure)
+14. [Running the Pipeline](#running-the-pipeline)
+15. [Limitations](#limitations)
+16. [Roadmap](#roadmap)
+17. [Author](#author)
 
 ---
 
@@ -345,6 +347,38 @@ The map's data source (county shapes related to monthly county data) comes from 
 
 ---
 
+## Delivery Logistics (Phase 8)
+
+The first seven phases answer where the demand is and which dealers serve it. Phase 8 does what a dealer's dispatch software has to do next: plan the deliveries. I built it around the problem a platform like KozyOps solves for its dealers. Its dispatch desk already forecasts deliveries with degree days and K-factor, but stops are sequenced by hand, and its product pages don't mention route optimization, truck capacity, or run-out risk.
+
+**The dealer:** Densmore Oil in Stonington, CT, the #1 prospect from Phase 6 (full-service, licensed 22 years, under-served region).
+
+**How it works:**
+1. **Service area.** Every Connecticut block group within 20 miles of the depot (188 neighborhoods, 47,924 oil homes). Each one's oil homes are split among all nearby licensed dealers with a Huff gravity model (closer dealers win more customers), which gives Densmore about 1,048 accounts.
+2. **K-factor forecast.** Each account burns gallons per degree day (from the Phase 3 model) plus a steady base for hot water, with real daily weather from Open-Meteo for the 2025-26 season. When a tank is forecast to hit 25% within 3 days, it goes on that day's list.
+3. **Routing.** Each day's list is routed two ways on real road distances (OSRM): zone by zone in list order, the way a dispatcher sequences stops by hand, and with OR-Tools vehicle routing (2,800-gallon trucks, 9-hour days, 12 minutes per stop).
+4. **Fleet test.** The same season with the fleet capped at 1 and 2 trucks, emptiest tanks first, to see when tanks run dry.
+
+**What came out:**
+
+| | By hand | Optimized |
+|---|---|---|
+| Deliveries | 4,493 | 4,493 |
+| Truck miles | 40,751 | **26,909 (34% fewer)** |
+| Driver hours | 2,207 | **1,881** |
+| Gallons per truck mile | 19.0 | **28.7** |
+
+- On the coldest day (Feb 8, 2026, 7.3°F average) both methods use 2 trucks, but hand routes take 256 miles and optimized routes take 163.
+- 2 trucks are enough for the whole winter with zero run-outs. A 3rd truck only helps on 16 days. With 1 truck, tanks start running dry January 4 and almost half the customers are out by late February.
+
+**What's real and what's modeled:** weather, road distances, oil homes per neighborhood, dealer locations, and usage per home are all real public data. Individual customers aren't public anywhere, so they're modeled from those numbers. With real tank data from a dealer, the same code would run on actual accounts.
+
+[![The Delivery Desk dashboard](tableau/screenshots/TheDeliveryDesk.png)](https://public.tableau.com/views/northeast_thermal_year/TheDeliveryDesk)
+
+The code is in `src/logistics/` and runs with `python -m src.logistics.run_all`.
+
+---
+
 ## Repository Structure
 
 ```
@@ -383,12 +417,13 @@ python3 -m venv .venv
 .venv/bin/python -m src.extract.run_all
 .venv/bin/python -m src.model.run_all
 .venv/bin/python -m src.load.build_database
+.venv/bin/python -m src.logistics.run_all
 .venv/bin/python -m src.load.export_tableau
 .venv/bin/python -m src.load.build_tableau_extracts
 .venv/bin/python -m src.load.build_tableau_workbook
 ```
 
-The first command downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`; neither folder is committed. The second runs the demand model and writes the results to `data/processed/`, which is committed. The third builds the SQLite database (`data/northeast_demand.db`), runs every query in `sql/analysis/`, and exports the Tableau views. The last three rebuild the Tableau workbook and its extracts (see [Tableau Dashboards](#tableau-dashboards)); open `tableau/northeast_thermal_year.twb` in Tableau Public. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
+The first command downloads every source into `data/raw/` (about 285 MB, cached after the first run) and writes clean tables to `data/interim/`; neither folder is committed. The second runs the demand model and writes the results to `data/processed/`, which is committed. The third builds the SQLite database (`data/northeast_demand.db`), runs every query in `sql/analysis/`, and exports the Tableau views. `src.logistics.run_all` runs the Phase 8 delivery simulation (a few minutes, since it routes every day of the season). The last three rebuild the Tableau workbook and its extracts (see [Tableau Dashboards](#tableau-dashboards)); open `tableau/northeast_thermal_year.twb` in Tableau Public. Each table is described in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the choices made along the way are in [`docs/assumptions.md`](docs/assumptions.md).
 
 ---
 
@@ -449,6 +484,13 @@ The first command downloads every source into `data/raw/` (about 285 MB, cached 
 **Phase 7: Findings**
 - [x] Write top findings in [`docs/findings.md`](docs/findings.md)
 - [x] Add dashboard screenshots to this README
+
+**Phase 8: Delivery logistics (one dealer)**
+- [x] Service area and customer base from public data (Huff gravity model)
+- [x] K-factor delivery forecasting with real daily weather
+- [x] Daily routing on real road distances: hand-sequenced vs. OR-Tools
+- [x] Fleet-size and run-out test
+- [x] Add the delivery dashboard ("The Delivery Desk")
 
 ---
 

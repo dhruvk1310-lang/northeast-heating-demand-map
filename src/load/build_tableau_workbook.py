@@ -47,9 +47,13 @@ PULSE = "federated.pulse0thermal0year0000000001"
 SCORES = "federated.scores0thermal0year00000001"
 CT_REGIONS = "federated.ctregions0thermal0year000001"
 CT_PROSPECTS = "federated.ctprospects0thermal0year0001"
+DEL_DAILY = "federated.deliverydaily0thermal00001"
+DEL_ROUTES = "federated.deliveryroutes0thermal0001"
+DEL_MONTHLY = "federated.deliverymonthly0thermal001"
 PARAMS = "Parameters"
 P_MONTH = "[Parameter 1]"
-CAPTIONS = {CT_REGIONS: "Connecticut regions", CT_PROSPECTS: "Connecticut dealers",
+CAPTIONS = {CT_REGIONS: "Connecticut regions", CT_PROSPECTS: "Connecticut dealers", DEL_DAILY: "Delivery season",
+            DEL_ROUTES: "Delivery routes", DEL_MONTHLY: "Delivery miles by month",
             MAP: "counties.geojson+ (Multiple Connections)", PULSE: "Seasonal pulse",
             SCORES: "County scores"}
 P_BASIS = "[Parameter 2]"
@@ -150,6 +154,13 @@ def map_datasource() -> str:
     return xml.replace("      <layout dim-ordering", extract + "      <layout dim-ordering", 1)
 
 
+GEO_ROLES = {"latitude": "[Geographical].[Latitude]", "longitude": "[Geographical].[Longitude]"}
+
+
+def geo_role(name: str) -> str:
+    return f" semantic-role='{GEO_ROLES[name]}'" if name in GEO_ROLES else ""
+
+
 def text_datasource(ds: str, caption: str, filename: str, columns: list[tuple], calcs: dict,
                     object_key: str, hyper_key: str) -> str:
     """A single-CSV data source backed by an extract. columns: (name, datatype, role, type, caption)."""
@@ -164,7 +175,7 @@ def text_datasource(ds: str, caption: str, filename: str, columns: list[tuple], 
                 f"{rel_cols}\n          </columns>\n        </relation>")
     extract = extract_xml(HYPER_FILES[hyper_key], [oid], [(n, oid, n) for n, *_ in columns])
     decl = "".join(
-        f"      <column caption={q(cap)} datatype='{dt}' name='[{n}]' role='{role}' type='{kind}' />\n"
+        f"      <column caption={q(cap)} datatype='{dt}' name='[{n}]' role='{role}'{geo_role(n)} type='{kind}' />\n"
         for n, dt, role, kind, cap in columns)
     calc_xml = "".join(calc_column(n, *v) for n, v in calcs.items())
     return f"""
@@ -251,6 +262,51 @@ def ct_prospects_datasource() -> str:
                            "ct_prospects", "ct_prospects")
 
 
+DEL_DAILY_COLS = [
+    ("date", "date", "dimension", "ordinal", "Date"),
+    ("hdd", "real", "measure", "quantitative", "Heating Degree Days"),
+    ("temp_mean_f", "real", "measure", "quantitative", "Mean Temperature (F)"),
+    ("deliveries", "integer", "measure", "quantitative", "Deliveries"),
+    ("runouts", "integer", "measure", "quantitative", "Run-outs"),
+    ("below_10pct", "integer", "measure", "quantitative", "Tanks Below 10%"),
+    ("gallons", "real", "measure", "quantitative", "Gallons"),
+    ("trucks_opt", "real", "measure", "quantitative", "Trucks (Optimized)"),
+    ("miles_opt", "real", "measure", "quantitative", "Miles (Optimized)"),
+    ("hours_opt", "real", "measure", "quantitative", "Driver Hours (Optimized)"),
+    ("trucks_hand", "real", "measure", "quantitative", "Trucks (Hand)"),
+    ("miles_hand", "real", "measure", "quantitative", "Miles (Hand)"),
+    ("hours_hand", "real", "measure", "quantitative", "Driver Hours (Hand)"),
+]
+DEL_ROUTE_COLS = [
+    ("date", "string", "dimension", "nominal", "Date"),
+    ("method", "string", "dimension", "nominal", "Method"),
+    ("truck", "integer", "dimension", "ordinal", "Truck"),
+    ("stop_seq", "integer", "dimension", "ordinal", "Stop"),
+    ("node", "integer", "dimension", "ordinal", "Node"),
+    ("latitude", "real", "measure", "quantitative", "Latitude"),
+    ("longitude", "real", "measure", "quantitative", "Longitude"),
+    ("gallons", "integer", "measure", "quantitative", "Gallons"),
+    ("method_code", "integer", "measure", "quantitative", "Method Code"),
+]
+DEL_MONTHLY_COLS = [
+    ("month_order", "integer", "dimension", "ordinal", "Month Order"),
+    ("month", "string", "dimension", "nominal", "Month"),
+    ("method", "string", "dimension", "nominal", "Method"),
+    ("method_code", "integer", "measure", "quantitative", "Method Code"),
+    ("miles", "real", "measure", "quantitative", "Truck Miles"),
+]
+TRUCK_CALC = ("Truck color", "integer", "measure", "quantitative", "[truck]")
+
+
+def delivery_datasources() -> str:
+    return (text_datasource(DEL_DAILY, "Delivery season", "delivery_daily.csv", DEL_DAILY_COLS, {},
+                            "delivery_daily", "delivery_daily")
+            + text_datasource(DEL_ROUTES, "Delivery routes", "delivery_routes.csv", DEL_ROUTE_COLS,
+                              {"Calculation_truck_color": TRUCK_CALC}, "delivery_routes", "delivery_routes")
+            + text_datasource(DEL_MONTHLY, "Delivery miles by month", "delivery_monthly.csv", DEL_MONTHLY_COLS, {},
+                              "delivery_monthly", "delivery_monthly"))
+
+
 def scores_datasource() -> str:
     cols = [
         ("county_key", "string", "dimension", "nominal", "County Key"),
@@ -305,7 +361,7 @@ def deps(ds: str, columns: list[tuple], instances: list[tuple]) -> str:
             out.append(f"              <calculation class='tableau' formula={q(c[5])} />")
             out.append("            </column>")
         else:
-            out.append(f"            <column caption={q(cap)} datatype='{dt}' name='[{name}]' role='{role}' type='{kind}' />")
+            out.append(f"            <column caption={q(cap)} datatype='{dt}' name='[{name}]' role='{role}'{geo_role(name)} type='{kind}' />")
     for field, deriv, kind, typ in instances:
         out.append(f"            <column-instance column='[{field}]' derivation='{DERIVATION[deriv]}' "
                    f"name='[{deriv}:{field}:{kind}]' pivot='key' type='{typ}' />")
@@ -324,6 +380,17 @@ def member_filter(ds, field, kind, member) -> str:
     return (f"        <filter class='categorical' column='[{ds}].{level}'>\n"
             f"          <groupfilter function='member' level='{level}' member={q(member)} "
             f"user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />\n"
+            f"        </filter>")
+
+
+def member_filter_many(ds, field, kind, values: list[str]) -> str:
+    """Keep several text values."""
+    level = f"[none:{field}:{kind}]"
+    members = "\n".join(f"            <groupfilter function='member' level='{level}' member='&quot;{escape(v)}&quot;' />"
+                        for v in values)
+    return (f"        <filter class='categorical' column='[{ds}].{level}'>\n"
+            f"          <groupfilter function='union' user:op='manual' user:ui-domain='database' "
+            f"user:ui-enumeration='inclusive' user:ui-marker='enumerate'>\n{members}\n          </groupfilter>\n"
             f"        </filter>")
 
 
@@ -428,6 +495,8 @@ CODE_PALETTES = {
     "NE Heating Pulse Codes": [ICE_DIM, ICE_LIGHT, EMBER_DIM, GOLD],  # Cooling, Cooling (month), Heating, Heating (month)
     "NE Heating HVAC Codes": [FAINT, GOLD],  # 0 = fuel only, 1 = also HVAC service
     "NE Heating Ember Ramp": [EMBER_DIM, EMBER, GOLD],  # low to high
+    "NE Heating Method Codes": [FAINT, GOLD],  # 1 = hand-sequenced, 2 = optimized
+    "NE Heating Truck Ramp": [EMBER, GOLD, ICE],  # trucks 1, 2, 3
 }
 
 
@@ -837,6 +906,136 @@ def ct_prospects() -> str:
     return worksheet("CT Prospects", [c], view, style, panes, label_ref, score_ref)
 
 
+def route_map(name: str, method: str) -> str:
+    r = DEL_ROUTES
+    caption, datatype, role, kind, formula = TRUCK_CALC
+    cols = DEL_ROUTE_COLS + [("Calculation_truck_color", datatype, role, kind, caption, formula)]
+    insts = [("longitude", "avg", "qk", "quantitative"), ("latitude", "avg", "qk", "quantitative"),
+             ("truck", "none", "ok", "ordinal"), ("stop_seq", "none", "ok", "ordinal"),
+             ("method", "none", "nk", "nominal"), ("gallons", "sum", "qk", "quantitative"),
+             ("Calculation_truck_color", "avg", "qk", "quantitative")]
+    color_ref = inst(r, "Calculation_truck_color", "avg", "qk")
+    view = "\n".join([
+        "          <mapsources>\n            <mapsource name='Tableau' />\n          </mapsources>",
+        deps(r, cols, insts),
+        member_filter(r, "method", "nk", f'"{method}"'),
+        f"          <slices>\n            <column>[{r}].[none:method:nk]</column>\n          </slices>",
+        "          <aggregation value='true' />",
+    ])
+    style = sheet_style(continuous_color_rule(color_ref, "NE Heating Truck Ramp", 1.0, 3.0) + """          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+          </style-rule>
+""")
+    tip = tooltip([
+        ("Truck ", MUTED, False), (f"<{inst(r, 'truck', 'none', 'ok')}>", GOLD, True),
+        (", stop ", MUTED, False), (f"<{inst(r, 'stop_seq', 'none', 'ok')}>\n", TEXT, False),
+        (f"<{inst(r, 'gallons', 'sum', 'qk')}>", GOLD, False), (" gallons", MUTED, False),
+    ])
+    panes = f"""          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='{color_ref}' />
+              <lod column='{inst(r, "truck", "none", "ok")}' />
+              <path column='{inst(r, "stop_seq", "none", "ok")}' />
+              <tooltip column='{inst(r, "gallons", "sum", "qk")}' />
+            </encodings>
+{tip}
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2' />
+              </style-rule>
+            </style>
+          </pane>"""
+    return worksheet(name, [r], view, style, panes, inst(r, "latitude", "avg", "qk"), inst(r, "longitude", "avg", "qk"))
+
+
+def monthly_miles() -> str:
+    m = DEL_MONTHLY
+    insts = [("month", "none", "nk", "nominal"), ("method", "none", "nk", "nominal"),
+             ("miles", "sum", "qk", "quantitative"), ("method_code", "avg", "qk", "quantitative")]
+    month_ref, miles_ref = inst(m, "month", "none", "nk"), inst(m, "miles", "sum", "qk")
+    view = "\n".join([
+        deps(m, DEL_MONTHLY_COLS, insts),
+        manual_sort(month_ref, ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jul", "Aug", "Sep", "Jun"]),
+        member_filter_many(m, "month", "nk", ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"]),
+        f"          <slices>\n            <column>[{m}].[none:month:nk]</column>\n          </slices>",
+        "          <aggregation value='true' />",
+    ])
+    color_ref = inst(m, "method_code", "avg", "qk")
+    style = sheet_style(continuous_color_rule(color_ref, "NE Heating Method Codes", 1.0, 2.0) + f"""          <style-rule element='axis'>
+            <format attr='display' class='0' field='{miles_ref}' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='color' value='{MUTED}' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='{MUTED}' />
+            <format attr='font-size' value='8' />
+          </style-rule>
+""")
+    tip = tooltip([(f"<{month_ref}> ", TEXT, True), (f"<{inst(m, 'method', 'none', 'nk')}>\n", MUTED, False),
+                   (f"<{miles_ref}>", GOLD, True), (" truck miles", MUTED, False)])
+    panes = f"""          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='{color_ref}' />
+              <text column='{miles_ref}' />
+            </encodings>
+{tip}
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>"""
+    return worksheet("Monthly Miles", [m], view, style, panes, miles_ref,
+                     f"({month_ref} / {inst(m, 'method', 'none', 'nk')})")
+
+
+def daily_deliveries() -> str:
+    d = DEL_DAILY
+    insts = [("date", "none", "qk", "quantitative"), ("deliveries", "sum", "qk", "quantitative"),
+             ("hdd", "sum", "qk", "quantitative"), ("gallons", "sum", "qk", "quantitative"),
+             ("trucks_opt", "sum", "qk", "quantitative"), ("temp_mean_f", "sum", "qk", "quantitative")]
+    date_ref, value_ref, hdd_ref = inst(d, "date", "none", "qk"), inst(d, "deliveries", "sum", "qk"), inst(d, "hdd", "sum", "qk")
+    view = "\n".join([deps(d, DEL_DAILY_COLS, insts), "          <aggregation value='true' />"])
+    style = sheet_style(continuous_color_rule(hdd_ref, "NE Heating Ember Ramp", 0.0, 58.0) + f"""          <style-rule element='axis'>
+            <format attr='color' value='{MUTED}' />
+            <format attr='title' class='0' field='{value_ref}' scope='rows' value='Deliveries' />
+            <format attr='display' class='0' field='{date_ref}' scope='cols' value='true' />
+          </style-rule>
+""")
+    tip = tooltip([
+        (f"<{date_ref}>\n", TEXT, True),
+        (f"<{value_ref}>", GOLD, True), (" deliveries, ", MUTED, False),
+        (f"<{inst(d, 'gallons', 'sum', 'qk')}>", TEXT, False), (" gallons\n", MUTED, False),
+        (f"<{inst(d, 'temp_mean_f', 'sum', 'qk')}>", ICE, False), (" F average, ", MUTED, False),
+        (f"<{inst(d, 'trucks_opt', 'sum', 'qk')}>", TEXT, False), (" trucks needed", MUTED, False),
+    ])
+    panes = f"""          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='{hdd_ref}' />
+              <tooltip column='{inst(d, "gallons", "sum", "qk")}' />
+              <tooltip column='{inst(d, "temp_mean_f", "sum", "qk")}' />
+              <tooltip column='{inst(d, "trucks_opt", "sum", "qk")}' />
+            </encodings>
+{tip}
+          </pane>"""
+    return worksheet("Daily Deliveries", [d], view, style, panes, value_ref, date_ref)
+
+
 def top_markets() -> str:
     s, cols = score_columns()
     inst_list = [
@@ -1144,6 +1343,65 @@ def ct_dashboard() -> str:
     return dashboard("Connecticut Dealer Prospects", tree)
 
 
+SHEET_NAMES = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets", "CT Region Density", "CT Prospects",
+               "Routes Hand", "Routes Optimized", "Monthly Miles", "Daily Deliveries"]
+
+
+def delivery_dashboard() -> str:
+    """The Delivery Desk: one real dealer's season, routed by hand vs. optimized."""
+    logistics = ROOT / "data" / "processed" / "logistics"
+    daily = pd.read_csv(logistics / "daily_dispatch.csv")
+    accounts = pd.read_csv(logistics / "accounts.csv")
+    routes = pd.read_csv(DATA / "delivery_routes.csv")
+    coldest = routes["date"].iloc[0]
+    t = daily.sum(numeric_only=True)
+    saved = 1 - t.miles_opt / t.miles_hand
+    fleet = {cap: pd.read_csv(logistics / f"daily_dispatch_fleet{cap}.csv") for cap in (1, 2)}
+    one = fleet[1]
+    if one.runouts.max() > 0:
+        first_dry = pd.to_datetime(one.loc[one.runouts > 0, "date"]).min()
+        one_note = f"With 1 truck, tanks start running dry {first_dry:%b} {first_dry.day}."
+    else:
+        one_note = "Even 1 truck has no run-outs."
+    tiles = [
+        (f"{len(accounts):,}", "modeled oil accounts within 20 miles"),
+        (f"{int(t.deliveries):,}", f"auto-deliveries, {t.gallons / 1000:,.0f}K gallons in 2025-26"),
+        (f"{saved:.0%}", f"fewer truck miles: {t.miles_hand:,.0f} by hand vs. {t.miles_opt:,.0f} optimized"),
+        ("2 trucks", f"enough all winter with zero run-outs. {one_note}"),
+    ]
+    tile_nodes = [{"kind": "text", "margin": 10, "background": PANEL, "runs": [
+        (v, GOLD, FONT_BOLD, 26), "\n", (label, MUTED, FONT, 11)]} for v, label in tiles]
+
+    def label(kicker, note):
+        return {"kind": "text", "margin": 6, "runs": [(kicker, EMBER, FONT_BOLD, 10), "\n", (note, MUTED, FONT, 10)]}
+
+    day = daily[daily["date"] == coldest].iloc[0]
+    tree = ("v", [
+        (12, header("DELIVERY LOGISTICS  ·  DENSMORE OIL, STONINGTON CT  ·  2025-26", "The Delivery Desk",
+                    "K-factor auto-delivery for one real dealer, with real weather and road distances. "
+                    "Same deliveries, routed two ways.")),
+        (10, ("h", [(1, t_) for t_ in tile_nodes])),
+        (46, ("h", [
+            (34, ("v", [(12, label(f"BY HAND  ·  {coldest}",
+                                   f"{int(day.trucks_hand)} trucks, {day.miles_hand:,.0f} miles: zone by zone, in list order")),
+                        (88, {"kind": "sheet", "name": "Routes Hand", "margin": 2})])),
+            (34, ("v", [(12, label(f"OPTIMIZED  ·  {coldest}",
+                                   f"{int(day.trucks_opt)} trucks, {day.miles_opt:,.0f} miles: OR-Tools vehicle routing")),
+                        (88, {"kind": "sheet", "name": "Routes Optimized", "margin": 2})])),
+            (32, ("v", [(12, label("TRUCK MILES BY MONTH", "Hand (slate) vs. optimized (gold), Oct to May")),
+                        (88, {"kind": "sheet", "name": "Monthly Miles"})])),
+        ])),
+        (4, label("THE SEASON", "Deliveries per day, July to June, colored by how cold the day was")),
+        (24, {"kind": "sheet", "name": "Daily Deliveries"}),
+        (4, {"kind": "text", "margin": 8, "runs": [(
+            "Sources: CT license registry, Census ACS block groups, Open-Meteo daily weather, OSRM road distances, "
+            "EIA RECS usage. Customers are modeled from public data (Huff market share); real tank data would plug in "
+            "directly. Maps draw straight lines between stops; miles are real road miles.   Dhruv Khanna",
+            FAINT, FONT, 9)]}),
+    ])
+    return dashboard("The Delivery Desk", tree)
+
+
 def dashboard_window(name: str, sheets: list[str]) -> str:
     vps = "\n".join(f"        <viewpoint name={q(s)} />" for s in sheets)
     return f"""    <window class='dashboard' maximized='true' name={q(name)}>
@@ -1189,11 +1447,13 @@ def sheet_window(name: str) -> str:
 
 
 def workbook(dashboards: str = "", windows: str = "") -> str:
-    sheets = [thermal_map(), seasonal_pulse(), scatter(), top_markets(), ct_region_density(), ct_prospects()]
-    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets", "CT Region Density", "CT Prospects"]
+    sheets = [thermal_map(), seasonal_pulse(), scatter(), top_markets(), ct_region_density(), ct_prospects(),
+              route_map("Routes Hand", "hand-sequenced"), route_map("Routes Optimized", "optimized"),
+              monthly_miles(), daily_deliveries()]
+    names = SHEET_NAMES
     window_xml = windows or "\n".join(sheet_window(n) for n in names)
     body = f"""  <datasources>{parameters()}
-{map_datasource()}{pulse_datasource()}{scores_datasource()}{ct_regions_datasource()}{ct_prospects_datasource()}
+{map_datasource()}{pulse_datasource()}{scores_datasource()}{ct_regions_datasource()}{ct_prospects_datasource()}{delivery_datasources()}
   </datasources>
   <mapsources>
     <mapsource name='Tableau' />
@@ -1229,13 +1489,14 @@ def workbook(dashboards: str = "", windows: str = "") -> str:
 
 
 def main() -> None:
-    dashboards = (f"\n  <dashboards>{thermal_year_dashboard()}{year_round_dashboard()}{ct_dashboard()}"
+    dashboards = (f"\n  <dashboards>{thermal_year_dashboard()}{year_round_dashboard()}{ct_dashboard()}{delivery_dashboard()}"
                   "\n  </dashboards>")
-    names = ["Thermal Map", "Seasonal Pulse", "Year-Round Scatter", "Top Markets", "CT Region Density", "CT Prospects"]
+    names = SHEET_NAMES
     windows = "\n".join([sheet_window(n) for n in names] + [
         dashboard_window("The Thermal Year", ["Seasonal Pulse", "Thermal Map"]),
         dashboard_window("Where the Year-Round Money Is", ["Top Markets", "Year-Round Scatter"]),
         dashboard_window("Connecticut Dealer Prospects", ["CT Prospects", "CT Region Density"]),
+        dashboard_window("The Delivery Desk", ["Daily Deliveries", "Monthly Miles", "Routes Hand", "Routes Optimized"]),
     ])
     OUT.write_text(workbook(dashboards, windows))
     print(f"  wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size / 1e3:.0f} KB)")

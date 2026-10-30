@@ -11,6 +11,7 @@ Everything here is modeled from public data (Census, NOAA, EIA, and Connecticut'
 3. **Weather moves gallons, price moves dollars.** In 2022-23 people burned less oil but spent more.
 4. **Big counties win on size, oil towns win per home.** The best markets change almost completely depending on how you rank them.
 5. **Connecticut's dealers are spread unevenly.** Western CT has more than twice as many oil and propane homes per dealer as the Lower CT River Valley.
+6. **Better routes cut a dealer's truck miles by a third.** Same deliveries, 34% fewer miles, and 2 trucks are enough for a whole winter.
 
 ## 1. How big is it
 
@@ -47,6 +48,17 @@ Everything here is modeled from public data (Census, NOAA, EIA, and Connecticut'
 - Coverage is uneven. **Western CT has 2,206 oil and propane homes per dealer** (about $7.3M of heating spend each). The Lower CT River Valley has 922.
 - The top prospects are established full-service dealers in under-served regions: **Densmore Oil** (Stonington), **Brunelli Energy** (Bozrah), **Patterson Oil** (Torrington), and **Miller Fuel** (Burlington). Western CT has 8 of the top 25.
 
+## 7. Delivery logistics: one real dealer
+
+I took the #1 prospect, Densmore Oil in Stonington, and planned its whole 2025-26 winter the way dispatch software would.
+
+- About **1,048 accounts** within 20 miles, each using about 737 gallons a season. That's **4,493 auto-deliveries** and 773K gallons, about 4 fills per customer.
+- Same deliveries, routed two ways. Zone by zone (how stops get sequenced by hand today): **40,751 truck miles**. OR-Tools vehicle routing: **26,909**. That's **34% fewer miles**, 326 fewer driver hours, and 28.7 gallons delivered per truck mile instead of 19.0.
+- The coldest day was February 8, 2026 (7.3°F average). Both ways used 2 trucks, but 256 miles by hand vs. 163 optimized.
+- **2 trucks are enough** for the whole winter with zero run-outs, as long as the emptiest tanks go first. A 3rd truck only matters on 16 days.
+- **1 truck isn't.** Tanks start running dry on January 4, and by February 24 almost half the customers (494) are out of oil.
+- Customers are modeled from public data, so the exact numbers are an estimate. The pattern is the point: real tank data from a dealer would run through the same code.
+
 ## How much to trust this
 
 - The cooling index lines up with real summer electricity sales: 0.83 to 0.99 correlation in every state except Maine (0.56), where few homes have AC.
@@ -58,4 +70,5 @@ Everything here is modeled from public data (Census, NOAA, EIA, and Connecticut'
 
 - Add dealer registries for the other 8 states where they're public, so the dealer view isn't Connecticut only.
 - Re-run it every fall when new prices and weather come in. The whole pipeline rebuilds from one set of commands.
+- Plug real tank-monitor readings (Otodata, Tank Utility) into the delivery simulation in place of the modeled accounts, and use a real weather forecast instead of actual weather.
 - Test the fit score against real wins and losses if a dealer software company would share that data.

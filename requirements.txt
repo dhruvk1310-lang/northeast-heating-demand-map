@@ -9,3 +9,4 @@ jupyter
 xlrd
 openpyxl
 tableauhyperapi
+ortools

@@ -57,6 +57,18 @@
 - **Not collected:** company size, website, and online payment or customer portal. None of these are in a public record; they would need each dealer's website to be checked by hand, so the original schema columns for them were dropped rather than left empty.
 - **Fit score** = 0.5 x offers HVAC service + 0.3 x percentile of the region's oil and propane homes per dealer + 0.2 x percentile of years licensed. It favors established full-service dealers in regions with less competition, the profile most likely to need dispatch, routing, and service software.
 
+## Delivery Logistics (Phase 8)
+
+- **Dealer:** Densmore Oil, Stonington (registry credential 287233), depot geocoded from its registered address with the Census geocoder. 477 of 521 registered dealers geocoded; the rest list PO boxes or unmatched addresses and are left out of the market-share split.
+- **Service area:** Connecticut block groups whose center is within 20 straight-line miles of the depot. Rhode Island neighborhoods across the border are not included (only Connecticut block groups are loaded), so the dealer's real customer count is likely higher.
+- **Market share (Huff model):** each geocoded dealer within 30 miles pulls customers with weight e^(-distance / 8 miles). All dealers are treated as equally attractive because size data is not public.
+- **Accounts:** each block group's expected customers are rounded to whole accounts (seeded random rounding). Usage per account = 0.1115 gallons per heating degree day plus 0.36 gallons a day of base load (the Phase 3 Connecticut oil figures, calibrated to EIA SEDS), times a lognormal house-to-house factor (25% spread). Start-of-season tank levels are random between 99 and 250 gallons.
+- **Tanks and trucks (industry-standard values, not data):** 275-gallon tanks filled to 250; reorder at 25% (69 gallons); 3-day forecast window; 2,800-gallon trucks; 9-hour driver days; 12 minutes per stop; one load per truck per day.
+- **Forecast:** actual weather stands in for the forecast, so this is a best case. A real forecast would add some error.
+- **Hand-sequenced baseline:** stops sorted by census tract and block group (zone by zone), trucks filled in that order until full or out of time. Real dispatchers may do better or worse.
+- **Optimized:** OR-Tools capacitated vehicle routing with a time limit per day, minimizing trucks first and then miles, with 2 seconds of search per day.
+- **Fleet caps:** when the day's list doesn't fit, the tanks with the fewest days of oil left go first and the rest wait a day. A run-out is a tank at 0 at the end of a day.
+
 ## Scoring Weights
 
 - Year-round score = 0.6 x heating spend percentile + 0.4 x cooling index percentile, computed per heating season across all 218 counties.

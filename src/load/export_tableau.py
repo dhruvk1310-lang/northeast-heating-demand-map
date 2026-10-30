@@ -16,6 +16,9 @@ Outputs (tableau/data):
   kpis.csv              headline numbers per heating season, formatted for display
   ct_regions.csv        Connecticut planning region x dealer density (from SQL query 7)
   ct_prospects.csv      Connecticut dealers with fit score and rank (from vw_dealer_opportunity)
+  delivery_daily.csv    one dealer's season, day by day (from src.logistics.simulate)
+  delivery_routes.csv   every truck's stops on the coldest day, hand-sequenced and optimized
+  delivery_monthly.csv  truck miles per month by dispatch method
 """
 
 import geopandas as gpd
@@ -162,6 +165,23 @@ def ct_dealers() -> None:
     print(f"  wrote ct_regions.csv: {len(regions)} regions; ct_prospects.csv: {len(p)} dealers")
 
 
+def delivery() -> None:
+    src = PROCESSED / "logistics"
+    daily = pd.read_csv(src / "daily_dispatch.csv", parse_dates=["date"])
+    daily.to_csv(OUT / "delivery_daily.csv", index=False)
+    routes = sorted(src.glob("routes_*.csv"))[-1]
+    r = pd.read_csv(routes)
+    r["method_code"] = r["method"].map({"hand-sequenced": 1, "optimized": 2})
+    r.to_csv(OUT / "delivery_routes.csv", index=False)
+    m = daily.assign(month=daily["date"].dt.strftime("%b"), month_order=(daily["date"].dt.month - 7) % 12 + 1)
+    m = m.groupby(["month_order", "month"], as_index=False)[["miles_hand", "miles_opt"]].sum()
+    long = pd.concat([m.assign(method="Hand", method_code=1, miles=m["miles_hand"]),
+                      m.assign(method="Opt", method_code=2, miles=m["miles_opt"])])
+    long = long[["month_order", "month", "method", "method_code", "miles"]].round(1).sort_values(["month_order", "method"])
+    long.to_csv(OUT / "delivery_monthly.csv", index=False)
+    print(f"  wrote delivery_daily.csv, delivery_routes.csv ({routes.stem}), delivery_monthly.csv")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     acs = pd.read_csv(INTERIM / "acs_households_by_fuel.csv", dtype=FIPS)
@@ -172,6 +192,7 @@ def main() -> None:
     county_scores()
     kpis(cm)
     ct_dealers()
+    delivery()
 
 
 if __name__ == "__main__":
