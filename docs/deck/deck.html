@@ -63,7 +63,7 @@
   .defs div { flex: 1; font-size: 18px; line-height: 1.5; color: var(--muted); border-top: 3px solid var(--orange); padding-top: 14px; }
   .defs b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 4px; font-size: 19px; }
 
-  .phases { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; margin-top: 46px; }
+  .phases { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin-top: 46px; }
   .phase { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px 16px 20px; min-height: 196px; }
   .phase .n { font-family: "IBM Plex Mono", monospace; font-size: 15px; color: var(--soft); margin-bottom: 10px; }
   .phase h3 { font-size: 20px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
@@ -86,7 +86,7 @@
   <div class="kicker">Portfolio project · Data pipeline · Market analytics</div>
   <h1>Northeast Heating &amp; Cooling Demand Map</h1>
   <p class="lede">Where and when the Northeast needs heating oil, propane and AC service, estimated county by county and month by month from public data</p>
-  <span class="pill">Complete · 3 dashboards live</span>
+  <span class="pill">Complete · 4 dashboards live</span>
   <div class="title-foot">
     <span>Dhruv Khanna · MS Business Analytics, Quinnipiac University</span>
     <span class="mono">Python · SQL · Tableau</span>
@@ -254,21 +254,36 @@
   <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>08</span></div>
 </section>
 
-<!-- 9. Status -->
+<!-- 9. Delivery logistics -->
+<section class="slide">
+  <div class="kicker">Delivery logistics · Densmore Oil, Stonington CT · 2025-26</div>
+  <h2>Same deliveries, a third fewer miles</h2>
+  <div class="row">
+    <div class="card"><div class="stat">34%</div><p>fewer truck miles: 26,909 optimized vs. 40,751 sequenced by hand</p></div>
+    <div class="card"><div class="stat">4,493</div><p>K-factor auto-deliveries to about 1,048 modeled accounts, with real daily weather</p></div>
+    <div class="card"><div class="stat">163</div><p>miles on the coldest day (Feb 8, 7.3°F), vs. 256 by hand, same 2 trucks</p></div>
+    <div class="card"><div class="stat">2</div><p>trucks cover the whole winter with zero run-outs. With 1, tanks run dry from Jan 4</p></div>
+  </div>
+  <div class="band"><strong>How:</strong> Huff market share from the CT dealer registry, degree-day forecast per tank, and daily routing on real road distances (OSRM) with OR-Tools: the route optimization dispatch software leaves to the dispatcher.</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>09</span></div>
+</section>
+
+<!-- 10. Status -->
 <section class="slide">
   <div class="kicker">Status</div>
-  <h2>All seven phases are done</h2>
+  <h2>All eight phases are done</h2>
   <div class="phases">
     <div class="phase done"><div class="n">01 · DONE</div><h3>Planning</h3><p>Questions, sources, method and schema documented</p></div>
     <div class="phase done"><div class="n">02 · DONE</div><h3>Data collection</h3><p>Census, NOAA and EIA pulls in Python</p></div>
     <div class="phase done"><div class="n">03 · DONE</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
     <div class="phase done"><div class="n">04 · DONE</div><h3>SQL</h3><p>Star schema, load and nine analyses</p></div>
-    <div class="phase done"><div class="n">05 · DONE</div><h3>Tableau</h3><p>Three dashboards live on Tableau Public</p></div>
+    <div class="phase done"><div class="n">05 · DONE</div><h3>Tableau</h3><p>Four dashboards live on Tableau Public</p></div>
     <div class="phase done"><div class="n">06 · DONE</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
     <div class="phase done"><div class="n">07 · DONE</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
+    <div class="phase done"><div class="n">08 · DONE</div><h3>Logistics</h3><p>One dealer's winter, routed with OR-Tools</p></div>
   </div>
   <div class="band"><strong>Honest limits:</strong> county demand is modeled from state averages and weather, not measured. It shows patterns and relative size well, not exact gallons.</div>
-  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>09</span></div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>10</span></div>
 </section>
 
 </body>
