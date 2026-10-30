@@ -6,7 +6,7 @@ An end-to-end analytics project that estimates month-by-month heating oil, propa
 
 > **Status:** Data, demand model, SQL database, Tableau dashboards, and the Connecticut dealer layer complete. Final findings write-up next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 >
-> **Live dashboards:** [The Thermal Year on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
+> **Live dashboards:** [The Thermal Year](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) · [Where the Year-Round Money Is](https://public.tableau.com/views/northeast_thermal_year/WheretheYear-RoundMoneyIs) · [Who to Call First (CT dealers)](https://public.tableau.com/views/northeast_thermal_year/ConnecticutDealerProspects)
 
 ---
 

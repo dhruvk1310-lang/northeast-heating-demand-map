@@ -86,7 +86,7 @@
   <div class="kicker">Portfolio project · Data pipeline · Market analytics</div>
   <h1>Northeast Heating &amp; Cooling Demand Map</h1>
   <p class="lede">Where and when the Northeast needs heating oil, propane and AC service, estimated county by county and month by month from public data</p>
-  <span class="pill">In progress · Dashboards live</span>
+  <span class="pill">In progress · Dealer layer live</span>
   <div class="title-foot">
     <span>Dhruv Khanna · MS Business Analytics, Quinnipiac University</span>
     <span class="mono">Python · SQL · Tableau</span>
@@ -205,11 +205,11 @@
     </div>
     <div class="card">
       <h3>9 SQL analyses</h3>
-      <div class="tag">CTEs · window functions · 7 built</div>
+      <div class="tag">CTEs · window functions · all 9 built</div>
       <ul class="list">
         <li>Top counties, peak months, winters vs. normal</li>
         <li>Price volatility and who heats with what</li>
-        <li>Dealer density and fit score (CT, next)</li>
+        <li>Dealer density and fit score (CT)</li>
       </ul>
     </div>
     <div class="card">
@@ -218,7 +218,7 @@
       <ul class="list">
         <li>The Thermal Year: county map with a month slider</li>
         <li>Size vs. intensity: year-round opportunity</li>
-        <li>Connecticut dealer prospects (next)</li>
+        <li>Who to call first: Connecticut dealer prospects</li>
       </ul>
     </div>
   </div>
@@ -240,21 +240,35 @@
   <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>07</span></div>
 </section>
 
-<!-- 8. Status -->
+<!-- 8. Connecticut pilot -->
+<section class="slide">
+  <div class="kicker">Connecticut pilot · 468 licensed dealers</div>
+  <h2>Who to call first</h2>
+  <div class="row">
+    <div class="card"><div class="stat">468</div><p>licensed heating fuel dealers, from the state license registry</p></div>
+    <div class="card"><div class="stat">20%</div><p>also hold an HVAC contractor license: full-service</p></div>
+    <div class="card"><div class="stat">2,206</div><p>oil and propane homes per dealer in Western CT, vs. 922 in the Lower River Valley</p></div>
+    <div class="card"><div class="stat">#1</div><p>Densmore Oil, Stonington: full-service, 22 years licensed, under-served region</p></div>
+  </div>
+  <div class="band"><strong>Fit score:</strong> 50% offers HVAC service + 30% how under-served its region is + 20% years licensed. Built in SQL with window functions, ranked with ROW_NUMBER().</div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>08</span></div>
+</section>
+
+<!-- 9. Status -->
 <section class="slide">
   <div class="kicker">Status and roadmap</div>
-  <h2>Dashboards are live; the dealer layer is next</h2>
+  <h2>Dealer layer is live; the findings write-up is next</h2>
   <div class="phases">
     <div class="phase done"><div class="n">01 · DONE</div><h3>Planning</h3><p>Questions, sources, method and schema documented</p></div>
     <div class="phase done"><div class="n">02 · DONE</div><h3>Data collection</h3><p>Census, NOAA and EIA pulls in Python</p></div>
     <div class="phase done"><div class="n">03 · DONE</div><h3>Modeling</h3><p>Demand model, calibration and sensitivity</p></div>
-    <div class="phase done"><div class="n">04 · DONE</div><h3>SQL</h3><p>Star schema, load and seven analyses</p></div>
-    <div class="phase done"><div class="n">05 · DONE</div><h3>Tableau</h3><p>Two dashboards live on Tableau Public</p></div>
-    <div class="phase next"><div class="n">06 · NEXT</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
-    <div class="phase"><div class="n">07</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
+    <div class="phase done"><div class="n">04 · DONE</div><h3>SQL</h3><p>Star schema, load and nine analyses</p></div>
+    <div class="phase done"><div class="n">05 · DONE</div><h3>Tableau</h3><p>Three dashboards live on Tableau Public</p></div>
+    <div class="phase done"><div class="n">06 · DONE</div><h3>CT dealers</h3><p>Dealer list, fit score and prospect ranking</p></div>
+    <div class="phase next"><div class="n">07 · NEXT</div><h3>Findings</h3><p>Write-up and dashboard screenshots</p></div>
   </div>
   <div class="band"><strong>Honest limits:</strong> county demand is modeled from state averages and weather, not measured. It shows patterns and relative size well, not exact gallons.</div>
-  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>08</span></div>
+  <div class="footer"><span>Dhruv Khanna · Northeast Heating &amp; Cooling Demand Map</span><span>09</span></div>
 </section>
 
 </body>
