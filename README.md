@@ -4,9 +4,9 @@
 
 An end-to-end analytics project that estimates month-by-month heating oil, propane, and air conditioning demand for every county in the nine Northeast states, stores it in a relational database, and visualizes it in an interactive Tableau dashboard.
 
-> **Status:** Data, demand model, SQL database, and Tableau dashboards complete. Connecticut dealer layer next.
+> **Status:** Data, demand model, SQL database, and Tableau dashboards complete. Connecticut dealer layer next. Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
 >
-> **Live dashboards:** [The Thermal Year on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear) Early results are in [`docs/findings.md`](docs/findings.md). See the [Roadmap](#roadmap) for progress.
+> **Live dashboards:** [The Thermal Year on Tableau Public](https://public.tableau.com/views/northeast_thermal_year/TheThermalYear)
 
 ---
 
